@@ -388,6 +388,13 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tracking-link-box .link:hover {
+            border-color: #ff7a4a;
+            background: rgba(255, 122, 74, 0.05);
         }
 
         .tracking-link-box .link i {
@@ -618,14 +625,14 @@
         .tracking-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 0.5rem;
         }
 
         .track-item {
             background: #0b0e1a;
-            border-radius: 1.8rem;
-            padding: 0.9rem 1.4rem;
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -633,10 +640,13 @@
             transition: 0.2s;
             flex-wrap: wrap;
             gap: 0.5rem;
+            cursor: pointer;
         }
 
         .track-item:hover {
-            border-color: rgba(255, 120, 80, 0.15);
+            border-color: rgba(255, 120, 80, 0.25);
+            background: rgba(255, 122, 74, 0.05);
+            transform: scale(1.01);
         }
 
         .track-item .user {
@@ -662,7 +672,7 @@
         .track-item .user .name {
             color: #fff;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .track-item .user .small-id {
@@ -673,10 +683,10 @@
 
         .track-item .link-tag {
             background: #1b1f30;
-            padding: 0.2rem 1rem;
+            padding: 0.2rem 0.8rem;
             border-radius: 60px;
             color: #ffb092;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             border: 1px solid rgba(255, 140, 100, 0.08);
             display: flex;
             align-items: center;
@@ -685,12 +695,12 @@
 
         .track-item .link-tag i {
             color: #ff7a4a;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         .status-badge {
             font-size: 0.6rem;
-            padding: 0.15rem 0.8rem;
+            padding: 0.15rem 0.7rem;
             border-radius: 60px;
             font-weight: 600;
             white-space: nowrap;
@@ -990,7 +1000,7 @@
         .link-preview-overlay .preview-field {
             display: flex;
             justify-content: space-between;
-            padding: 0.5rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
@@ -1157,7 +1167,7 @@
                     <!-- preview card -->
                     <div class="visa-preview" id="previewCard">
                         <div class="preview-header">
-                            <span><i class="fas fa-shield-alt"></i> <span id="previewVisaId">Visa #V-2026-08</span></span>
+                            <span><i class="fas fa-shield-alt"></i> <span id="previewVisaId">Visa #V-2026-1001</span></span>
                             <span class="badge-hot"><i class="fas fa-fire"></i> <span id="previewStatus">active</span></span>
                         </div>
                         <div class="visa-user">
@@ -1169,13 +1179,16 @@
                         </div>
                         <div class="tracking-link-box">
                             <span><i class="fas fa-link" style="margin-right: 6px;"></i> tracking link</span>
-                            <div class="link" id="previewLink">
+                            <div class="link" id="previewLink" onclick="previewLinkFromPreview()">
                                 <i class="fas fa-copy"></i> <span id="previewLinkText">vf.li/@jessica</span>
                             </div>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-top: 1rem; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.2);">
                             <span><i class="far fa-calendar-alt"></i> issued: <span id="previewIssued">15 Aug 2026</span></span>
                             <span><i class="far fa-clock"></i> expires: <span id="previewExpires">12/2027</span></span>
+                        </div>
+                        <div style="margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.03);">
+                            <span style="color: rgba(255,255,255,0.2); font-size: 0.7rem;"><i class="fas fa-comment"></i> <span id="previewNotes">Business conference & networking</span></span>
                         </div>
                     </div>
                 </div>
@@ -1242,9 +1255,9 @@
                             <label><i class="fas fa-comment"></i> Notes <span style="color: rgba(255,255,255,0.2); font-weight: 400; font-size: 0.7rem;">(optional)</span></label>
                             <input type="text" id="formNotes" placeholder="e.g. Purpose of visit" value="Business conference">
                         </div>
-                        <a href="visacreate.html" class="btn-primary btn-full" style="border: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; text-decoration: none;">
+                        <button class="btn-primary btn-full" onclick="generateVisaFromForm()" style="border: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
                             <i class="fas fa-bolt"></i> Generate visa &amp; tracking
-                        </a>
+                        </button>
                         <div style="margin-top: 0.8rem; font-size: 0.75rem; color: rgba(255,255,255,0.2); text-align: center;">
                             <i class="fas fa-link"></i> tracking link will be created automatically
                         </div>
@@ -1253,53 +1266,9 @@
                     <!-- right: recent tracking links -->
                     <div class="panel" id="tracking-section">
                         <h3><i class="fas fa-map-pin" style="color: #ff7a4a; margin-right: 10px;"></i> Recent tracking</h3>
-                        <div class="panel-desc">Live links for recently issued visas.</div>
+                        <div class="panel-desc">Click any visa to view full details.</div>
                         <div class="tracking-list" id="trackingList">
-                            <div class="track-item" onclick="previewVisaFromHistory('Jessica Diaz', 'V-2026-1001', 'jessica')">
-                                <div class="user">
-                                    <span class="initials">JD</span>
-                                    <span class="name">Jessica D.</span>
-                                    <span class="small-id">#V-4321</span>
-                                </div>
-                                <span class="link-tag"><i class="fas fa-link"></i> @jessica</span>
-                                <span class="status-badge approved">approved</span>
-                            </div>
-                            <div class="track-item" onclick="previewVisaFromHistory('David Okafor', 'V-2026-1002', 'david')">
-                                <div class="user">
-                                    <span class="initials">DO</span>
-                                    <span class="name">David O.</span>
-                                    <span class="small-id">#V-4322</span>
-                                </div>
-                                <span class="link-tag"><i class="fas fa-link"></i> @david</span>
-                                <span class="status-badge approved">approved</span>
-                            </div>
-                            <div class="track-item" onclick="previewVisaFromHistory('Maria Rodriguez', 'V-2026-1003', 'maria')">
-                                <div class="user">
-                                    <span class="initials">MR</span>
-                                    <span class="name">Maria R.</span>
-                                    <span class="small-id">#V-4323</span>
-                                </div>
-                                <span class="link-tag"><i class="fas fa-link"></i> @maria</span>
-                                <span class="status-badge pending">pending</span>
-                            </div>
-                            <div class="track-item" onclick="previewVisaFromHistory('James Thompson', 'V-2026-1004', 'james')">
-                                <div class="user">
-                                    <span class="initials">JT</span>
-                                    <span class="name">James T.</span>
-                                    <span class="small-id">#V-4324</span>
-                                </div>
-                                <span class="link-tag"><i class="fas fa-link"></i> @james</span>
-                                <span class="status-badge review">review</span>
-                            </div>
-                            <div class="track-item" onclick="previewVisaFromHistory('Lisa Williams', 'V-2026-1005', 'lisa')">
-                                <div class="user">
-                                    <span class="initials">LW</span>
-                                    <span class="name">Lisa W.</span>
-                                    <span class="small-id">#V-4325</span>
-                                </div>
-                                <span class="link-tag"><i class="fas fa-link"></i> @lisa</span>
-                                <span class="status-badge expired">expired</span>
-                            </div>
+                            <!-- Dynamic content from JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -1456,78 +1425,238 @@
 
     <script>
         // ===== DATA STORE =====
+        let visas = [];
+        let visaCounter = 1000;
         let currentPreviewLink = '';
-        let sampleVisas = [
-            { name: 'Jessica Diaz', id: 'V-2026-1001', handle: 'jessica', status: 'approved', notes: 'Business conference & networking meetings in Mexico City' },
-            { name: 'David Okafor', id: 'V-2026-1002', handle: 'david', status: 'approved', notes: 'Tech company sponsorship for software engineering position' },
-            { name: 'Maria Rodriguez', id: 'V-2026-1003', handle: 'maria', status: 'pending', notes: 'Tourist visa for family vacation' },
-            { name: 'James Thompson', id: 'V-2026-1004', handle: 'james', status: 'review', notes: 'Work visa application under review' },
-            { name: 'Lisa Williams', id: 'V-2026-1005', handle: 'lisa', status: 'expired', notes: 'Previous visa expired, renewal in process' }
-        ];
+        let currentPreviewVisa = null;
 
-        // ===== SWITCH PAGE =====
-        function switchPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            const navLinks = document.querySelectorAll('.nav-links a');
-            if (pageId === 'page1') {
-                navLinks[0].classList.add('active');
-            } else if (pageId === 'page3') {
-                navLinks[1].classList.add('active');
-            }
+        // ===== UTILITY FUNCTIONS =====
+        function generateHandle(name) {
+            let clean = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (clean.length <= 15 && clean.length > 0) return clean;
+            return clean.substring(0, 12) + Math.floor(Math.random() * 100);
         }
 
-        // ===== PREVIEW VISA FROM HISTORY =====
-        function previewVisaFromHistory(name, id, handle) {
-            const visa = sampleVisas.find(v => v.handle === handle) || sampleVisas[0];
-            const link = `vf.li/@${handle}`;
-            const fullLink = `https://${link}`;
-            currentPreviewLink = link;
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        }
 
-            // Update preview card
-            document.getElementById('previewVisaId').textContent = `Visa ${id}`;
-            document.getElementById('previewStatus').textContent = visa.status;
-            document.getElementById('previewAvatar').textContent = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-            document.getElementById('previewName').textContent = name;
-            const statusMap = {
+        function getStatusColor(status) {
+            const map = {
                 'approved': '#7bff9a',
                 'pending': '#ffb84d',
                 'review': '#6ab0ff',
                 'expired': '#ff6b6b'
             };
-            const statusText = {
+            return map[status] || '#7bff9a';
+        }
+
+        function getStatusText(status) {
+            const map = {
                 'approved': 'approved',
                 'pending': 'pending',
                 'review': 'review',
                 'expired': 'expired'
             };
+            return map[status] || 'approved';
+        }
+
+        function getVisaTypeIcon(type) {
+            const icons = {
+                'Business (B1)': 'fa-briefcase',
+                'Tourist (B2)': 'fa-umbrella-beach',
+                'Student (F1)': 'fa-graduation-cap',
+                'Work (H1B)': 'fa-hard-hat',
+                'Transit (C1)': 'fa-plane',
+                'Medical (M-1)': 'fa-heartbeat',
+                'Family (F-2)': 'fa-users',
+                'Diplomatic (A-1)': 'fa-flag'
+            };
+            return icons[type] || 'fa-passport';
+        }
+
+        // ===== GENERATE VISA FROM FORM =====
+        function generateVisaFromForm() {
+            const name = document.getElementById('formName').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            const visaType = document.getElementById('formVisaType').value;
+            const notes = document.getElementById('formNotes').value.trim();
+
+            if (!name || !email) {
+                showToast('⚠️ Please fill in name and email', 'error');
+                return;
+            }
+
+            // Create visa
+            visaCounter++;
+            const now = new Date();
+            const expires = new Date(now);
+            const duration = visaType.includes('Tourist') ? 90 : visaType.includes('Student') ? 1460 : 365;
+            expires.setDate(expires.getDate() + duration);
+
+            const handle = generateHandle(name);
+            const id = `V-2026-${visaCounter}`;
+            const statuses = ['approved', 'pending', 'review'];
+            const status = statuses[Math.floor(Math.random() * 3)];
+
+            const visa = {
+                id: id,
+                name: name,
+                email: email,
+                visaType: visaType,
+                notes: notes || 'No additional notes',
+                handle: handle,
+                link: `vf.li/@${handle}`,
+                status: status,
+                initials: getInitials(name),
+                icon: getVisaTypeIcon(visaType),
+                issued: now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                expires: expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                createdAt: now.toLocaleString()
+            };
+
+            visas.unshift(visa);
+            renderTrackingList();
+            updatePreview(visa);
+            showToast(`✅ Visa ${visa.id} created!`, 'success');
+
+            // Store in localStorage for persistence
+            try {
+                localStorage.setItem('visas', JSON.stringify(visas));
+            } catch (e) {}
+        }
+
+        // ===== RENDER TRACKING LIST =====
+        function renderTrackingList() {
+            const container = document.getElementById('trackingList');
+
+            if (visas.length === 0) {
+                // Load sample visas
+                loadSampleVisas();
+                return;
+            }
+
+            let html = '';
+            visas.forEach(v => {
+                const color = getStatusColor(v.status);
+                const statusText = getStatusText(v.status);
+                html += `
+                            <div class="track-item" onclick="updatePreview('${v.handle}')">
+                                <div class="user">
+                                    <span class="initials">${v.initials}</span>
+                                    <span class="name">${v.name}</span>
+                                    <span class="small-id">${v.id}</span>
+                                </div>
+                                <span class="link-tag"><i class="fas fa-link"></i> @${v.handle}</span>
+                                <span class="status-badge ${v.status}">${statusText}</span>
+                            </div>
+                        `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ===== LOAD SAMPLE VISAS =====
+        function loadSampleVisas() {
+            const sampleData = [
+                { name: 'Jessica Diaz', email: 'jessica.d@example.com', visaType: 'Business (B1)', notes: 'Business conference & networking meetings in Mexico City', handle: 'jessica', status: 'approved' },
+                { name: 'David Okafor', email: 'david.o@example.com', visaType: 'Work (H1B)', notes: 'Tech company sponsorship for software engineering position', handle: 'david', status: 'approved' },
+                { name: 'Maria Rodriguez', email: 'maria.r@example.com', visaType: 'Tourist (B2)', notes: 'Family vacation to visit relatives', handle: 'maria', status: 'pending' },
+                { name: 'James Thompson', email: 'james.t@example.com', visaType: 'Work (H1B)', notes: 'Software engineer position at tech firm', handle: 'james', status: 'review' },
+                { name: 'Lisa Williams', email: 'lisa.w@example.com', visaType: 'Student (F1)', notes: 'Master\'s degree in Computer Science', handle: 'lisa', status: 'expired' }
+            ];
+
+            const now = new Date();
+            sampleData.forEach((data, index) => {
+                visaCounter++;
+                const expires = new Date(now);
+                const duration = data.visaType.includes('Tourist') ? 90 : data.visaType.includes('Student') ? 1460 : 365;
+                expires.setDate(expires.getDate() + duration);
+
+                visas.push({
+                    id: `V-2026-${visaCounter}`,
+                    name: data.name,
+                    email: data.email,
+                    visaType: data.visaType,
+                    notes: data.notes,
+                    handle: data.handle,
+                    link: `vf.li/@${data.handle}`,
+                    status: data.status,
+                    initials: getInitials(data.name),
+                    icon: getVisaTypeIcon(data.visaType),
+                    issued: now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                    expires: expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                    createdAt: now.toLocaleString()
+                });
+            });
+
+            renderTrackingList();
+            // Update preview with first visa
+            if (visas.length > 0) {
+                updatePreview(visas[0]);
+            }
+        }
+
+        // ===== UPDATE PREVIEW =====
+        function updatePreview(visaOrHandle) {
+            let visa;
+            if (typeof visaOrHandle === 'string') {
+                visa = visas.find(v => v.handle === visaOrHandle);
+            } else {
+                visa = visaOrHandle;
+            }
+
+            if (!visa) return;
+
+            currentPreviewVisa = visa;
+            currentPreviewLink = visa.link;
+
+            document.getElementById('previewVisaId').textContent = visa.id;
+            document.getElementById('previewStatus').textContent = visa.status === 'approved' ? 'active' : visa.status;
+            document.getElementById('previewAvatar').textContent = visa.initials;
+            document.getElementById('previewName').textContent = visa.name;
+            document.getElementById('previewLinkText').textContent = visa.link;
+            document.getElementById('previewIssued').textContent = visa.issued;
+            document.getElementById('previewExpires').textContent = visa.expires;
+            document.getElementById('previewNotes').textContent = visa.notes;
+
+            const color = getStatusColor(visa.status);
             document.getElementById('previewStatusBadge').innerHTML =
-                `<i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle; margin-right: 5px; color: ${statusMap[visa.status] || '#7bff9a'};"></i> ${statusText[visa.status] || 'approved'}`;
-            document.getElementById('previewStatusBadge').style.color = statusMap[visa.status] || '#7bff9a';
-            document.getElementById('previewLinkText').textContent = link;
+                `<i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle; margin-right: 5px; color: ${color};"></i> ${getStatusText(visa.status)}`;
+            document.getElementById('previewStatusBadge').style.color = color;
 
-            // Show toast
-            showToast(`📋 Loading ${name}'s visa details...`, 'info');
+            // Update badge
+            document.getElementById('previewStatus').textContent = visa.status === 'approved' ? 'active' : visa.status;
 
-            // Show preview overlay
-            showLinkPreview(link, visa, name, id);
+            // Update preview card border glow based on status
+            const previewCard = document.getElementById('previewCard');
+            previewCard.style.borderColor = `rgba(${color === '#7bff9a' ? '123,255,154' : color === '#ffb84d' ? '255,184,77' : color === '#6ab0ff' ? '106,176,255' : '255,107,107'}, 0.3)`;
         }
 
-        // ===== SHOW LINK PREVIEW =====
-        function showLinkPreview(link, visa, name, id) {
+        // ===== PREVIEW LINK FROM PREVIEW CARD =====
+        function previewLinkFromPreview() {
+            if (currentPreviewVisa) {
+                showLinkPreview(currentPreviewVisa);
+            }
+        }
+
+        // ===== SHOW LINK PREVIEW OVERLAY =====
+        function showLinkPreview(visa) {
             const overlay = document.getElementById('linkPreviewOverlay');
 
-            document.getElementById('previewOverlayTitle').textContent = `Visa ${id || 'Details'}`;
-            document.getElementById('previewOverlaySubtitle').textContent = `Complete visa information for ${name || 'User'}`;
+            document.getElementById('previewOverlayTitle').textContent = `Visa ${visa.id}`;
+            document.getElementById('previewOverlaySubtitle').textContent = `Complete visa information for ${visa.name}`;
 
             const fields = [
-                { label: 'Full Name', value: name || 'N/A' },
-                { label: 'Visa ID', value: id || 'N/A' },
-                { label: 'Handle', value: `@${visa.handle || 'N/A'}` },
-                { label: 'Tracking Link', value: link },
-                { label: 'Status', value: visa.status || 'approved' },
+                { label: 'Full Name', value: visa.name },
+                { label: 'Visa ID', value: visa.id },
+                { label: 'Email', value: visa.email },
+                { label: 'Visa Type', value: visa.visaType },
+                { label: 'Handle', value: `@${visa.handle}` },
+                { label: 'Tracking Link', value: visa.link },
+                { label: 'Status', value: getStatusText(visa.status) },
+                { label: 'Issued', value: visa.issued },
+                { label: 'Expires', value: visa.expires }
             ];
 
             document.getElementById('previewOverlayFields').innerHTML = fields.map(f => `
@@ -1539,7 +1668,7 @@
 
             const notesContainer = document.getElementById('previewOverlayNotes');
             const notesText = document.getElementById('previewOverlayNotesText');
-            if (visa.notes && visa.notes !== 'Not provided' && visa.notes !== '') {
+            if (visa.notes && visa.notes !== 'No additional notes') {
                 notesContainer.style.display = 'block';
                 notesText.textContent = visa.notes;
             } else {
@@ -1550,50 +1679,13 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // ===== PREVIEW LINK (from button) =====
-        function previewLink(link) {
-            const overlay = document.getElementById('linkPreviewOverlay');
-            const handle = link.replace('vf.li/@', '');
-            const visa = sampleVisas.find(v => v.handle === handle) || sampleVisas[0];
-
-            currentPreviewLink = link;
-
-            document.getElementById('previewOverlayTitle').textContent = `Visa ${visa.id || 'Details'}`;
-            document.getElementById('previewOverlaySubtitle').textContent = `Complete visa information for ${visa.name || 'User'}`;
-
-            const fields = [
-                { label: 'Full Name', value: visa.name || 'N/A' },
-                { label: 'Visa ID', value: visa.id || 'N/A' },
-                { label: 'Handle', value: `@${visa.handle || 'N/A'}` },
-                { label: 'Tracking Link', value: link },
-                { label: 'Status', value: visa.status || 'approved' },
-            ];
-
-            document.getElementById('previewOverlayFields').innerHTML = fields.map(f => `
-                        <div class="preview-field">
-                            <span class="field-label">${f.label}</span>
-                            <span class="field-value">${f.value}</span>
-                        </div>
-                    `).join('');
-
-            const notesContainer = document.getElementById('previewOverlayNotes');
-            const notesText = document.getElementById('previewOverlayNotesText');
-            if (visa.notes && visa.notes !== 'Not provided' && visa.notes !== '') {
-                notesContainer.style.display = 'block';
-                notesText.textContent = visa.notes;
-            } else {
-                notesContainer.style.display = 'none';
-            }
-
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
+        // ===== CLOSE LINK PREVIEW =====
         function closeLinkPreview() {
             document.getElementById('linkPreviewOverlay').classList.remove('active');
             document.body.style.overflow = '';
         }
 
+        // ===== COPY PREVIEW LINK =====
         function copyPreviewLink() {
             if (currentPreviewLink) {
                 copyLink(currentPreviewLink);
@@ -1643,16 +1735,30 @@
             }, 3200);
         }
 
+        // ===== SWITCH PAGE =====
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const navLinks = document.querySelectorAll('.nav-links a');
+            if (pageId === 'page1') {
+                navLinks[0].classList.add('active');
+            } else if (pageId === 'page3') {
+                navLinks[1].classList.add('active');
+            }
+        }
+
         // ===== CHECK URL FOR TRACKING LINK ON LOAD =====
         function checkUrlForTracking() {
             const url = window.location.href;
             if (url.includes('@')) {
                 const handle = url.split('@').pop().split('#')[0].split('?')[0];
-                const visa = sampleVisas.find(v => v.handle === handle);
+                const visa = visas.find(v => v.handle === handle);
                 if (visa) {
-                    const link = `vf.li/@${handle}`;
                     setTimeout(() => {
-                        previewVisaFromHistory(visa.name, visa.id, handle);
+                        updatePreview(visa);
+                        showLinkPreview(visa);
                         showToast(`📋 Visa details loaded: ${visa.name}`, 'info');
                     }, 500);
                     return true;
@@ -1664,29 +1770,33 @@
         // ===== INIT =====
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Check URL for tracking link on load
-        setTimeout(() => {
-            if (!checkUrlForTracking()) {
-                // Load default preview
-                const defaultVisa = sampleVisas[0];
-                const link = `vf.li/@${defaultVisa.handle}`;
-                document.getElementById('previewLinkText').textContent = link;
+        // Try to load from localStorage
+        try {
+            const stored = localStorage.getItem('visas');
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                if (parsed && parsed.length > 0) {
+                    visas = parsed;
+                    renderTrackingList();
+                    if (visas.length > 0) {
+                        updatePreview(visas[0]);
+                    }
+                    // Check URL after loading
+                    setTimeout(checkUrlForTracking, 300);
+                    return;
+                }
             }
-        }, 200);
+        } catch (e) {}
+
+        // If no stored data, load samples
+        loadSampleVisas();
+
+        // Check URL for tracking link
+        setTimeout(checkUrlForTracking, 400);
 
         // Handle hash changes for deep linking
         window.addEventListener('hashchange', function() {
             checkUrlForTracking();
-        });
-
-        // Handle clicks on tracking items
-        document.querySelectorAll('.track-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const name = this.querySelector('.name')?.textContent || 'User';
-                const id = this.querySelector('.small-id')?.textContent || 'V-2026-XXXX';
-                const handle = this.querySelector('.link-tag')?.textContent?.replace('@', '').trim() || 'user';
-                previewVisaFromHistory(name, id, handle);
-            });
         });
 
         // ===== SMOOTH NAV FOR ANCHOR LINKS =====
@@ -1699,16 +1809,16 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                // Switch to page1 if needed
                 document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
                 document.getElementById('page1').classList.add('active');
             });
         });
 
         console.log('✈️ VisaFlow ready!');
+        console.log('📊 ' + visas.length + ' visas loaded');
         console.log('🔗 Share links work on WhatsApp, TikTok, and all platforms');
         console.log('📱 Links are under 30 characters: vf.li/@name');
-        console.log('👁️ Click any visa in the tracking list to preview');
+        console.log('👁️ Click any visa in the tracking list to preview all details');
     </script>
 </body>
 </html>
