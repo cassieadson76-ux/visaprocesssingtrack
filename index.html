@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>VisaFlow · instant visa & tracking</title>
+    <title>VisaFlow Pro · instant visa & tracking</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -879,6 +879,44 @@
             100% { transform: rotate(360deg); }
         }
 
+        .share-options {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 60px;
+            padding: 0.3rem 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 122, 74, 0.1);
+            border-color: #ff7a4a;
+            color: #fff;
+        }
+
+        .share-btn i {
+            font-size: 0.8rem;
+        }
+
+        .share-btn.whatsapp:hover { background: rgba(37, 211, 102, 0.15); border-color: #25D366; }
+        .share-btn.telegram:hover { background: rgba(0, 136, 204, 0.15); border-color: #0088cc; }
+        .share-btn.email:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.3); }
+        .share-btn.copy:hover { background: rgba(255, 122, 74, 0.15); border-color: #ff7a4a; }
+        .share-btn.twitter:hover { background: rgba(29, 161, 242, 0.15); border-color: #1DA1F2; }
+        .share-btn.linkedin:hover { background: rgba(0, 119, 181, 0.15); border-color: #0077b5; }
+
         @media (max-width: 600px) {
             .visa-card {
                 padding: 1.2rem 0.9rem;
@@ -932,6 +970,9 @@
             }
             .track-item .link-tag {
                 align-self: flex-start;
+            }
+            .share-options {
+                justify-content: center;
             }
         }
 
@@ -1183,6 +1224,155 @@
                 justify-content: center;
             }
         }
+
+        /* ===== NEW STYLES FOR ENHANCED FEATURES ===== */
+        .visa-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .visa-detail-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0.8rem;
+            padding: 0.5rem 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .visa-detail-item .label {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .visa-detail-item .value {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.1rem;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .qr-placeholder {
+            width: 80px;
+            height: 80px;
+            background: repeating-conic-gradient(rgba(255,255,255,0.05) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.1);
+            font-size: 0.6rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 0.8rem;
+            border-left: 2px solid #ff7a4a;
+        }
+
+        .timeline-item .time {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.6rem;
+            min-width: 60px;
+        }
+
+        .timeline-item .event {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+        }
+
+        .timeline-item .event i {
+            color: #ff7a4a;
+            margin-right: 0.3rem;
+        }
+
+        .badge-priority {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 60px;
+            font-size: 0.55rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-priority.high { background: rgba(255, 50, 50, 0.15); color: #ff6b6b; border: 1px solid rgba(255, 50, 50, 0.1); }
+        .badge-priority.medium { background: rgba(255, 180, 50, 0.15); color: #ffb84d; border: 1px solid rgba(255, 180, 50, 0.1); }
+        .badge-priority.low { background: rgba(50, 255, 150, 0.15); color: #7bff9a; border: 1px solid rgba(50, 255, 150, 0.1); }
+
+        .counter-animated {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .visa-type-icon-large {
+            font-size: 3rem;
+            color: #ff7a4a;
+            opacity: 0.3;
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .badge-country {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 60px;
+            padding: 0.1rem 0.6rem;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .badge-country i {
+            color: #ff7a4a;
+        }
+
+        /* Scrollbar for overlay */
+        .link-preview-overlay .preview-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .link-preview-overlay .preview-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 60px;
+        }
+
+        .link-preview-overlay .preview-content::-webkit-scrollbar-thumb {
+            background: #ff7a4a;
+            border-radius: 60px;
+        }
     </style>
 </head>
 <body>
@@ -1198,8 +1388,9 @@
                 <div class="nav-links">
                     <a href="#" class="active" onclick="switchPage('page1')">Dashboard</a>
                     <a href="#" onclick="switchPage('page3')">Visa Types</a>
-                    <a href="#tracking-section" onclick="switchPage('page1')">Tracking</a>
-                    <a href="visacreate.html" class="btn-outline-light"><i class="fas fa-plus"></i> Create visa</a>
+                    <a href="#" onclick="switchPage('page4')">Track</a>
+                    <a href="#" onclick="switchPage('page5')">Analytics</a>
+                    <a href="#" class="btn-outline-light" onclick="document.getElementById('visa-create').scrollIntoView({behavior:'smooth'})"><i class="fas fa-plus"></i> Create</a>
                 </div>
             </div>
 
@@ -1215,12 +1406,12 @@
                             <strong style="color:#ffb092;">Super hot</strong> &amp; secure.
                         </p>
                         <div class="btn-group">
-                            <a href="visacreate.html" class="btn-primary"><i class="fas fa-bolt"></i> Create visa now</a>
-                            <a href="#tracking-section" class="btn-secondary"><i class="fas fa-eye"></i> Track existing</a>
+                            <a href="#" class="btn-primary" onclick="document.getElementById('visa-create').scrollIntoView({behavior:'smooth'})"><i class="fas fa-bolt"></i> Create visa now</a>
+                            <a href="#" class="btn-secondary" onclick="switchPage('page4')"><i class="fas fa-eye"></i> Track existing</a>
                         </div>
                         <div style="margin-top: 1.8rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
                             <span style="display: flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.4); font-size: 0.9rem;">
-                                <i class="fas fa-check-circle" style="color: #7bff9a;"></i> 2,400+ visas issued
+                                <i class="fas fa-check-circle" style="color: #7bff9a;"></i> <span id="visaCount">0</span>+ visas issued
                             </span>
                             <span style="display: flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.4); font-size: 0.9rem;">
                                 <i class="fas fa-clock" style="color: #ffb092;"></i> real‑time tracking
@@ -1250,12 +1441,25 @@
                                 <i class="fas fa-copy"></i> <span id="previewLinkText">vf.li/@jessica</span>
                             </div>
                         </div>
+                        <div class="share-options" id="shareOptions">
+                            <button class="share-btn whatsapp" onclick="shareVia('whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="share-btn telegram" onclick="shareVia('telegram')"><i class="fab fa-telegram"></i> Telegram</button>
+                            <button class="share-btn twitter" onclick="shareVia('twitter')"><i class="fab fa-twitter"></i> Twitter</button>
+                            <button class="share-btn linkedin" onclick="shareVia('linkedin')"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
+                            <button class="share-btn email" onclick="shareVia('email')"><i class="fas fa-envelope"></i> Email</button>
+                            <button class="share-btn copy" onclick="shareVia('copy')"><i class="fas fa-copy"></i> Copy</button>
+                        </div>
                         <div style="display: flex; justify-content: space-between; margin-top: 1rem; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.2);">
                             <span><i class="far fa-calendar-alt"></i> issued: <span id="previewIssued">15 Aug 2026</span></span>
                             <span><i class="far fa-clock"></i> expires: <span id="previewExpires">12/2027</span></span>
+                            <span><i class="fas fa-globe"></i> <span id="previewCountry">Global</span></span>
                         </div>
                         <div class="preview-notes-mini">
                             <i class="fas fa-comment"></i> <span id="previewNotes">Business conference &amp; networking</span>
+                        </div>
+                        <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="badge-priority medium" id="previewPriority">Priority: Medium</span>
+                            <span class="badge-country"><i class="fas fa-flag"></i> <span id="previewNationality">USA</span></span>
                         </div>
                     </div>
                 </div>
@@ -1316,6 +1520,29 @@
                                 <option>Student (F1)</option>
                                 <option>Work (H1B)</option>
                                 <option>Transit (C1)</option>
+                                <option>Medical (M-1)</option>
+                                <option>Family (F-2)</option>
+                                <option>Diplomatic (A-1)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-flag"></i> Country of Origin</label>
+                            <select id="formCountry">
+                                <option value="USA">🇺🇸 United States</option>
+                                <option value="UK">🇬🇧 United Kingdom</option>
+                                <option value="Canada">🇨🇦 Canada</option>
+                                <option value="Australia">🇦🇺 Australia</option>
+                                <option value="Germany">🇩🇪 Germany</option>
+                                <option value="France">🇫🇷 France</option>
+                                <option value="Spain">🇪🇸 Spain</option>
+                                <option value="Italy">🇮🇹 Italy</option>
+                                <option value="Japan">🇯🇵 Japan</option>
+                                <option value="China">🇨🇳 China</option>
+                                <option value="India">🇮🇳 India</option>
+                                <option value="Brazil">🇧🇷 Brazil</option>
+                                <option value="Mexico">🇲🇽 Mexico</option>
+                                <option value="Nigeria">🇳🇬 Nigeria</option>
+                                <option value="South Africa">🇿🇦 South Africa</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1378,7 +1605,7 @@
                     <div class="stat-item">
                         <i class="fas fa-passport"></i>
                         <div>
-                            <span class="number">2.4k+</span>
+                            <span class="number" id="statVisas">2.4k+</span>
                             <span class="label">Visas issued</span>
                         </div>
                     </div>
@@ -1408,6 +1635,9 @@
 
             <!-- ===== PAGE 3: VISA TYPES ===== -->
             <div class="page" id="page3">
+                <div class="section-title" style="margin-bottom: 1.5rem;">
+                    <i class="fas fa-th-list"></i> Visa Types <span class="section-sub">· choose the right one</span>
+                </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; padding: 1rem 0;">
                     <div class="feature-card" style="text-align: center;">
                         <i class="fas fa-briefcase" style="font-size: 2.5rem;"></i>
@@ -1444,6 +1674,79 @@
                         <h4>Medical (M-1)</h4>
                         <p style="font-size: 0.85rem;">For medical treatment, procedures, and hospital visits.</p>
                         <span class="tag">1 year validity</span>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-users" style="font-size: 2.5rem;"></i>
+                        <h4>Family (F-2)</h4>
+                        <p style="font-size: 0.85rem;">For family members of students or workers.</p>
+                        <span class="tag">2 years validity</span>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-flag" style="font-size: 2.5rem;"></i>
+                        <h4>Diplomatic (A-1)</h4>
+                        <p style="font-size: 0.85rem;">For diplomats, government officials, and embassy staff.</p>
+                        <span class="tag">5 years validity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== PAGE 4: TRACK ===== -->
+            <div class="page" id="page4">
+                <div class="section-title" style="margin-bottom: 1.5rem;">
+                    <i class="fas fa-search"></i> Track Visa <span class="section-sub">· find any visa</span>
+                </div>
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <input type="text" id="trackSearch" placeholder="Enter visa ID or handle (e.g. V-2026-1001 or @name)" style="flex: 1; background: #0b0e1a; border: 1px solid rgba(255,255,255,0.06); border-radius: 60px; padding: 0.8rem 1.4rem; color: #fff; font-size: 0.95rem; outline: none;">
+                        <button class="btn-primary" onclick="trackVisa()" style="padding: 0.8rem 1.8rem;"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div id="trackResult" style="display: none;">
+                        <!-- Dynamic track result -->
+                    </div>
+                    <div class="panel" style="margin-top: 1.5rem;">
+                        <h4 style="color: #fff; margin-bottom: 1rem;"><i class="fas fa-clock"></i> Recent Activity</h4>
+                        <div class="timeline" id="trackTimeline">
+                            <!-- Dynamic timeline -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== PAGE 5: ANALYTICS ===== -->
+            <div class="page" id="page5">
+                <div class="section-title" style="margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-line"></i> Analytics <span class="section-sub">· insights at a glance</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-passport" style="font-size: 2rem;"></i>
+                        <h4 style="font-size: 2rem; color: #ff7a4a;" id="analyticsTotal">0</h4>
+                        <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Total Visas</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-check-circle" style="font-size: 2rem; color: #7bff9a;"></i>
+                        <h4 style="font-size: 2rem; color: #7bff9a;" id="analyticsApproved">0</h4>
+                        <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Approved</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-clock" style="font-size: 2rem; color: #ffb84d;"></i>
+                        <h4 style="font-size: 2rem; color: #ffb84d;" id="analyticsPending">0</h4>
+                        <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Pending</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-times-circle" style="font-size: 2rem; color: #ff6b6b;"></i>
+                        <h4 style="font-size: 2rem; color: #ff6b6b;" id="analyticsExpired">0</h4>
+                        <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Expired</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-users" style="font-size: 2rem; color: #6ab0ff;"></i>
+                        <h4 style="font-size: 2rem; color: #6ab0ff;" id="analyticsUnique">0</h4>
+                        <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Unique Users</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fas fa-share-alt" style="font-size: 2rem; color: #ffb092;"></i>
+                        <h4 style="font-size: 2rem; color: #ffb092;" id="analyticsShares">0</h4>
+                        <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">Total Shares</p>
                     </div>
                 </div>
             </div>
@@ -1500,6 +1803,7 @@
         let visaCounter = 1000;
         let currentPreviewLink = '';
         let currentPreviewVisa = null;
+        let shareCount = 0;
 
         // ===== UTILITY FUNCTIONS =====
         function generateHandle(name) {
@@ -1550,7 +1854,138 @@
             if (visaType.includes('Tourist')) return 90;
             if (visaType.includes('Student')) return 1460;
             if (visaType.includes('Transit')) return 7;
+            if (visaType.includes('Diplomatic')) return 1825;
+            if (visaType.includes('Family')) return 730;
             return 365;
+        }
+
+        function getPriority(status) {
+            const map = {
+                'approved': { text: 'Low', class: 'low' },
+                'pending': { text: 'High', class: 'high' },
+                'review': { text: 'Medium', class: 'medium' },
+                'expired': { text: 'Low', class: 'low' }
+            };
+            return map[status] || { text: 'Medium', class: 'medium' };
+        }
+
+        function getCountryFlag(country) {
+            const flags = {
+                'USA': '🇺🇸', 'UK': '🇬🇧', 'Canada': '🇨🇦', 'Australia': '🇦🇺',
+                'Germany': '🇩🇪', 'France': '🇫🇷', 'Spain': '🇪🇸', 'Italy': '🇮🇹',
+                'Japan': '🇯🇵', 'China': '🇨🇳', 'India': '🇮🇳', 'Brazil': '🇧🇷',
+                'Mexico': '🇲🇽', 'Nigeria': '🇳🇬', 'South Africa': '🇿🇦'
+            };
+            return flags[country] || '🌍';
+        }
+
+        // ===== GENERATE SHAREABLE LINK =====
+        function generateShareableLink(visa) {
+            const data = {
+                n: visa.name,
+                e: visa.email,
+                t: visa.visaType,
+                nt: visa.notes || 'No additional notes',
+                st: visa.status,
+                id: visa.id,
+                h: visa.handle,
+                i: visa.initials,
+                is: visa.issued,
+                ex: visa.expires,
+                d: visa.duration,
+                c: visa.country || 'USA',
+                pr: visa.priority || 'medium'
+            };
+            
+            const jsonStr = JSON.stringify(data);
+            const encoded = btoa(encodeURIComponent(jsonStr));
+            const url = window.location.href.split('#')[0] + '#' + encoded;
+            return url;
+        }
+
+        // ===== DECODE VISA FROM URL =====
+        function decodeVisaFromUrl() {
+            const hash = window.location.hash;
+            if (hash && hash.length > 1) {
+                try {
+                    const encoded = hash.substring(1);
+                    const decoded = decodeURIComponent(atob(encoded));
+                    const data = JSON.parse(decoded);
+                    
+                    return {
+                        name: data.n,
+                        email: data.e,
+                        visaType: data.t,
+                        notes: data.nt || 'No additional notes provided',
+                        status: data.st || 'approved',
+                        id: data.id || 'V-2026-1001',
+                        handle: data.h || generateHandle(data.n),
+                        initials: data.i || getInitials(data.n),
+                        issued: data.is || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                        issuedFull: data.is || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                        expires: data.ex || new Date(Date.now() + 365*24*60*60*1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                        expiresFull: data.ex || new Date(Date.now() + 365*24*60*60*1000).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                        duration: data.d || 365,
+                        country: data.c || 'USA',
+                        priority: data.pr || 'medium',
+                        link: `vf.li/@${data.h || generateHandle(data.n)}`,
+                        statusColor: getStatusColor(data.st || 'approved'),
+                        statusText: getStatusText(data.st || 'approved')
+                    };
+                } catch (e) {
+                    console.log('No valid visa data in URL');
+                    return null;
+                }
+            }
+            return null;
+        }
+
+        // ===== SHARE VIA PLATFORMS =====
+        function shareVia(platform) {
+            if (!currentPreviewVisa) {
+                showToast('⚠️ No visa selected to share', 'error');
+                return;
+            }
+            
+            shareCount++;
+            const shareUrl = generateShareableLink(currentPreviewVisa);
+            const text = `✈️ Visa ${currentPreviewVisa.id} for ${currentPreviewVisa.name}\nStatus: ${currentPreviewVisa.statusText}\nCountry: ${currentPreviewVisa.country || 'Global'}\nCheck it here: ${shareUrl}`;
+            
+            switch(platform) {
+                case 'whatsapp':
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                    break;
+                case 'telegram':
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Visa ${currentPreviewVisa.id} for ${currentPreviewVisa.name}`)}`, '_blank');
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+                    break;
+                case 'linkedin':
+                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
+                    break;
+                case 'email':
+                    window.location.href = `mailto:?subject=Visa ${currentPreviewVisa.id}&body=${encodeURIComponent(text)}`;
+                    break;
+                case 'copy':
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        showToast('✅ Link copied to clipboard!', 'success');
+                        updateAnalytics();
+                    }).catch(() => {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = shareUrl;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        showToast('✅ Link copied to clipboard!', 'success');
+                        updateAnalytics();
+                    });
+                    break;
+                default:
+                    showToast('📋 Share the link manually', 'info');
+            }
+            updateAnalytics();
         }
 
         // ===== GENERATE VISA FROM FORM =====
@@ -1559,6 +1994,7 @@
             const email = document.getElementById('formEmail').value.trim();
             const visaType = document.getElementById('formVisaType').value;
             const notes = document.getElementById('formNotes').value.trim();
+            const country = document.getElementById('formCountry').value;
 
             if (!name || !email) {
                 showToast('⚠️ Please fill in name and email', 'error');
@@ -1575,6 +2011,7 @@
             const id = `V-2026-${visaCounter}`;
             const statuses = ['approved', 'pending', 'review'];
             const status = statuses[Math.floor(Math.random() * 3)];
+            const priority = getPriority(status);
 
             const visa = {
                 id: id,
@@ -1587,6 +2024,9 @@
                 status: status,
                 initials: getInitials(name),
                 icon: getVisaTypeIcon(visaType),
+                country: country,
+                priority: priority.text.toLowerCase(),
+                priorityClass: priority.class,
                 issued: now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
                 issuedFull: now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
                 expires: expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
@@ -1600,7 +2040,11 @@
             visas.unshift(visa);
             renderTrackingList();
             updatePreview(visa);
-            showToast(`✅ Visa ${visa.id} created!`, 'success');
+            updateStats();
+            updateAnalytics();
+            
+            const shareUrl = generateShareableLink(visa);
+            showToast(`✅ Visa ${visa.id} created! Share it using the buttons above.`, 'success');
 
             try {
                 localStorage.setItem('visas', JSON.stringify(visas));
@@ -1633,16 +2077,42 @@
             });
 
             container.innerHTML = html;
+            updateStats();
+            updateAnalytics();
+        }
+
+        // ===== UPDATE STATS =====
+        function updateStats() {
+            document.getElementById('visaCount').textContent = visas.length;
+            document.getElementById('statVisas').textContent = visas.length + '+';
+        }
+
+        // ===== UPDATE ANALYTICS =====
+        function updateAnalytics() {
+            const total = visas.length;
+            const approved = visas.filter(v => v.status === 'approved').length;
+            const pending = visas.filter(v => v.status === 'pending').length;
+            const expired = visas.filter(v => v.status === 'expired').length;
+            const unique = new Set(visas.map(v => v.email)).size;
+            
+            document.getElementById('analyticsTotal').textContent = total;
+            document.getElementById('analyticsApproved').textContent = approved;
+            document.getElementById('analyticsPending').textContent = pending;
+            document.getElementById('analyticsExpired').textContent = expired;
+            document.getElementById('analyticsUnique').textContent = unique;
+            document.getElementById('analyticsShares').textContent = shareCount;
         }
 
         // ===== LOAD SAMPLE VISAS =====
         function loadSampleVisas() {
             const sampleData = [
-                { name: 'Jessica Diaz', email: 'jessica.d@example.com', visaType: 'Business (B1)', notes: 'Business conference & networking meetings in Mexico City', handle: 'jessica', status: 'approved' },
-                { name: 'David Okafor', email: 'david.o@example.com', visaType: 'Work (H1B)', notes: 'Tech company sponsorship for software engineering position', handle: 'david', status: 'approved' },
-                { name: 'Maria Rodriguez', email: 'maria.r@example.com', visaType: 'Tourist (B2)', notes: 'Family vacation to visit relatives in Spain', handle: 'maria', status: 'pending' },
-                { name: 'James Thompson', email: 'james.t@example.com', visaType: 'Work (H1B)', notes: 'Software engineer position at leading tech firm', handle: 'james', status: 'review' },
-                { name: 'Lisa Williams', email: 'lisa.w@example.com', visaType: 'Student (F1)', notes: 'Master\'s degree in Computer Science at MIT', handle: 'lisa', status: 'expired' }
+                { name: 'Jessica Diaz', email: 'jessica.d@example.com', visaType: 'Business (B1)', notes: 'Business conference & networking meetings in Mexico City', handle: 'jessica', status: 'approved', country: 'USA' },
+                { name: 'David Okafor', email: 'david.o@example.com', visaType: 'Work (H1B)', notes: 'Tech company sponsorship for software engineering position', handle: 'david', status: 'approved', country: 'Nigeria' },
+                { name: 'Maria Rodriguez', email: 'maria.r@example.com', visaType: 'Tourist (B2)', notes: 'Family vacation to visit relatives in Spain', handle: 'maria', status: 'pending', country: 'Mexico' },
+                { name: 'James Thompson', email: 'james.t@example.com', visaType: 'Work (H1B)', notes: 'Software engineer position at leading tech firm', handle: 'james', status: 'review', country: 'UK' },
+                { name: 'Lisa Williams', email: 'lisa.w@example.com', visaType: 'Student (F1)', notes: 'Master\'s degree in Computer Science at MIT', handle: 'lisa', status: 'expired', country: 'Canada' },
+                { name: 'Chen Wei', email: 'chen.w@example.com', visaType: 'Business (B1)', notes: 'International trade conference in Shanghai', handle: 'chen', status: 'approved', country: 'China' },
+                { name: 'Priya Patel', email: 'priya.p@example.com', visaType: 'Medical (M-1)', notes: 'Specialized medical treatment in London', handle: 'priya', status: 'pending', country: 'India' }
             ];
 
             const now = new Date();
@@ -1651,6 +2121,7 @@
                 const expires = new Date(now);
                 const duration = getDuration(data.visaType);
                 expires.setDate(expires.getDate() + duration);
+                const priority = getPriority(data.status);
 
                 visas.push({
                     id: `V-2026-${visaCounter}`,
@@ -1663,6 +2134,9 @@
                     status: data.status,
                     initials: getInitials(data.name),
                     icon: getVisaTypeIcon(data.visaType),
+                    country: data.country || 'USA',
+                    priority: priority.text.toLowerCase(),
+                    priorityClass: priority.class,
                     issued: now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
                     issuedFull: now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
                     expires: expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
@@ -1678,6 +2152,8 @@
             if (visas.length > 0) {
                 updatePreview(visas[0]);
             }
+            updateStats();
+            updateAnalytics();
         }
 
         // ===== UPDATE PREVIEW =====
@@ -1702,6 +2178,12 @@
             document.getElementById('previewIssued').textContent = visa.issued;
             document.getElementById('previewExpires').textContent = visa.expires;
             document.getElementById('previewNotes').textContent = visa.notes;
+            document.getElementById('previewCountry').textContent = visa.country || 'Global';
+            document.getElementById('previewNationality').textContent = visa.country || 'Global';
+
+            const priority = getPriority(visa.status);
+            document.getElementById('previewPriority').textContent = `Priority: ${priority.text}`;
+            document.getElementById('previewPriority').className = `badge-priority ${priority.class}`;
 
             const color = visa.statusColor;
             document.getElementById('previewStatusBadge').innerHTML =
@@ -1737,7 +2219,9 @@
                 { label: 'Tracking Link', value: visa.link },
                 { label: 'Duration', value: `${visa.duration} days` },
                 { label: 'Issued Date', value: visa.issuedFull },
-                { label: 'Expiry Date', value: visa.expiresFull }
+                { label: 'Expiry Date', value: visa.expiresFull },
+                { label: 'Country', value: `${getCountryFlag(visa.country)} ${visa.country || 'Global'}` },
+                { label: 'Priority', value: getPriority(visa.status).text }
             ];
 
             document.getElementById('previewOverlayFields').innerHTML = fields.map(f => `
@@ -1747,13 +2231,11 @@
                         </div>
                     `).join('');
 
-            // Status bar
             const statusValue = document.getElementById('previewOverlayStatusValue');
             const statusColor = visa.statusColor;
             statusValue.innerHTML = `<span class="status-dot" style="background: ${statusColor};"></span> ${visa.statusText}`;
             statusValue.style.color = statusColor;
 
-            // Notes section
             const notesSection = document.getElementById('previewOverlayNotesSection');
             const notesText = document.getElementById('previewOverlayNotesText');
             if (visa.notes && visa.notes !== 'No additional notes provided') {
@@ -1796,6 +2278,68 @@
             });
         }
 
+        // ===== TRACK VISA =====
+        function trackVisa() {
+            const query = document.getElementById('trackSearch').value.trim();
+            if (!query) {
+                showToast('⚠️ Please enter a visa ID or handle', 'error');
+                return;
+            }
+
+            const result = document.getElementById('trackResult');
+            const timeline = document.getElementById('trackTimeline');
+            
+            let visa = visas.find(v => v.id === query || v.handle === query.replace('@', ''));
+            
+            if (!visa) {
+                result.style.display = 'block';
+                result.innerHTML = `
+                    <div class="panel" style="background: rgba(255,50,50,0.05); border-color: rgba(255,50,50,0.1);">
+                        <p style="color: #ff6b6b;"><i class="fas fa-exclamation-circle"></i> Visa not found. Please check the ID or handle.</p>
+                    </div>
+                `;
+                timeline.innerHTML = '';
+                return;
+            }
+
+            result.style.display = 'block';
+            result.innerHTML = `
+                <div class="panel" style="border-color: ${visa.statusColor}40;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <h4 style="color: #fff;">${visa.name}</h4>
+                            <p style="color: rgba(255,255,255,0.3); font-size: 0.85rem;">${visa.id} · ${visa.visaType}</p>
+                        </div>
+                        <span class="status-badge ${visa.status}" style="font-size: 0.8rem; padding: 0.3rem 1rem;">${visa.statusText}</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem;">
+                        <div><span style="color: rgba(255,255,255,0.2); font-size: 0.7rem;">EMAIL</span><br><span style="color: #fff; font-size: 0.85rem;">${visa.email}</span></div>
+                        <div><span style="color: rgba(255,255,255,0.2); font-size: 0.7rem;">COUNTRY</span><br><span style="color: #fff; font-size: 0.85rem;">${getCountryFlag(visa.country)} ${visa.country}</span></div>
+                        <div><span style="color: rgba(255,255,255,0.2); font-size: 0.7rem;">ISSUED</span><br><span style="color: #fff; font-size: 0.85rem;">${visa.issued}</span></div>
+                        <div><span style="color: rgba(255,255,255,0.2); font-size: 0.7rem;">EXPIRES</span><br><span style="color: #fff; font-size: 0.85rem;">${visa.expires}</span></div>
+                    </div>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button class="btn-primary" onclick="updatePreview('${visa.handle}'); switchPage('page1');" style="padding: 0.4rem 1.2rem; font-size: 0.8rem;">View Details</button>
+                        <button class="btn-secondary" onclick="shareVia('copy')" style="padding: 0.4rem 1.2rem; font-size: 0.8rem;"><i class="fas fa-share"></i> Share</button>
+                    </div>
+                </div>
+            `;
+
+            // Show timeline
+            const events = [
+                { time: visa.issued, event: 'Visa issued' },
+                { time: new Date(Date.now()).toLocaleDateString(), event: `Status updated to ${visa.statusText}` },
+                { time: visa.expires, event: 'Visa expires' }
+            ];
+            
+            timeline.innerHTML = events.map(e => `
+                <div class="timeline-item">
+                    <span class="time">${e.time}</span>
+                    <span class="event"><i class="fas fa-circle"></i> ${e.event}</span>
+                </div>
+            `).join('');
+        }
+
         // ===== TOAST =====
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
@@ -1830,27 +2374,30 @@
 
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const navLinks = document.querySelectorAll('.nav-links a');
-            if (pageId === 'page1') {
-                navLinks[0].classList.add('active');
-            } else if (pageId === 'page3') {
-                navLinks[1].classList.add('active');
+            const map = { 'page1': 0, 'page3': 1, 'page4': 2, 'page5': 3 };
+            if (map[pageId] !== undefined) {
+                navLinks[map[pageId]].classList.add('active');
             }
         }
 
         // ===== CHECK URL FOR TRACKING LINK ON LOAD =====
         function checkUrlForTracking() {
-            const url = window.location.href;
-            if (url.includes('@')) {
-                const handle = url.split('@').pop().split('#')[0].split('?')[0];
-                const visa = visas.find(v => v.handle === handle);
-                if (visa) {
-                    setTimeout(() => {
-                        updatePreview(visa);
-                        showLinkPreview(visa);
-                        showToast(`📋 Visa details loaded: ${visa.name}`, 'info');
-                    }, 500);
-                    return true;
+            const visa = decodeVisaFromUrl();
+            if (visa) {
+                let existing = visas.find(v => v.id === visa.id);
+                if (!existing) {
+                    visas.unshift(visa);
+                    renderTrackingList();
+                    updateStats();
+                    updateAnalytics();
                 }
+                
+                setTimeout(() => {
+                    updatePreview(visa);
+                    showLinkPreview(visa);
+                    showToast(`📋 Visa details loaded: ${visa.name}`, 'info');
+                }, 500);
+                return true;
             }
             return false;
         }
@@ -1865,8 +2412,12 @@
                 if (parsed && parsed.length > 0) {
                     visas = parsed;
                     renderTrackingList();
+                    updateStats();
+                    updateAnalytics();
                     if (visas.length > 0) {
-                        updatePreview(visas[0]);
+                        if (!checkUrlForTracking()) {
+                            updatePreview(visas[0]);
+                        }
                     }
                     setTimeout(checkUrlForTracking, 300);
                     return;
@@ -1884,22 +2435,31 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-                if (href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (href === '#' || href === '#tracking-section' || href === '#visa-create') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                    document.getElementById('page1').classList.add('active');
                 }
-                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                document.getElementById('page1').classList.add('active');
             });
         });
 
-        console.log('✈️ VisaFlow ready!');
+        // Enter key for track search
+        document.getElementById('trackSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                trackVisa();
+            }
+        });
+
+        console.log('✈️ VisaFlow Pro ready!');
         console.log('📊 ' + visas.length + ' visas loaded');
-        console.log('🔗 Share links work on WhatsApp, TikTok, and all platforms');
-        console.log('📱 Links are under 30 characters: vf.li/@name');
+        console.log('🔗 Share links work on WhatsApp, Telegram, Twitter, LinkedIn, Email');
+        console.log('📱 Links are encoded in the URL hash - no backend needed!');
         console.log('👁️ Click any visa in the tracking list to preview all details');
+        console.log('📈 Analytics tracking active');
     </script>
 </body>
 </html>
