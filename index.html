@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+  
+
+ 
+       <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>VisaFlow · instant visa & tracking</title>
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,43 +18,43 @@
     }
 
     body {
-      background: #0b0d15;
+      background: #07090f;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
     }
 
-    /* 🔥 super hot gradient card */
+    /* 🔥 super hot gradient card — now with extra glow */
     .visa-card {
       max-width: 1400px;
       width: 100%;
-      background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.15) 0%, rgba(10, 12, 28, 0.95) 70%),
+      background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.18) 0%, rgba(10, 12, 28, 0.96) 75%),
                   linear-gradient(145deg, #141824 0%, #1b1f2e 100%);
       backdrop-filter: blur(2px);
-      border-radius: 4.5rem;
-      padding: 3rem 3.5rem;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 120, 80, 0.2) inset, 0 0 30px rgba(255, 70, 50, 0.3);
+      border-radius: 4rem;
+      padding: 2.5rem 2.8rem;
+      box-shadow: 0 40px 70px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 120, 80, 0.25) inset, 0 0 40px rgba(255, 70, 50, 0.25);
       transition: all 0.3s ease;
-      border: 1px solid rgba(255, 140, 100, 0.25);
+      border: 1px solid rgba(255, 140, 100, 0.2);
       position: relative;
       overflow: hidden;
     }
 
-    /* 🔥 animated glow orbs */
+    /* animated glow orbs — more dynamic */
     .visa-card::before {
       content: '';
       position: absolute;
       top: -30%;
       right: -10%;
-      width: 400px;
-      height: 400px;
+      width: 450px;
+      height: 450px;
       background: radial-gradient(circle, rgba(255, 100, 70, 0.25) 0%, rgba(255, 40, 20, 0) 70%);
       border-radius: 50%;
       pointer-events: none;
       z-index: 0;
-      animation: pulseGlow 6s infinite alternate ease-in-out;
+      animation: pulseGlow 7s infinite alternate ease-in-out;
     }
 
     .visa-card::after {
@@ -59,57 +62,57 @@
       position: absolute;
       bottom: -20%;
       left: -5%;
-      width: 350px;
-      height: 350px;
+      width: 380px;
+      height: 380px;
       background: radial-gradient(circle, rgba(255, 180, 70, 0.2) 0%, rgba(255, 100, 30, 0) 70%);
       border-radius: 50%;
       pointer-events: none;
       z-index: 0;
-      animation: pulseGlow 8s infinite alternate-reverse ease-in-out;
+      animation: pulseGlow 9s infinite alternate-reverse ease-in-out;
     }
 
     @keyframes pulseGlow {
       0% { opacity: 0.4; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1.25); }
     }
 
-    /* all content above bg */
+    /* content above bg */
     .content {
       position: relative;
       z-index: 2;
     }
 
-    /* header / nav */
+    /* header / nav — refined */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
+      gap: 1.2rem;
+      margin-bottom: 2.8rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
-      font-size: 2.1rem;
+      gap: 0.6rem;
+      font-size: 2rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #fff;
-      text-shadow: 0 0 12px rgba(255, 120, 80, 0.5);
+      text-shadow: 0 0 14px rgba(255, 120, 80, 0.4);
     }
 
     .logo i {
       color: #ff7a4a;
-      filter: drop-shadow(0 0 8px #ff5e2e);
-      font-size: 2.6rem;
+      filter: drop-shadow(0 0 10px #ff5e2e);
+      font-size: 2.4rem;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2.2rem;
+      gap: 1.8rem;
       flex-wrap: wrap;
     }
 
@@ -117,9 +120,8 @@
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       font-weight: 500;
-      font-size: 1.05rem;
+      font-size: 1rem;
       transition: 0.2s;
-      letter-spacing: 0.3px;
       border-bottom: 2px solid transparent;
       padding-bottom: 4px;
     }
@@ -132,12 +134,12 @@
 
     .btn-outline-light {
       background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
       color: #fff;
-      padding: 0.6rem 1.5rem;
+      padding: 0.5rem 1.4rem;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: 0.25s;
       cursor: default;
       backdrop-filter: blur(4px);
@@ -152,37 +154,38 @@
     .btn-outline-light:hover {
       background: rgba(255, 122, 74, 0.15);
       border-color: #ff7a4a;
-      box-shadow: 0 0 20px rgba(255, 100, 50, 0.2);
+      box-shadow: 0 0 24px rgba(255, 100, 50, 0.2);
       transform: scale(1.02);
     }
 
-    /* hero */
+    /* hero — more breathing */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
     }
 
     @media (max-width: 850px) {
       .hero {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
       }
       .visa-card {
-        padding: 2rem 1.8rem;
-        border-radius: 3rem;
+        padding: 1.8rem 1.4rem;
+        border-radius: 2.8rem;
       }
     }
 
     .hero-text h1 {
-      font-size: 3.8rem;
+      font-size: 3.6rem;
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -0.02em;
       color: #fff;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-text h1 span {
@@ -191,15 +194,15 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       display: inline-block;
-      filter: drop-shadow(0 0 20px rgba(255, 90, 40, 0.3));
+      filter: drop-shadow(0 0 24px rgba(255, 90, 40, 0.3));
     }
 
     .hero-text p {
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(255, 255, 255, 0.7);
       font-size: 1.2rem;
       line-height: 1.6;
       max-width: 500px;
-      margin-bottom: 2.8rem;
+      margin-bottom: 2.2rem;
       font-weight: 400;
     }
 
@@ -213,7 +216,7 @@
     .btn-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.2rem;
+      gap: 1rem;
       align-items: center;
     }
 
@@ -226,16 +229,16 @@
     .btn-primary {
       background: linear-gradient(135deg, #ff6a3d, #ff3c1a);
       border: none;
-      padding: 1rem 2.6rem;
+      padding: 0.9rem 2.4rem;
       border-radius: 60px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #fff;
       box-shadow: 0 8px 28px rgba(255, 70, 30, 0.5);
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
-      gap: 0.7rem;
+      gap: 0.6rem;
       cursor: default;
       letter-spacing: 0.3px;
       border: 1px solid rgba(255, 255, 255, 0.15);
@@ -247,7 +250,7 @@
 
     .btn-primary:hover {
       transform: scale(1.04) translateY(-3px);
-      box-shadow: 0 12px 35px rgba(255, 60, 20, 0.7);
+      box-shadow: 0 12px 38px rgba(255, 60, 20, 0.7);
       background: linear-gradient(135deg, #ff7a4a, #ff2a0a);
     }
 
@@ -255,14 +258,14 @@
       background: rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 1rem 2.2rem;
+      padding: 0.9rem 2rem;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #fff;
       display: inline-flex;
       align-items: center;
-      gap: 0.7rem;
+      gap: 0.6rem;
       transition: 0.2s;
       cursor: default;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -276,13 +279,13 @@
       background: rgba(255, 255, 255, 0.1);
       border-color: #ff7a4a;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(255, 80, 40, 0.2);
+      box-shadow: 0 8px 24px rgba(255, 80, 40, 0.2);
     }
 
-    /* right side - hot card */
+    /* right side — hot card enhanced */
     .visa-preview {
-      background: rgba(20, 24, 40, 0.6);
-      backdrop-filter: blur(8px);
+      background: rgba(20, 24, 40, 0.65);
+      backdrop-filter: blur(10px);
       border-radius: 2.8rem;
       padding: 2rem 2rem 1.8rem;
       border: 1px solid rgba(255, 140, 100, 0.2);
@@ -300,23 +303,23 @@
       justify-content: space-between;
       align-items: center;
       color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 0.5px;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       padding-bottom: 0.8rem;
     }
 
     .preview-header i {
       color: #ff7a4a;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
     .visa-user {
       display: flex;
       align-items: center;
       gap: 1.2rem;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
     }
 
     .avatar {
@@ -327,7 +330,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: #fff;
       box-shadow: 0 0 0 2px rgba(255, 140, 100, 0.3);
@@ -341,9 +344,9 @@
 
     .user-info .status {
       color: #7bff9a;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       background: rgba(0, 255, 100, 0.08);
-      padding: 0.25rem 1rem;
+      padding: 0.2rem 1rem;
       border-radius: 60px;
       display: inline-block;
       border: 1px solid rgba(100, 255, 150, 0.15);
@@ -352,7 +355,7 @@
     .tracking-link-box {
       background: #0e111f;
       border-radius: 2rem;
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -371,11 +374,11 @@
 
     .tracking-link-box .link {
       background: #1b1f30;
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1.2rem;
       border-radius: 60px;
       color: #ffb092;
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       border: 1px solid rgba(255, 140, 100, 0.1);
       display: flex;
       align-items: center;
@@ -384,7 +387,7 @@
 
     .tracking-link-box .link i {
       color: #ff7a4a;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
 
     .badge-hot {
@@ -392,7 +395,7 @@
       color: #fff;
       padding: 0.2rem 0.9rem;
       border-radius: 60px;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
@@ -403,18 +406,18 @@
     }
 
     .badge-hot i {
-      font-size: 0.6rem;
+      font-size: 0.5rem;
     }
 
-    /* stats / features */
+    /* stats */
     .stats {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 1.8rem;
       margin-top: 2.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
-      padding-top: 2.5rem;
+      padding-top: 2.2rem;
     }
 
     .stat-item {
@@ -447,7 +450,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* new sections */
+    /* section titles */
     .section-title {
       font-size: 1.8rem;
       font-weight: 700;
@@ -510,7 +513,7 @@
     }
 
     .feature-card p {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.55);
       font-size: 0.95rem;
       line-height: 1.5;
     }
@@ -526,7 +529,7 @@
       border: 1px solid rgba(255, 122, 74, 0.1);
     }
 
-    /* form & tracking section */
+    /* dual panel */
     .dual-panel {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -537,6 +540,7 @@
     @media (max-width: 850px) {
       .dual-panel {
         grid-template-columns: 1fr;
+        gap: 1.8rem;
       }
     }
 
@@ -612,12 +616,14 @@
     .track-item {
       background: #0b0e1a;
       border-radius: 1.8rem;
-      padding: 1rem 1.5rem;
+      padding: 0.9rem 1.4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border: 1px solid rgba(255, 255, 255, 0.03);
       transition: 0.2s;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .track-item:hover {
@@ -641,30 +647,31 @@
       font-weight: 700;
       color: #fff;
       font-size: 0.8rem;
+      flex-shrink: 0;
     }
 
     .track-item .user .name {
       color: #fff;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .track-item .user .small-id {
       color: rgba(255, 255, 255, 0.25);
-      font-size: 0.7rem;
-      margin-left: 0.3rem;
+      font-size: 0.65rem;
+      margin-left: 0.2rem;
     }
 
     .track-item .link-tag {
       background: #1b1f30;
-      padding: 0.3rem 1.2rem;
+      padding: 0.2rem 1rem;
       border-radius: 60px;
       color: #ffb092;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       border: 1px solid rgba(255, 140, 100, 0.08);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .track-item .link-tag i {
@@ -673,10 +680,11 @@
     }
 
     .status-badge {
-      font-size: 0.65rem;
-      padding: 0.2rem 0.8rem;
+      font-size: 0.6rem;
+      padding: 0.15rem 0.8rem;
       border-radius: 60px;
       font-weight: 600;
+      white-space: nowrap;
     }
 
     .status-badge.approved {
@@ -691,6 +699,13 @@
       border: 1px solid rgba(255, 180, 50, 0.1);
     }
 
+    .status-badge.review {
+      background: rgba(50, 150, 255, 0.08);
+      color: #6ab0ff;
+      border: 1px solid rgba(50, 150, 255, 0.1);
+    }
+
+    /* FAQ */
     .faq-section {
       margin-top: 2.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.03);
@@ -731,34 +746,90 @@
       line-height: 1.5;
     }
 
-    /* responsive */
+    /* extra details row */
+    .details-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem 3rem;
+      margin: 1rem 0 2rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .details-row .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+
+    .details-row .detail-item i {
+      color: #ff7a4a;
+      font-size: 1.2rem;
+      width: 1.6rem;
+      text-align: center;
+    }
+
+    .details-row .detail-item strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* mobile fine-tune */
     @media (max-width: 600px) {
       .visa-card {
-        padding: 1.5rem 1.2rem;
-        border-radius: 2.5rem;
+        padding: 1.2rem 0.9rem;
+        border-radius: 2.2rem;
       }
       .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
       }
       .navbar {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.8rem;
       }
       .nav-links {
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 0.8rem;
       }
       .stats {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1.2rem;
       }
       .tracking-link-box {
         flex-direction: column;
         align-items: stretch;
       }
       .panel {
-        padding: 1.5rem;
+        padding: 1.2rem 1rem;
+        border-radius: 2rem;
+      }
+      .btn-primary, .btn-secondary {
+        padding: 0.7rem 1.6rem;
+        font-size: 0.9rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .details-row {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .track-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+      }
+      .track-item .user {
+        flex-wrap: wrap;
+      }
+      .track-item .link-tag {
+        align-self: flex-start;
       }
     }
 
@@ -929,6 +1000,85 @@
                 <span class="small-id">#V-4324</span>
               </div>
               <span class="link-tag"><i class="fas fa-link"></i> /track/5r2z7</span>
-              <span class="status-badge approved">approved</span>
+              <span class="status-badge review">review</span>
             </div>
-         
+          </div>
+        </div>
+      </div>
+
+      <!-- extra details row : professional metrics -->
+      <div class="details-row">
+        <div class="detail-item"><i class="fas fa-globe-americas"></i> <strong>180+</strong> countries covered</div>
+        <div class="detail-item"><i class="fas fa-user-check"></i> <strong>99.9%</strong> approval rate</div>
+        <div class="detail-item"><i class="fas fa-bolt"></i> <strong>< 30s</strong> avg. issuance</div>
+        <div class="detail-item"><i class="fas fa-headset"></i> <strong>24/7</strong> support</div>
+      </div>
+
+      <!-- FAQ section -->
+      <div class="faq-section">
+        <div class="section-title" style="font-size:1.6rem; margin-bottom:1.8rem;">
+          <i class="fas fa-question-circle"></i> Frequently asked <span class="section-sub">· quick answers</span>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h5><i class="fas fa-link"></i> How do I share a tracking link?</h5>
+            <p>Each visa comes with a unique URL. Copy and send it to your user — they can check status anytime.</p>
+          </div>
+          <div class="faq-item">
+            <h5><i class="fas fa-clock"></i> How long is a visa valid?</h5>
+            <p>Validity depends on the type. Tourist visas are typically 90 days, Business up to 1 year.</p>
+          </div>
+          <div class="faq-item">
+            <h5><i class="fas fa-shield-alt"></i> Is my data secure?</h5>
+            <p>Absolutely. All data is encrypted, and we comply with GDPR & SOC2 standards.</p>
+          </div>
+          <div class="faq-item">
+            <h5><i class="fas fa-sync-alt"></i> Can I update visa details?</h5>
+            <p>Yes, you can edit any visa information and the tracking link stays the same.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- stats footer -->
+      <div class="stats">
+        <div class="stat-item">
+          <i class="fas fa-passport"></i>
+          <div>
+            <span class="number">2.4k+</span>
+            <span class="label">Visas issued</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <span class="number">12s</span>
+            <span class="label">Avg. creation time</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-star"></i>
+          <div>
+            <span class="number">4.9</span>
+            <span class="label">User rating (1.2k reviews)</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-check-circle"></i>
+          <div>
+            <span class="number">99.9%</span>
+            <span class="label">Uptime</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- tiny footer note -->
+      <div style="margin-top: 2rem; text-align: center; color: rgba(255,255,255,0.15); font-size: 0.7rem; letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 1.5rem;">
+        <i class="fas fa-lock" style="margin-right: 6px;"></i> VisaFlow · instant digital visas · <span id="year"></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>  
