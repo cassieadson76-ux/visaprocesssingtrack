@@ -2,11 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisaFlow · Create & Track Visas</title>
-    <!-- Font Awesome 6 (free) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>VisaFlow · Visa Details</title>
+    
+    <!-- ===== OPEN GRAPH META TAGS FOR SOCIAL PREVIEW ===== -->
+    <meta property="og:title" content="VisaFlow · Digital Visa" id="og-title">
+    <meta property="og:description" content="View visa details and tracking information" id="og-description">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="" id="og-url">
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%23141824'/%3E%3Ctext x='600' y='280' font-size='48' text-anchor='middle' fill='%23ff7a4a' font-family='Arial' font-weight='bold'%3E✈️ VisaFlow%3C/text%3E%3Ctext x='600' y='350' font-size='24' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3EDigital Visa %26 Tracking%3C/text%3E%3Ctext x='600' y='400' font-size='18' text-anchor='middle' fill='%23666' font-family='Arial'%3E%3C/t%3E%3C/svg%3E" id="og-image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VisaFlow · Digital Visa" id="twitter-title">
+    <meta name="twitter:description" content="View visa details and tracking information" id="twitter-description">
+    <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%23141824'/%3E%3Ctext x='600' y='280' font-size='48' text-anchor='middle' fill='%23ff7a4a' font-family='Arial' font-weight='bold'%3E✈️ VisaFlow%3C/text%3E%3Ctext x='600' y='350' font-size='24' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3EDigital Visa %26 Tracking%3C/text%3E%3Ctext x='600' y='400' font-size='18' text-anchor='middle' fill='%23666' font-family='Arial'%3E%3C/t%3E%3C/svg%3E" id="twitter-image">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== SAME STYLES AS BEFORE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +36,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem;
         }
 
         .visa-card {
@@ -29,8 +45,8 @@
             background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.15) 0%, rgba(10, 12, 28, 0.95) 70%),
                 linear-gradient(145deg, #141824 0%, #1b1f2e 100%);
             backdrop-filter: blur(2px);
-            border-radius: 4.5rem;
-            padding: 3rem 3.5rem;
+            border-radius: 4rem;
+            padding: 2.5rem 3rem;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 120, 80, 0.2) inset, 0 0 30px rgba(255, 70, 50, 0.3);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 140, 100, 0.25);
@@ -67,14 +83,8 @@
         }
 
         @keyframes pulseGlow {
-            0% {
-                opacity: 0.4;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
         }
 
         .content {
@@ -87,7 +97,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.2rem;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -97,7 +107,7 @@
             display: flex;
             align-items: center;
             gap: 0.7rem;
-            font-size: 2.1rem;
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             color: #fff;
@@ -107,13 +117,13 @@
         .logo i {
             color: #ff7a4a;
             filter: drop-shadow(0 0 8px #ff5e2e);
-            font-size: 2.6rem;
+            font-size: 2.4rem;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
@@ -121,18 +131,18 @@
             color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: 0.2s;
             padding: 0.4rem 1rem;
             border-radius: 60px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .nav-links a i {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #ff7a4a;
         }
 
@@ -151,17 +161,17 @@
             background: transparent;
             border: 1.5px solid rgba(255, 255, 255, 0.2);
             color: #fff;
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.25s;
             cursor: pointer;
             backdrop-filter: blur(4px);
             background: rgba(255, 255, 255, 0.02);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .btn-outline-light i {
@@ -185,14 +195,8 @@
         }
 
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* ===== CREATE VISA PAGE ===== */
@@ -212,14 +216,14 @@
             background: rgba(16, 19, 32, 0.6);
             backdrop-filter: blur(8px);
             border-radius: 2.5rem;
-            padding: 2.2rem 2.5rem;
+            padding: 2rem 2.2rem;
             border: 1px solid rgba(255, 255, 255, 0.04);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
         .form-panel h3 {
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 0.3rem;
             display: flex;
@@ -234,16 +238,16 @@
         .form-panel .panel-desc {
             color: rgba(255, 255, 255, 0.4);
             font-size: 0.9rem;
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             letter-spacing: 0.3px;
             display: block;
@@ -252,8 +256,8 @@
 
         .form-group label i {
             color: #ff7a4a;
-            margin-right: 6px;
-            width: 18px;
+            margin-right: 4px;
+            width: 16px;
         }
 
         .form-group label .required {
@@ -264,7 +268,7 @@
         .form-group label .optional {
             color: rgba(255, 255, 255, 0.2);
             font-weight: 400;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             margin-left: 4px;
         }
 
@@ -275,9 +279,9 @@
             background: #0b0e1a;
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 60px;
-            padding: 0.8rem 1.4rem;
+            padding: 0.7rem 1.2rem;
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             outline: none;
             transition: 0.2s;
             appearance: none;
@@ -286,13 +290,13 @@
         .form-group textarea {
             border-radius: 1.5rem;
             resize: vertical;
-            min-height: 60px;
+            min-height: 50px;
             font-family: inherit;
         }
 
         .form-group select option {
             background: #141824;
-            padding: 0.5rem;
+            padding: 0.3rem;
         }
 
         .form-group select optgroup {
@@ -316,7 +320,7 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         @media (max-width: 500px) {
@@ -331,8 +335,8 @@
             margin-top: 0.5rem;
             border: none;
             cursor: pointer;
-            padding: 0.95rem;
-            font-size: 1rem;
+            padding: 0.8rem;
+            font-size: 0.95rem;
         }
 
         .btn-primary {
@@ -346,13 +350,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.7rem;
+            gap: 0.6rem;
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary i {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .btn-primary:hover {
@@ -376,17 +380,17 @@
             background: rgba(16, 19, 32, 0.6);
             backdrop-filter: blur(8px);
             border-radius: 2.5rem;
-            padding: 2.2rem 2.5rem;
+            padding: 2rem 2.2rem;
             border: 1px solid rgba(255, 255, 255, 0.04);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
-            min-height: 500px;
+            min-height: 480px;
         }
 
         .result-panel h3 {
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 0.3rem;
             display: flex;
@@ -401,7 +405,7 @@
         .result-panel .panel-desc {
             color: rgba(255, 255, 255, 0.4);
             font-size: 0.9rem;
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .result-placeholder {
@@ -410,19 +414,19 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            gap: 1rem;
-            min-height: 300px;
+            gap: 0.8rem;
+            min-height: 250px;
             text-align: center;
         }
 
         .result-placeholder i {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: rgba(255, 122, 74, 0.15);
         }
 
         .result-placeholder .text {
             color: rgba(255, 255, 255, 0.15);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .result-placeholder .sub {
@@ -433,52 +437,52 @@
         /* ===== VISA RESULT CARD ===== */
         .visa-result-card {
             background: #0b0e1a;
-            border-radius: 2rem;
-            padding: 1.5rem;
+            border-radius: 1.8rem;
+            padding: 1.2rem;
             border: 1px solid rgba(255, 255, 255, 0.04);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .visa-result-card .visa-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.8rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.6rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
 
         .visa-result-card .visa-header .visa-id {
             color: #ff7a4a;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .visa-result-card .visa-header .visa-status {
             background: rgba(0, 255, 100, 0.08);
             color: #7bff9a;
-            padding: 0.2rem 1rem;
+            padding: 0.15rem 0.8rem;
             border-radius: 60px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             border: 1px solid rgba(100, 255, 150, 0.1);
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
         }
 
         .visa-result-card .visa-user-detail {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
         }
 
         .visa-result-card .visa-user-detail .avatar-lg {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, #ff6a3d, #a8321a);
             border-radius: 50%;
             display: flex;
@@ -486,62 +490,62 @@
             justify-content: center;
             font-weight: 700;
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
         .visa-result-card .visa-user-detail .user-info h4 {
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
         }
 
         .visa-result-card .visa-user-detail .user-info .detail {
             color: rgba(255, 255, 255, 0.4);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 0.5rem;
         }
 
         .visa-result-card .visa-user-detail .user-info .detail span {
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.2rem;
         }
 
         .visa-result-card .visa-user-detail .user-info .detail i {
             color: #ff7a4a;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         /* ===== TRACKING LINK ===== */
         .tracking-result {
             background: #0e111f;
-            border-radius: 2rem;
-            padding: 1.2rem 1.5rem;
+            border-radius: 1.8rem;
+            padding: 1rem 1.2rem;
             border: 1px solid rgba(255, 255, 255, 0.04);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .tracking-result .label {
             color: rgba(255, 255, 255, 0.3);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .tracking-result .link-display {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             background: #1b1f30;
             border-radius: 60px;
-            padding: 0.7rem 1.5rem;
+            padding: 0.5rem 1rem;
             border: 1px solid rgba(255, 140, 100, 0.1);
             flex-wrap: wrap;
         }
@@ -550,24 +554,24 @@
             flex: 1;
             color: #ffb092;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.85rem;
             word-break: break-all;
-            min-width: 150px;
+            min-width: 120px;
         }
 
         .tracking-result .link-display .copy-btn {
             background: rgba(255, 122, 74, 0.12);
             border: 1px solid rgba(255, 122, 74, 0.15);
             border-radius: 60px;
-            padding: 0.35rem 1.2rem;
+            padding: 0.25rem 1rem;
             color: #fff;
             font-weight: 500;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             cursor: pointer;
             transition: 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
 
         .tracking-result .link-display .copy-btn:hover {
@@ -582,23 +586,23 @@
 
         .action-buttons {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
             flex-wrap: wrap;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
         }
 
         .action-buttons .btn-secondary {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.6rem 1.8rem;
+            padding: 0.5rem 1.4rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #fff;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             transition: 0.2s;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -615,14 +619,53 @@
             box-shadow: 0 8px 20px rgba(255, 80, 40, 0.15);
         }
 
+        /* ===== SHARE BUTTONS ===== */
+        .share-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .share-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 60px;
+            padding: 0.3rem 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 122, 74, 0.1);
+            border-color: #ff7a4a;
+            color: #fff;
+        }
+
+        .share-btn i {
+            font-size: 0.75rem;
+        }
+
+        .share-btn.whatsapp:hover { background: rgba(37, 211, 102, 0.15); border-color: #25D366; color: #25D366; }
+        .share-btn.telegram:hover { background: rgba(0, 136, 204, 0.15); border-color: #0088cc; color: #0088cc; }
+        .share-btn.twitter:hover { background: rgba(29, 161, 242, 0.15); border-color: #1DA1F2; color: #1DA1F2; }
+        .share-btn.copy:hover { background: rgba(255, 122, 74, 0.15); border-color: #ff7a4a; color: #ff7a4a; }
+        .share-btn.linkedin:hover { background: rgba(0, 119, 181, 0.15); border-color: #0077b5; color: #0077b5; }
+        .share-btn.tiktok:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); color: #fff; }
+
         /* ===== TRACKING DETAIL PAGE ===== */
         .tracking-detail-card {
             background: rgba(16, 19, 32, 0.6);
             backdrop-filter: blur(8px);
             border-radius: 2.5rem;
-            padding: 2.5rem;
+            padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.04);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
@@ -630,8 +673,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -639,15 +682,15 @@
 
         .tracking-detail-card .tracking-header h2 {
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
 
         .tracking-detail-card .tracking-header .status-badge-lg {
-            padding: 0.3rem 1.5rem;
+            padding: 0.25rem 1.2rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .status-badge-lg.approved {
@@ -665,29 +708,29 @@
         .tracking-info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin: 1.5rem 0;
+            gap: 0.8rem;
+            margin: 1rem 0;
         }
 
         .tracking-info-item {
             background: #0b0e1a;
-            border-radius: 1.5rem;
-            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1rem;
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .tracking-info-item .label {
             color: rgba(255, 255, 255, 0.25);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .tracking-info-item .value {
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            margin-top: 0.2rem;
+            margin-top: 0.15rem;
         }
 
         .tracking-info-item .value i {
@@ -696,19 +739,19 @@
         }
 
         .tracking-progress {
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
 
         .tracking-progress .progress-label {
             display: flex;
             justify-content: space-between;
             color: rgba(255, 255, 255, 0.3);
-            font-size: 0.75rem;
-            margin-bottom: 0.3rem;
+            font-size: 0.7rem;
+            margin-bottom: 0.25rem;
         }
 
         .tracking-progress .progress-bar {
-            height: 6px;
+            height: 5px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 60px;
             overflow: hidden;
@@ -728,23 +771,23 @@
         }
 
         .tracking-timeline {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .tracking-timeline .timeline-item {
             display: flex;
-            gap: 1rem;
-            padding: 0.5rem 0;
+            gap: 0.8rem;
+            padding: 0.4rem 0;
             position: relative;
         }
 
         .tracking-timeline .timeline-item::before {
             content: '';
             position: absolute;
-            left: 8px;
-            top: 28px;
+            left: 7px;
+            top: 26px;
             bottom: 0;
             width: 2px;
             background: rgba(255, 255, 255, 0.04);
@@ -755,8 +798,8 @@
         }
 
         .tracking-timeline .timeline-item .timeline-dot {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: #ff7a4a;
             border: 2px solid rgba(255, 122, 74, 0.2);
@@ -772,19 +815,19 @@
         .tracking-timeline .timeline-item .timeline-content .title {
             color: #fff;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .tracking-timeline .timeline-item .timeline-content .time {
             color: rgba(255, 255, 255, 0.2);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         /* ===== HISTORY ===== */
         .history-section {
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 2rem;
+            padding-top: 1.5rem;
         }
 
         .history-section .section-header {
@@ -793,7 +836,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .history-section .section-header h3 {
@@ -809,28 +852,23 @@
             color: #ff7a4a;
         }
 
-        .history-section .section-header .count {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 0.85rem;
-        }
-
         .history-list {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
 
         .history-item {
             background: #0b0e1a;
-            border-radius: 1.5rem;
-            padding: 0.8rem 1.2rem;
+            border-radius: 1.2rem;
+            padding: 0.6rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.02);
             transition: 0.2s;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
             cursor: pointer;
         }
 
@@ -842,12 +880,12 @@
         .history-item .h-user {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
 
         .history-item .h-user .h-avatar {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ff6a3d, #a8321a);
             display: flex;
@@ -855,30 +893,24 @@
             justify-content: center;
             font-weight: 600;
             color: #fff;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             flex-shrink: 0;
         }
 
         .history-item .h-user .h-name {
             color: #fff;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
         .history-item .h-user .h-id {
             color: rgba(255, 255, 255, 0.2);
-            font-size: 0.7rem;
-        }
-
-        .history-item .h-link {
-            color: #ffb092;
-            font-size: 0.75rem;
-            font-weight: 400;
+            font-size: 0.65rem;
         }
 
         .history-item .h-status {
-            font-size: 0.6rem;
-            padding: 0.15rem 0.7rem;
+            font-size: 0.55rem;
+            padding: 0.1rem 0.6rem;
             border-radius: 60px;
             font-weight: 600;
         }
@@ -897,7 +929,7 @@
 
         .history-item .h-time {
             color: rgba(255, 255, 255, 0.1);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
         }
 
         .history-empty {
@@ -913,6 +945,27 @@
             opacity: 0.3;
         }
 
+        /* ===== FIND VISA ===== */
+        .find-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .find-container h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .find-container .sub-text {
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
         /* ===== TOAST ===== */
         .toast {
             position: fixed;
@@ -922,10 +975,10 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 140, 100, 0.2);
             border-radius: 1.5rem;
-            padding: 0.9rem 1.8rem;
+            padding: 0.8rem 1.5rem;
             color: #fff;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             transform: translateY(120px);
             opacity: 0;
@@ -943,50 +996,44 @@
         }
 
         .toast i {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
-        .toast.success i {
-            color: #7bff9a;
-        }
-        .toast.error i {
-            color: #ff6b6b;
-        }
-        .toast.info i {
-            color: #5dade2;
-        }
+        .toast.success i { color: #7bff9a; }
+        .toast.error i { color: #ff6b6b; }
+        .toast.info i { color: #5dade2; }
 
         /* ===== FOOTER ===== */
         .footer {
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.02);
-            padding-top: 1.5rem;
+            padding-top: 1.2rem;
         }
 
         .footer span {
             color: rgba(255, 255, 255, 0.1);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.5px;
         }
 
         .footer span i {
             color: #ff7a4a;
-            margin-right: 6px;
+            margin-right: 4px;
         }
 
         .footer .footer-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .footer .footer-links a {
             color: rgba(255, 255, 255, 0.1);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-decoration: none;
             transition: 0.2s;
         }
@@ -998,7 +1045,7 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .visa-card {
-                padding: 1.8rem 1.5rem;
+                padding: 1.5rem 1.2rem;
                 border-radius: 2.5rem;
             }
 
@@ -1009,21 +1056,21 @@
 
             .nav-links {
                 width: 100%;
-                gap: 0.5rem;
+                gap: 0.3rem;
             }
 
             .nav-links a {
-                font-size: 0.85rem;
-                padding: 0.3rem 0.8rem;
+                font-size: 0.8rem;
+                padding: 0.3rem 0.7rem;
             }
 
             .form-panel,
             .result-panel {
-                padding: 1.5rem;
+                padding: 1.2rem;
             }
 
             .create-grid {
-                gap: 1.5rem;
+                gap: 1.2rem;
             }
 
             .tracking-result .link-display {
@@ -1032,7 +1079,7 @@
             }
 
             .tracking-result .link-display .link-text {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
 
             .action-buttons {
@@ -1053,19 +1100,23 @@
             }
 
             .tracking-detail-card {
-                padding: 1.5rem;
+                padding: 1.2rem;
+            }
+
+            .share-buttons {
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
             .visa-card {
-                padding: 1.2rem 1rem;
+                padding: 1rem 0.8rem;
                 border-radius: 2rem;
             }
 
             .form-panel,
             .result-panel {
-                padding: 1.2rem;
+                padding: 1rem;
             }
 
             .form-row {
@@ -1085,8 +1136,271 @@
             .history-item {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.3rem;
+                gap: 0.2rem;
             }
+        }
+
+        /* ===== LINK PREVIEW OVERLAY ===== */
+        .link-preview-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(16px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            animation: fadeInOverlay 0.3s ease;
+        }
+
+        .link-preview-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInOverlay {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .link-preview-overlay .preview-content {
+            max-width: 700px;
+            width: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.12) 0%, rgba(10, 12, 28, 0.98) 70%),
+                linear-gradient(145deg, #141824 0%, #1b1f2e 100%);
+            border-radius: 2.5rem;
+            padding: 2rem 2.2rem;
+            border: 1px solid rgba(255, 140, 100, 0.15);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .link-preview-overlay .close-preview {
+            position: absolute;
+            top: 0.8rem;
+            right: 1.2rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            background: none;
+            border: none;
+        }
+
+        .link-preview-overlay .close-preview:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .link-preview-overlay .preview-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 122, 74, 0.12);
+            border: 1px solid rgba(255, 122, 74, 0.15);
+            border-radius: 60px;
+            padding: 0.2rem 1rem;
+            color: #ffb092;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .link-preview-overlay .preview-title {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .link-preview-overlay .preview-subtitle {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .link-preview-overlay .preview-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.04);
+            margin: 0.8rem 0;
+        }
+
+        .link-preview-overlay .preview-field {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .link-preview-overlay .preview-field .field-label {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.8rem;
+        }
+
+        .link-preview-overlay .preview-field .field-value {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        .link-preview-overlay .preview-status-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .link-preview-overlay .preview-status-bar .status-label {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.7rem;
+        }
+
+        .link-preview-overlay .preview-status-bar .status-value {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .link-preview-overlay .preview-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .link-preview-overlay .preview-actions .btn-preview {
+            background: linear-gradient(135deg, #ff6a3d, #ff3c1a);
+            border: none;
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+        }
+
+        .link-preview-overlay .preview-actions .btn-preview:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 28px rgba(255, 60, 20, 0.4);
+        }
+
+        .link-preview-overlay .preview-actions .btn-preview-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .link-preview-overlay .preview-actions .btn-preview-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .link-preview-overlay .preview-content {
+                padding: 1.2rem;
+                border-radius: 1.8rem;
+                margin: 0.5rem;
+            }
+
+            .link-preview-overlay .preview-title {
+                font-size: 1.3rem;
+            }
+
+            .link-preview-overlay .preview-field {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.1rem;
+            }
+
+            .link-preview-overlay .preview-field .field-value {
+                text-align: left;
+                max-width: 100%;
+            }
+
+            .link-preview-overlay .preview-actions {
+                flex-direction: column;
+            }
+
+            .link-preview-overlay .preview-actions .btn-preview,
+            .link-preview-overlay .preview-actions .btn-preview-secondary {
+                justify-content: center;
+            }
+        }
+
+        /* ===== SHARE PREVIEW BANNER ===== */
+        .share-preview-banner {
+            background: linear-gradient(135deg, rgba(255, 122, 74, 0.08), rgba(255, 60, 26, 0.05));
+            border: 1px solid rgba(255, 122, 74, 0.1);
+            border-radius: 1.5rem;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-preview-banner.show {
+            display: flex;
+        }
+
+        .share-preview-banner .icon {
+            font-size: 2rem;
+            color: #ff7a4a;
+        }
+
+        .share-preview-banner .info {
+            flex: 1;
+        }
+
+        .share-preview-banner .info h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .share-preview-banner .info p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+
+        .share-preview-banner .close-banner {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: 0.2s;
+        }
+
+        .share-preview-banner .close-banner:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
     </style>
 </head>
@@ -1101,22 +1415,29 @@
                     <span>Visa<span style="color: #ff7a4a;">Flow</span></span>
                 </div>
                 <div class="nav-links">
-                    <a href="#" onclick="switchPage('page1')" class="active" id="nav-page1">
+                    <a href="#" class="active" onclick="switchPage('page1')" id="nav-page1">
                         <i class="fas fa-pen-fancy"></i> Create
-                    </a>
-                    <a href="#" onclick="switchPage('page2')" id="nav-page2">
-                        <i class="fas fa-link"></i> Track
                     </a>
                     <a href="#" onclick="switchPage('page3')" id="nav-page3">
                         <i class="fas fa-history"></i> History
                     </a>
                     <a href="#" onclick="switchPage('page4')" id="nav-page4">
-                        <i class="fas fa-search"></i> Find Visa
+                        <i class="fas fa-search"></i> Find
                     </a>
                     <span class="btn-outline-light" onclick="resetForm()">
                         <i class="fas fa-plus"></i> New
                     </span>
                 </div>
+            </div>
+
+            <!-- ===== SHARE PREVIEW BANNER ===== -->
+            <div class="share-preview-banner" id="shareBanner">
+                <div class="icon"><i class="fas fa-share-alt"></i></div>
+                <div class="info">
+                    <h4>📋 Visa Shared!</h4>
+                    <p id="bannerText">This visa was shared with you. View all details below.</p>
+                </div>
+                <button class="close-banner" onclick="document.getElementById('shareBanner').classList.remove('show')">✕</button>
             </div>
 
             <!-- ===== PAGE 1: CREATE VISA ===== -->
@@ -1271,7 +1592,7 @@
                         <button class="btn-primary btn-full btn-success" onclick="generateVisa()">
                             <i class="fas fa-bolt"></i> Generate Visa & Tracking Link
                         </button>
-                        <div style="margin-top: 0.6rem; font-size: 0.7rem; color: rgba(255,255,255,0.15); text-align: center;">
+                        <div style="margin-top: 0.5rem; font-size: 0.65rem; color: rgba(255,255,255,0.15); text-align: center;">
                             <i class="fas fa-link"></i> A unique tracking link will be created instantly
                         </div>
                     </div>
@@ -1294,23 +1615,10 @@
                 </div>
             </div>
 
-            <!-- ===== PAGE 2: TRACKING DETAIL ===== -->
-            <div class="page" id="page2">
-                <div id="trackingDetailContainer">
-                    <div class="history-empty" style="padding: 3rem 1rem;">
-                        <i class="fas fa-link"></i>
-                        <p>Select a tracking link from the history to view details</p>
-                        <button class="btn-primary" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.9rem;" onclick="switchPage('page3')">
-                            <i class="fas fa-list"></i> View All Visas
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <!-- ===== PAGE 3: HISTORY ===== -->
             <div class="page" id="page3">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
-                    <h3 style="color: #fff; font-size: 1.4rem; font-weight: 600;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                    <h3 style="color: #fff; font-size: 1.3rem; font-weight: 600;">
                         <i class="fas fa-history" style="color: #ff7a4a; margin-right: 10px;"></i> Visa History
                     </h3>
                     <span style="color: rgba(255,255,255,0.15); font-size: 0.8rem;">
@@ -1331,21 +1639,19 @@
 
             <!-- ===== PAGE 4: FIND VISA ===== -->
             <div class="page" id="page4">
-                <div style="max-width: 600px; margin: 0 auto;">
-                    <h3 style="color: #fff; font-size: 1.4rem; font-weight: 600; text-align: center; margin-bottom: 0.5rem;">
-                        <i class="fas fa-search" style="color: #ff7a4a; margin-right: 10px;"></i> Find Your Visa
-                    </h3>
-                    <p style="color: rgba(255,255,255,0.4); text-align: center; margin-bottom: 2rem;">Enter the tracking link or visa ID to view details</p>
+                <div class="find-container">
+                    <h3><i class="fas fa-search" style="color: #ff7a4a;"></i> Find Your Visa</h3>
+                    <p class="sub-text">Enter the tracking link or visa ID to view details</p>
 
-                    <div class="form-panel" style="padding: 2rem;">
+                    <div class="form-panel" style="padding: 1.5rem;">
                         <div class="form-group">
                             <label><i class="fas fa-link"></i> Tracking Link or Visa ID</label>
-                            <input type="text" id="searchInput" placeholder="e.g. visaflow.app/track/8x7f3 or V-2026-1001" style="border-radius: 60px; padding: 0.9rem 1.5rem; background: #0b0e1a; border: 1px solid rgba(255,255,255,0.06); color: #fff; font-size: 1rem; width: 100%; outline: none;">
+                            <input type="text" id="searchInput" placeholder="e.g. visaflow.app/track/8x7f3 or V-2026-1001" style="border-radius: 60px; padding: 0.8rem 1.2rem; background: #0b0e1a; border: 1px solid rgba(255,255,255,0.06); color: #fff; font-size: 0.9rem; width: 100%; outline: none;">
                         </div>
-                        <button class="btn-primary btn-full" onclick="searchVisa()" style="padding: 0.9rem;">
+                        <button class="btn-primary btn-full" onclick="searchVisa()" style="padding: 0.8rem;">
                             <i class="fas fa-search"></i> Find Visa
                         </button>
-                        <div id="searchResult" style="margin-top: 1.5rem;"></div>
+                        <div id="searchResult" style="margin-top: 1.2rem;"></div>
                     </div>
                 </div>
             </div>
@@ -1369,10 +1675,31 @@
         <span id="toastMessage">Success!</span>
     </div>
 
+    <!-- ===== LINK PREVIEW OVERLAY ===== -->
+    <div class="link-preview-overlay" id="linkPreviewOverlay">
+        <div class="preview-content">
+            <button class="close-preview" onclick="closeLinkPreview()">&times;</button>
+            <div class="preview-badge"><i class="fas fa-link"></i> Visa Details</div>
+            <div class="preview-title" id="previewOverlayTitle">Visa Details</div>
+            <div class="preview-subtitle" id="previewOverlaySubtitle">Complete visa information</div>
+            <div class="preview-divider"></div>
+            <div id="previewOverlayFields"></div>
+            <div class="preview-status-bar">
+                <span class="status-label">Current Status:</span>
+                <span class="status-value" id="previewOverlayStatus">Approved</span>
+            </div>
+            <div class="preview-actions">
+                <button class="btn-preview" onclick="closeLinkPreview()"><i class="fas fa-check"></i> Close</button>
+                <button class="btn-preview-secondary" onclick="copyPreviewLink()"><i class="fas fa-copy"></i> Copy Link</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ===== DATA STORE =====
         let visas = [];
         let visaCounter = 1000;
+        let currentPreviewVisa = null;
 
         // ===== UTILITY FUNCTIONS =====
         function generateTrackingId() {
@@ -1403,13 +1730,166 @@
         }
 
         function getProgressSteps(visa) {
-            const steps = [
+            return [
                 { title: 'Application Submitted', time: visa.createdAt },
                 { title: 'Document Verification', time: visa.createdAt },
                 { title: 'Visa Approved', time: visa.createdAt },
                 { title: 'Tracking Link Generated', time: visa.createdAt }
             ];
-            return steps;
+        }
+
+        // ===== UPDATE META TAGS FOR SOCIAL PREVIEW =====
+        function updateMetaTags(visa) {
+            if (!visa) return;
+
+            const title = `✈️ ${visa.name}'s Visa · ${visa.id}`;
+            const description = `${visa.visaType} · ${visa.nationality} · Expires ${visa.expiresAt}`;
+            const url = window.location.href;
+
+            // Update Open Graph tags
+            document.getElementById('og-title').setAttribute('content', title);
+            document.getElementById('og-description').setAttribute('content', description);
+            document.getElementById('og-url').setAttribute('content', url);
+
+            // Update Twitter Card
+            document.getElementById('twitter-title').setAttribute('content', title);
+            document.getElementById('twitter-description').setAttribute('content', description);
+
+            // Update page title
+            document.title = title;
+
+            // Show banner for shared link
+            const banner = document.getElementById('shareBanner');
+            if (window.location.hash && window.location.hash.length > 1) {
+                banner.classList.add('show');
+                document.getElementById('bannerText').textContent = 
+                    `📋 ${visa.name} shared this visa with you. View all details below.`;
+            }
+        }
+
+        // ===== GENERATE SHAREABLE LINK (URL ENCODED) =====
+        function generateShareableLink(visa) {
+            const data = {
+                n: visa.name,
+                e: visa.email,
+                t: visa.visaType,
+                nt: visa.notes || 'Not provided',
+                st: visa.status,
+                id: visa.id,
+                tr: visa.trackingId,
+                i: visa.initials,
+                is: visa.issued || visa.createdAt,
+                ex: visa.expiresAt,
+                d: visa.duration,
+                nat: visa.nationality,
+                dob: visa.dob
+            };
+
+            const jsonStr = JSON.stringify(data);
+            const encoded = btoa(encodeURIComponent(jsonStr));
+            const url = window.location.href.split('#')[0] + '#' + encoded;
+            return url;
+        }
+
+        // ===== DECODE VISA FROM URL =====
+        function decodeVisaFromUrl() {
+            const hash = window.location.hash;
+            if (hash && hash.length > 1) {
+                try {
+                    const encoded = hash.substring(1);
+                    const decoded = decodeURIComponent(atob(encoded));
+                    const data = JSON.parse(decoded);
+
+                    const now = new Date();
+                    const expires = new Date(now);
+                    expires.setDate(expires.getDate() + (data.d || 60));
+
+                    const visa = {
+                        name: data.n || 'Unknown',
+                        email: data.e || 'unknown@example.com',
+                        visaType: data.t || 'Business (B1)',
+                        notes: data.nt || 'Not provided',
+                        status: data.st || 'approved',
+                        id: data.id || 'V-2026-1001',
+                        trackingId: data.tr || generateTrackingId(),
+                        initials: data.i || getInitials(data.n || 'Unknown'),
+                        issued: data.is || now.toLocaleString(),
+                        createdAt: data.is || now.toLocaleString(),
+                        expiresAt: data.ex || expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short',
+                            day: 'numeric' }),
+                        duration: data.d || 60,
+                        nationality: data.nat || 'Unknown',
+                        dob: data.dob || 'Not provided',
+                        trackingLink: `visaflow.app/track/${data.tr || generateTrackingId()}`,
+                        icon: getVisaTypeIcon(data.t || 'Business (B1)'),
+                        statusColor: '#7bff9a',
+                        statusText: 'Approved'
+                    };
+
+                    // Update meta tags for social preview
+                    updateMetaTags(visa);
+
+                    return visa;
+                } catch (e) {
+                    console.log('No valid visa data in URL');
+                    return null;
+                }
+            }
+            return null;
+        }
+
+        // ===== SHARE VIA PLATFORMS =====
+        function shareVia(platform, visa) {
+            if (!visa) {
+                showToast('⚠️ No visa selected to share', 'error');
+                return;
+            }
+
+            const shareUrl = generateShareableLink(visa);
+            const text = `✈️ Visa ${visa.id} for ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n\n🔗 Track here: ${shareUrl}`;
+
+            switch (platform) {
+                case 'whatsapp':
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                    break;
+                case 'telegram':
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Visa ${visa.id} for ${visa.name}`)}`,
+                        '_blank');
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+                    break;
+                case 'linkedin':
+                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+                    '_blank');
+                    break;
+                case 'tiktok':
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        showToast('✅ Link copied! Share it on TikTok', 'success');
+                    }).catch(() => {
+                        fallbackCopy(shareUrl);
+                    });
+                    break;
+                case 'copy':
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        showToast('✅ Link copied to clipboard!', 'success');
+                    }).catch(() => {
+                        fallbackCopy(shareUrl);
+                    });
+                    break;
+                default:
+                    showToast('📋 Share the link manually', 'info');
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showToast('✅ Link copied to clipboard!', 'success');
         }
 
         // ===== GENERATE VISA =====
@@ -1422,13 +1902,11 @@
             const duration = parseInt(document.getElementById('duration').value);
             const notes = document.getElementById('notes').value.trim();
 
-            // Validate
             if (!name || !dob || !email) {
                 showToast('⚠️ Please fill in all required fields (Name, Date of Birth, Email).', 'error');
                 return;
             }
 
-            // Create visa object
             const trackingId = generateTrackingId();
             visaCounter++;
             const now = new Date();
@@ -1449,6 +1927,7 @@
                 trackingLink: `visaflow.app/track/${trackingId}`,
                 status: 'approved',
                 createdAt: now.toLocaleString(),
+                issued: now.toLocaleString(),
                 expiresAt: expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
                 icon: getVisaTypeIcon(visaType)
             };
@@ -1457,6 +1936,9 @@
             renderResult(visa);
             renderHistory();
             updateCounts();
+
+            // Update meta tags for sharing
+            updateMetaTags(visa);
 
             showToast(`✅ Visa ${visa.id} created! Tracking link: ${visa.trackingLink}`, 'success');
         }
@@ -1470,11 +1952,13 @@
             placeholder.style.display = 'none';
             content.style.display = 'block';
 
+            const shareUrl = generateShareableLink(visa);
+
             content.innerHTML = `
                         <div class="visa-result-card">
                             <div class="visa-header">
                                 <span class="visa-id"><i class="fas fa-passport"></i> ${visa.id}</span>
-                                <span class="visa-status"><i class="fas fa-circle" style="font-size: 0.5rem;"></i> ${visa.status}</span>
+                                <span class="visa-status"><i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${visa.status}</span>
                             </div>
                             <div class="visa-user-detail">
                                 <div class="avatar-lg">${visa.initials}</div>
@@ -1484,9 +1968,9 @@
                                         <span><i class="fas ${visa.icon}"></i> ${visa.visaType}</span>
                                         <span><i class="fas fa-flag"></i> ${visa.nationality}</span>
                                         <span><i class="fas fa-calendar-alt"></i> ${visa.duration} days</span>
-                                        <span><i class="fas fa-calendar-check"></i> Expires: ${visa.expiresAt}</span>
+                                        <span><i class="fas fa-calendar-check"></i> ${visa.expiresAt}</span>
                                     </div>
-                                    ${visa.notes && visa.notes !== 'Not provided' ? `<div style="margin-top: 0.5rem; color: rgba(255,255,255,0.3); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.5rem;"><i class="fas fa-comment" style="color: #ff7a4a; margin-right: 4px;"></i> ${visa.notes}</div>` : ''}
+                                    ${visa.notes && visa.notes !== 'Not provided' ? `<div style="margin-top: 0.4rem; color: rgba(255,255,255,0.3); font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.4rem;"><i class="fas fa-comment" style="color: #ff7a4a; margin-right: 4px;"></i> ${visa.notes}</div>` : ''}
                                 </div>
                             </div>
                         </div>
@@ -1495,24 +1979,39 @@
                             <div class="label"><i class="fas fa-link"></i> Your Tracking Link</div>
                             <div class="link-display">
                                 <span class="link-text">${visa.trackingLink}</span>
-                                <button class="copy-btn" onclick="copyLink('${visa.trackingLink}')">
+                                <button class="copy-btn" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
-                                <button class="copy-btn" onclick="viewTrackingDetail('${visa.trackingId}')" style="background: rgba(255,122,74,0.08); border-color: rgba(255,122,74,0.08);">
-                                    <i class="fas fa-eye"></i> Track
-                                </button>
                             </div>
+                        </div>
+
+                        <div class="share-buttons">
+                            <button class="share-btn whatsapp" onclick="shareVia('whatsapp', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="share-btn telegram" onclick="shareVia('telegram', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </button>
+                            <button class="share-btn twitter" onclick="shareVia('twitter', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </button>
+                            <button class="share-btn linkedin" onclick="shareVia('linkedin', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </button>
+                            <button class="share-btn tiktok" onclick="shareVia('tiktok', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                                <i class="fab fa-tiktok"></i> TikTok
+                            </button>
+                            <button class="share-btn copy" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                                <i class="fas fa-copy"></i> Copy Link
+                            </button>
                         </div>
 
                         <div class="action-buttons">
                             <button class="btn-secondary" onclick="resetForm()">
                                 <i class="fas fa-plus"></i> Create Another
                             </button>
-                            <button class="btn-secondary" onclick="viewTrackingDetail('${visa.trackingId}')">
+                            <button class="btn-secondary" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})">
                                 <i class="fas fa-eye"></i> View Tracking
-                            </button>
-                            <button class="btn-secondary" onclick="copyLink('${visa.trackingLink}')">
-                                <i class="fas fa-share"></i> Share Link
                             </button>
                         </div>
                     `;
@@ -1521,98 +2020,58 @@
             panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been created with a unique tracking link.`;
         }
 
-        // ===== VIEW TRACKING DETAIL =====
-        function viewTrackingDetail(trackingId) {
-            const visa = visas.find(v => v.trackingId === trackingId);
-            if (!visa) {
-                showToast('❌ Visa not found', 'error');
-                return;
-            }
+        // ===== SHOW LINK PREVIEW OVERLAY =====
+        function showLinkPreview(visa) {
+            const overlay = document.getElementById('linkPreviewOverlay');
 
-            const container = document.getElementById('trackingDetailContainer');
-            const steps = getProgressSteps(visa);
+            document.getElementById('previewOverlayTitle').textContent = `Visa ${visa.id}`;
+            document.getElementById('previewOverlaySubtitle').textContent = `Complete visa information for ${visa.name}`;
 
-            container.innerHTML = `
-                        <div class="tracking-detail-card">
-                            <div class="tracking-header">
-                                <h2><i class="fas fa-link" style="color: #ff7a4a;"></i> Tracking Details</h2>
-                                <span class="status-badge-lg ${visa.status}">
-                                    <i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle;"></i> ${visa.status.toUpperCase()}
-                                </span>
-                            </div>
+            const fields = [
+                { label: 'Full Name', value: visa.name },
+                { label: 'Email Address', value: visa.email },
+                { label: 'Visa ID', value: visa.id },
+                { label: 'Visa Type', value: visa.visaType },
+                { label: 'Nationality', value: visa.nationality },
+                { label: 'Date of Birth', value: visa.dob },
+                { label: 'Duration', value: `${visa.duration} days` },
+                { label: 'Tracking Link', value: visa.trackingLink },
+                { label: 'Issued Date', value: visa.createdAt },
+                { label: 'Expiry Date', value: visa.expiresAt },
+                { label: 'Notes', value: visa.notes || 'None' }
+            ];
 
-                            <div class="visa-result-card" style="margin-bottom: 1.5rem;">
-                                <div class="visa-user-detail">
-                                    <div class="avatar-lg">${visa.initials}</div>
-                                    <div class="user-info">
-                                        <h4>${visa.name}</h4>
-                                        <div class="detail">
-                                            <span><i class="fas ${visa.icon}"></i> ${visa.visaType}</span>
-                                            <span><i class="fas fa-flag"></i> ${visa.nationality}</span>
-                                            <span><i class="fas fa-calendar-alt"></i> ${visa.duration} days</span>
-                                        </div>
-                                        ${visa.notes && visa.notes !== 'Not provided' ? `<div style="margin-top: 0.5rem; color: rgba(255,255,255,0.3); font-size: 0.8rem;"><i class="fas fa-comment" style="color: #ff7a4a; margin-right: 4px;"></i> ${visa.notes}</div>` : ''}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tracking-info-grid">
-                                <div class="tracking-info-item">
-                                    <div class="label">Visa ID</div>
-                                    <div class="value"><i class="fas fa-passport"></i> ${visa.id}</div>
-                                </div>
-                                <div class="tracking-info-item">
-                                    <div class="label">Tracking Link</div>
-                                    <div class="value" style="font-size: 0.85rem; color: #ffb092;">${visa.trackingLink}</div>
-                                </div>
-                                <div class="tracking-info-item">
-                                    <div class="label">Email</div>
-                                    <div class="value"><i class="fas fa-envelope"></i> ${visa.email}</div>
-                                </div>
-                                <div class="tracking-info-item">
-                                    <div class="label">Expires On</div>
-                                    <div class="value"><i class="fas fa-calendar-check"></i> ${visa.expiresAt}</div>
-                                </div>
-                            </div>
-
-                            <div class="tracking-progress">
-                                <div class="progress-label">
-                                    <span>Application Progress</span>
-                                    <span>${visa.status === 'approved' ? '100%' : '75%'}</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill ${visa.status === 'approved' ? 'complete' : ''}" style="width: ${visa.status === 'approved' ? '100' : '75'}%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="tracking-timeline">
-                                ${steps.map((step, index) => `
-                                    <div class="timeline-item">
-                                        <div class="timeline-dot ${index < 4 ? 'complete' : ''}"></div>
-                                        <div class="timeline-content">
-                                            <div class="title">${step.title}</div>
-                                            <div class="time"><i class="far fa-clock"></i> ${step.time}</div>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-
-                            <div style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
-                                <button class="btn-secondary" onclick="copyLink('${visa.trackingLink}')">
-                                    <i class="fas fa-copy"></i> Copy Link
-                                </button>
-                                <button class="btn-secondary" onclick="switchPage('page3')">
-                                    <i class="fas fa-list"></i> All Visas
-                                </button>
-                                <button class="btn-secondary" onclick="switchPage('page1')">
-                                    <i class="fas fa-plus"></i> New Visa
-                                </button>
-                            </div>
+            document.getElementById('previewOverlayFields').innerHTML = fields.map(f => `
+                        <div class="preview-field">
+                            <span class="field-label">${f.label}</span>
+                            <span class="field-value">${f.value}</span>
                         </div>
-                    `;
+                    `).join('');
 
-            switchPage('page2');
-            showToast(`📋 Showing tracking details for ${visa.name}`, 'info');
+            const statusValue = document.getElementById('previewOverlayStatus');
+            statusValue.textContent = visa.status.toUpperCase();
+            statusValue.style.color = '#7bff9a';
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ===== CLOSE LINK PREVIEW =====
+        function closeLinkPreview() {
+            document.getElementById('linkPreviewOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ===== COPY PREVIEW LINK =====
+        function copyPreviewLink() {
+            if (currentPreviewVisa) {
+                const shareUrl = generateShareableLink(currentPreviewVisa);
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    showToast('✅ Link copied!', 'success');
+                }).catch(() => {
+                    fallbackCopy(shareUrl);
+                });
+            }
         }
 
         // ===== SEARCH VISA =====
@@ -1621,11 +2080,11 @@
             const resultDiv = document.getElementById('searchResult');
 
             if (!query) {
-                resultDiv.innerHTML = `<div style="color: rgba(255,255,255,0.3); text-align: center; padding: 1rem;">Please enter a tracking link or visa ID</div>`;
+                resultDiv.innerHTML =
+                `<div style="color: rgba(255,255,255,0.3); text-align: center; padding: 1rem;">Please enter a tracking link or visa ID</div>`;
                 return;
             }
 
-            // Extract tracking ID from full link if provided
             let searchTerm = query;
             if (query.includes('track/')) {
                 searchTerm = query.split('track/').pop();
@@ -1645,16 +2104,22 @@
                                     <span style="color: #ff7a4a; font-weight: 700;">${visa.id}</span>
                                     <span style="background: rgba(0,255,100,0.08); color: #7bff9a; padding: 0.15rem 0.8rem; border-radius: 60px; font-size: 0.7rem; border: 1px solid rgba(100,255,150,0.1);">${visa.status}</span>
                                 </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
                                     <div><span style="color: rgba(255,255,255,0.3);">Name:</span> <span style="color: #fff;">${visa.name}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Type:</span> <span style="color: #fff;">${visa.visaType}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Nationality:</span> <span style="color: #fff;">${visa.nationality}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Duration:</span> <span style="color: #fff;">${visa.duration} days</span></div>
-                                    <div style="grid-column: span 2;"><span style="color: rgba(255,255,255,0.3);">Tracking Link:</span> <span style="color: #ffb092; font-size: 0.8rem;">${visa.trackingLink}</span></div>
+                                    <div style="grid-column: span 2;"><span style="color: rgba(255,255,255,0.3);">Tracking:</span> <span style="color: #ffb092; font-size: 0.75rem;">${visa.trackingLink}</span></div>
                                 </div>
-                                <button class="btn-secondary" style="margin-top: 0.8rem; padding: 0.4rem 1.5rem; font-size: 0.8rem;" onclick="viewTrackingDetail('${visa.trackingId}')">
+                                <button class="btn-secondary" style="margin-top: 0.8rem; padding: 0.4rem 1.2rem; font-size: 0.75rem;" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})">
                                     <i class="fas fa-eye"></i> View Full Details
                                 </button>
+                                <div style="margin-top: 0.6rem; display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                                    <button class="share-btn whatsapp" onclick="shareVia('whatsapp', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-whatsapp"></i></button>
+                                    <button class="share-btn telegram" onclick="shareVia('telegram', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-telegram"></i></button>
+                                    <button class="share-btn twitter" onclick="shareVia('twitter', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-twitter"></i></button>
+                                    <button class="share-btn copy" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fas fa-copy"></i> Copy</button>
+                                </div>
                             </div>
                         `;
                 showToast(`✅ Visa found: ${visa.id}`, 'success');
@@ -1663,7 +2128,7 @@
                             <div style="color: rgba(255,255,255,0.2); text-align: center; padding: 1.5rem; background: #0b0e1a; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.03);">
                                 <i class="fas fa-exclamation-circle" style="font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.3;"></i>
                                 <p>No visa found matching "${query}"</p>
-                                <p style="font-size: 0.8rem; margin-top: 0.3rem;">Try searching by Visa ID (e.g. V-2026-1001) or tracking link</p>
+                                <p style="font-size: 0.75rem; margin-top: 0.3rem;">Try searching by Visa ID (e.g. V-2026-1001) or tracking link</p>
                             </div>
                         `;
                 showToast('❌ No visa found matching your search', 'error');
@@ -1690,17 +2155,16 @@
             let html = `<div class="history-list">`;
             visas.forEach((v) => {
                 html += `
-                            <div class="history-item" onclick="viewTrackingDetail('${v.trackingId}')">
+                            <div class="history-item" onclick="showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
                                 <div class="h-user">
                                     <span class="h-avatar">${v.initials}</span>
                                     <span class="h-name">${v.name}</span>
                                     <span class="h-id">${v.id}</span>
                                 </div>
-                                <span class="h-link"><i class="fas ${v.icon}" style="color: #ff7a4a; margin-right: 4px;"></i>${v.visaType}</span>
                                 <span class="h-status ${v.status}">${v.status}</span>
                                 <span class="h-time"><i class="far fa-clock"></i> ${v.createdAt}</span>
-                                <button class="copy-btn" style="background: rgba(255,122,74,0.06); border: 1px solid rgba(255,122,74,0.06); border-radius: 60px; padding: 0.15rem 0.8rem; color: rgba(255,255,255,0.4); font-size: 0.65rem; cursor: pointer;" onclick="event.stopPropagation(); viewTrackingDetail('${v.trackingId}')">
-                                    <i class="fas fa-eye" style="color: #ff7a4a;"></i> Track
+                                <button class="copy-btn" style="background: rgba(255,122,74,0.06); border: 1px solid rgba(255,122,74,0.06); border-radius: 60px; padding: 0.15rem 0.8rem; color: rgba(255,255,255,0.4); font-size: 0.6rem; cursor: pointer;" onclick="event.stopPropagation(); showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-eye" style="color: #ff7a4a;"></i> View
                                 </button>
                             </div>
                         `;
@@ -1713,22 +2177,6 @@
         // ===== UPDATE COUNTS =====
         function updateCounts() {
             document.getElementById('historyCount').textContent = visas.length;
-        }
-
-        // ===== COPY LINK =====
-        function copyLink(link) {
-            const fullLink = `https://${link}`;
-            navigator.clipboard.writeText(fullLink).then(() => {
-                showToast(`✅ Copied: ${fullLink}`, 'success');
-            }).catch(() => {
-                const textArea = document.createElement('textarea');
-                textArea.value = fullLink;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showToast(`✅ Copied: ${fullLink}`, 'success');
-            });
         }
 
         // ===== RESET FORM =====
@@ -1745,7 +2193,8 @@
             placeholder.style.display = 'flex';
             content.style.display = 'none';
             panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Ready to Generate`;
-            panel.querySelector('.panel-desc').textContent = 'Fill in the form on the left and click "Generate Visa & Tracking Link" to create a new visa.';
+            panel.querySelector('.panel-desc').textContent =
+                'Fill in the form on the left and click "Generate Visa & Tracking Link" to create a new visa.';
 
             switchPage('page1');
             showToast('🔄 Form has been reset', 'info');
@@ -1761,20 +2210,6 @@
 
             if (pageId === 'page3') {
                 renderHistory();
-            }
-            if (pageId === 'page2' && !document.querySelector('.tracking-detail-card')) {
-                const container = document.getElementById('trackingDetailContainer');
-                if (!container.querySelector('.tracking-detail-card')) {
-                    container.innerHTML = `
-                                <div class="history-empty" style="padding: 3rem 1rem;">
-                                    <i class="fas fa-link"></i>
-                                    <p>Select a tracking link from the history to view details</p>
-                                    <button class="btn-primary" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.9rem;" onclick="switchPage('page3')">
-                                        <i class="fas fa-list"></i> View All Visas
-                                    </button>
-                                </div>
-                            `;
-                }
             }
         }
 
@@ -1805,16 +2240,124 @@
             }, 3200);
         }
 
-        // ===== NAVIGATION CLICK HANDLERS =====
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.addEventListener('click', function(e) {
-                e.preventDefault();
-                const id = this.id.replace('nav-', '');
-                switchPage(id);
+        // ===== CHECK URL FOR TRACKING LINK ON LOAD =====
+        function checkUrlForTracking() {
+            const visa = decodeVisaFromUrl();
+            if (visa) {
+                let existing = visas.find(v => v.id === visa.id);
+                if (!existing) {
+                    visas.unshift(visa);
+                    renderHistory();
+                    updateCounts();
+                    renderResult(visa);
+                    document.getElementById('resultContent').style.display = 'block';
+                    document.getElementById('placeholder').style.display = 'none';
+                    document.getElementById('resultPanel').querySelector('h3').innerHTML =
+                        `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Visa Loaded from Link`;
+                    document.getElementById('resultPanel').querySelector('.panel-desc').textContent =
+                        `Visa ${visa.id} loaded from the shared link.`;
+                }
+
+                setTimeout(() => {
+                    showLinkPreview(visa);
+                    showToast(`📋 Visa details loaded: ${visa.name}`, 'info');
+                }, 500);
+                return true;
+            }
+            return false;
+        }
+
+        // ===== INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Try to load from localStorage
+            try {
+                const stored = localStorage.getItem('visas');
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (parsed && parsed.length > 0) {
+                        visas = parsed;
+                        renderHistory();
+                        updateCounts();
+
+                        // Check URL for shared visa
+                        if (!checkUrlForTracking()) {
+                            if (visas.length > 0) {
+                                renderResult(visas[0]);
+                                document.getElementById('resultContent').style.display = 'block';
+                                document.getElementById('placeholder').style.display = 'none';
+                                updateMetaTags(visas[0]);
+                            }
+                        }
+                        return;
+                    }
+                }
+            } catch (e) {}
+
+            // Add sample visas
+            const sampleVisa1 = {
+                id: 'V-2026-1001',
+                name: 'Jessica Diaz',
+                initials: 'JD',
+                dob: '15/08/1990',
+                nationality: 'Mexico',
+                email: 'jessica.d@example.com',
+                visaType: 'Business (B1)',
+                duration: 60,
+                notes: 'Business conference & meetings',
+                trackingId: '8x7f3',
+                trackingLink: 'visaflow.app/track/8x7f3',
+                status: 'approved',
+                createdAt: new Date(Date.now() - 3600000).toLocaleString(),
+                issued: new Date(Date.now() - 3600000).toLocaleString(),
+                expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
+                    month: 'short', day: 'numeric' }),
+                icon: 'fa-briefcase'
+            };
+
+            const sampleVisa2 = {
+                id: 'V-2026-1002',
+                name: 'David Okafor',
+                initials: 'DO',
+                dob: '22/03/1985',
+                nationality: 'Nigeria',
+                email: 'david.o@example.com',
+                visaType: 'Work (H1B)',
+                duration: 365,
+                notes: 'Tech company sponsorship',
+                trackingId: '9k2m4',
+                trackingLink: 'visaflow.app/track/9k2m4',
+                status: 'approved',
+                createdAt: new Date(Date.now() - 7200000).toLocaleString(),
+                issued: new Date(Date.now() - 7200000).toLocaleString(),
+                expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
+                    month: 'short', day: 'numeric' }),
+                icon: 'fa-hard-hat'
+            };
+
+            visas.push(sampleVisa1, sampleVisa2);
+
+            // Check URL for shared visa
+            if (!checkUrlForTracking()) {
+                renderResult(visas[0]);
+                document.getElementById('resultContent').style.display = 'block';
+                document.getElementById('placeholder').style.display = 'none';
+                document.getElementById('resultPanel').querySelector('h3').innerHTML =
+                    `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Sample Visa Loaded`;
+                document.getElementById('resultPanel').querySelector('.panel-desc').textContent =
+                    'Here\'s a sample visa. Try generating your own!';
+                updateMetaTags(visas[0]);
+            }
+
+            renderHistory();
+            updateCounts();
+
+            // Listen for hash changes (shared links)
+            window.addEventListener('hashchange', function() {
+                checkUrlForTracking();
             });
         });
 
-        // ===== KEYBOARD SHORTCUT =====
+        // ===== KEYBOARD SHORTCUTS =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 if (document.getElementById('page1').classList.contains('active')) {
@@ -1829,68 +2372,16 @@
             }
         });
 
-        // ===== INIT =====
-        setTimeout(() => {
-            if (visas.length === 0) {
-                const sampleVisa = {
-                    id: 'V-2026-1001',
-                    name: 'Jessica Diaz',
-                    initials: 'JD',
-                    dob: '15/08/1990',
-                    nationality: 'Mexico',
-                    email: 'jessica.d@example.com',
-                    visaType: 'Business (B1)',
-                    duration: 60,
-                    notes: 'Business conference & meetings',
-                    trackingId: '8x7f3',
-                    trackingLink: 'visaflow.app/track/8x7f3',
-                    status: 'approved',
-                    createdAt: new Date(Date.now() - 3600000).toLocaleString(),
-                    expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
-                        month: 'short', day: 'numeric' }),
-                    icon: 'fa-briefcase'
-                };
-                visas.push(sampleVisa);
-
-                // Add a second sample visa
-                const sampleVisa2 = {
-                    id: 'V-2026-1002',
-                    name: 'David Okafor',
-                    initials: 'DO',
-                    dob: '22/03/1985',
-                    nationality: 'Nigeria',
-                    email: 'david.o@example.com',
-                    visaType: 'Work (H1B)',
-                    duration: 365,
-                    notes: 'Tech company sponsorship',
-                    trackingId: '9k2m4',
-                    trackingLink: 'visaflow.app/track/9k2m4',
-                    status: 'approved',
-                    createdAt: new Date(Date.now() - 7200000).toLocaleString(),
-                    expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
-                        month: 'short', day: 'numeric' }),
-                    icon: 'fa-hard-hat'
-                };
-                visas.push(sampleVisa2);
-
-                renderHistory();
-                updateCounts();
-                renderResult(sampleVisa);
-                document.getElementById('resultContent').style.display = 'block';
-                document.getElementById('placeholder').style.display = 'none';
-                document.getElementById('resultPanel').querySelector('h3').innerHTML =
-                    `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Sample Visa Loaded`;
-                document.getElementById('resultPanel').querySelector('.panel-desc').textContent =
-                    'Here\'s a sample visa. Try generating your own!';
-            }
-        }, 200);
-
-        console.log('✈️ VisaFlow Create & Track ready!');
-        console.log(`📊 ${visas.length} visas in history`);
+        console.log('✈️ VisaFlow Pro ready!');
+        console.log('📊 ' + visas.length + ' visas in history');
         console.log('🌍 African countries added to nationality dropdown');
         console.log('📝 Notes field is now optional');
         console.log('🔗 Click on any visa in history to view detailed tracking');
         console.log('🔍 Use the "Find Visa" page to search by tracking link or ID');
+        console.log('📱 Share links work on WhatsApp, Telegram, Twitter, LinkedIn, TikTok');
+        console.log('🔗 Visa data is encoded in the URL hash - no backend needed!');
+        console.log('📋 Open Graph meta tags added for social previews');
+        console.log('💡 When sharing on WhatsApp/TikTok, the link will show a preview with visa details');
     </script>
 </body>
 </html>
