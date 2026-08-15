@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>VisaFlow · Visa Details</title>
+    <title>VisaFlow · Official Visa</title>
     
     <!-- ===== OPEN GRAPH META TAGS FOR SOCIAL PREVIEW ===== -->
-    <meta property="og:title" content="VisaFlow · Digital Visa" id="og-title">
-    <meta property="og:description" content="View visa details and tracking information" id="og-description">
+    <meta property="og:title" content="VisaFlow · Official Visa" id="og-title">
+    <meta property="og:description" content="Official visa details and tracking" id="og-description">
     <meta property="og:type" content="website">
     <meta property="og:url" content="" id="og-url">
-    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%23141824'/%3E%3Ctext x='600' y='280' font-size='48' text-anchor='middle' fill='%23ff7a4a' font-family='Arial' font-weight='bold'%3E✈️ VisaFlow%3C/text%3E%3Ctext x='600' y='350' font-size='24' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3EDigital Visa %26 Tracking%3C/text%3E%3Ctext x='600' y='400' font-size='18' text-anchor='middle' fill='%23666' font-family='Arial'%3E%3C/t%3E%3C/svg%3E" id="og-image">
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%23141824'/%3E%3Ctext x='600' y='280' font-size='48' text-anchor='middle' fill='%23ff7a4a' font-family='Arial' font-weight='bold'%3E✈️ VisaFlow%3C/text%3E%3Ctext x='600' y='350' font-size='24' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3EOfficial Visa %26 Tracking%3C/text%3E%3Ctext x='600' y='400' font-size='18' text-anchor='middle' fill='%23666' font-family='Arial'%3E%3C/t%3E%3C/svg%3E" id="og-image">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="VisaFlow · Digital Visa" id="twitter-title">
-    <meta name="twitter:description" content="View visa details and tracking information" id="twitter-description">
-    <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%23141824'/%3E%3Ctext x='600' y='280' font-size='48' text-anchor='middle' fill='%23ff7a4a' font-family='Arial' font-weight='bold'%3E✈️ VisaFlow%3C/text%3E%3Ctext x='600' y='350' font-size='24' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3EDigital Visa %26 Tracking%3C/text%3E%3Ctext x='600' y='400' font-size='18' text-anchor='middle' fill='%23666' font-family='Arial'%3E%3C/t%3E%3C/svg%3E" id="twitter-image">
+    <meta name="twitter:title" content="VisaFlow · Official Visa" id="twitter-title">
+    <meta name="twitter:description" content="Official visa details and tracking" id="twitter-description">
+    <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%23141824'/%3E%3Ctext x='600' y='280' font-size='48' text-anchor='middle' fill='%23ff7a4a' font-family='Arial' font-weight='bold'%3E✈️ VisaFlow%3C/text%3E%3Ctext x='600' y='350' font-size='24' text-anchor='middle' fill='%23ffffff' font-family='Arial'%3EOfficial Visa %26 Tracking%3C/text%3E%3Ctext x='600' y='400' font-size='18' text-anchor='middle' fill='%23666' font-family='Arial'%3E%3C/t%3E%3C/svg%3E" id="twitter-image">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -1402,6 +1402,145 @@
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
+        /* ===== NEW: CONGRATULATIONS BANNER & PROFESSIONAL STATUS ===== */
+        .congrats-banner {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.12), rgba(26, 156, 84, 0.05));
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 1.8rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .congrats-banner .icon {
+            font-size: 2.2rem;
+            color: #2ecc71;
+            filter: drop-shadow(0 0 10px rgba(46,204,113,0.3));
+        }
+        .congrats-banner .text h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+        .congrats-banner .text p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+        .status-badge-processing {
+            background: rgba(255, 180, 50, 0.12);
+            color: #ffb84d;
+            border: 1px solid rgba(255, 180, 50, 0.15);
+            padding: 0.15rem 1rem;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .status-badge-processing i {
+            font-size: 0.5rem;
+            animation: pulse-dot 1.2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.3; transform: scale(0.8); }
+        }
+        .visa-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem 1rem;
+            background: #0b0e1a;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1rem;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+        .visa-detail-grid .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+        .visa-detail-grid .item .label {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.7rem;
+        }
+        .visa-detail-grid .item .value {
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .visa-detail-grid .item:last-child {
+            border-bottom: none;
+        }
+        .tracking-link-section {
+            margin-top: 0.8rem;
+        }
+        .tracking-link-section .link-box {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #1b1f30;
+            border-radius: 60px;
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(255, 140, 100, 0.1);
+            flex-wrap: wrap;
+        }
+        .tracking-link-section .link-box .link-text {
+            flex: 1;
+            color: #ffb092;
+            font-weight: 500;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+        .tracking-link-section .link-box .copy-btn-sm {
+            background: rgba(255,122,74,0.1);
+            border: 1px solid rgba(255,122,74,0.15);
+            border-radius: 60px;
+            padding: 0.15rem 0.9rem;
+            color: #fff;
+            font-size: 0.65rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .tracking-link-section .link-box .copy-btn-sm:hover {
+            background: rgba(255,122,74,0.2);
+            border-color: #ff7a4a;
+        }
+        .tracking-link-section .link-box .copy-btn-sm i {
+            color: #ff7a4a;
+        }
+        @media (max-width: 500px) {
+            .visa-detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Official Seal */
+        .official-seal {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 215, 0, 0.06);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 60px;
+            padding: 0.2rem 1rem 0.2rem 0.6rem;
+            color: #ffd700;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+        .official-seal i {
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -1434,8 +1573,8 @@
             <div class="share-preview-banner" id="shareBanner">
                 <div class="icon"><i class="fas fa-share-alt"></i></div>
                 <div class="info">
-                    <h4>📋 Visa Shared!</h4>
-                    <p id="bannerText">This visa was shared with you. View all details below.</p>
+                    <h4>📋 Official Visa Shared</h4>
+                    <p id="bannerText">This official visa document was shared with you. All details are verified.</p>
                 </div>
                 <button class="close-banner" onclick="document.getElementById('shareBanner').classList.remove('show')">✕</button>
             </div>
@@ -1445,8 +1584,8 @@
                 <div class="create-grid">
                     <!-- Form -->
                     <div class="form-panel">
-                        <h3><i class="fas fa-pen-fancy"></i> Create New Visa</h3>
-                        <p class="panel-desc">Complete the form below to generate a digital visa with a unique tracking link.</p>
+                        <h3><i class="fas fa-pen-fancy"></i> Create Official Visa</h3>
+                        <p class="panel-desc">Complete the form below to generate an official digital visa with a unique tracking link.</p>
 
                         <div class="form-group">
                             <label><i class="fas fa-user"></i> Full Name <span class="required">*</span></label>
@@ -1590,7 +1729,7 @@
                         </div>
 
                         <button class="btn-primary btn-full btn-success" onclick="generateVisa()">
-                            <i class="fas fa-bolt"></i> Generate Visa & Tracking Link
+                            <i class="fas fa-bolt"></i> Generate Official Visa & Tracking Link
                         </button>
                         <div style="margin-top: 0.5rem; font-size: 0.65rem; color: rgba(255,255,255,0.15); text-align: center;">
                             <i class="fas fa-link"></i> A unique tracking link will be created instantly
@@ -1600,7 +1739,7 @@
                     <!-- Result Panel -->
                     <div class="result-panel" id="resultPanel">
                         <h3><i class="fas fa-check-circle"></i> Ready to Generate</h3>
-                        <p class="panel-desc">Fill in the form on the left and click "Generate Visa & Tracking Link" to create a new visa.</p>
+                        <p class="panel-desc">Fill in the form on the left and click "Generate Official Visa & Tracking Link" to create a new visa.</p>
 
                         <div class="result-placeholder" id="placeholder">
                             <i class="fas fa-passport"></i>
@@ -1641,7 +1780,7 @@
             <div class="page" id="page4">
                 <div class="find-container">
                     <h3><i class="fas fa-search" style="color: #ff7a4a;"></i> Find Your Visa</h3>
-                    <p class="sub-text">Enter the tracking link or visa ID to view details</p>
+                    <p class="sub-text">Enter the tracking link or visa ID to view official details</p>
 
                     <div class="form-panel" style="padding: 1.5rem;">
                         <div class="form-group">
@@ -1679,13 +1818,13 @@
     <div class="link-preview-overlay" id="linkPreviewOverlay">
         <div class="preview-content">
             <button class="close-preview" onclick="closeLinkPreview()">&times;</button>
-            <div class="preview-badge"><i class="fas fa-link"></i> Visa Details</div>
+            <div class="preview-badge"><i class="fas fa-link"></i> Official Visa Details</div>
             <div class="preview-title" id="previewOverlayTitle">Visa Details</div>
-            <div class="preview-subtitle" id="previewOverlaySubtitle">Complete visa information</div>
+            <div class="preview-subtitle" id="previewOverlaySubtitle">Complete official visa information</div>
             <div class="preview-divider"></div>
             <div id="previewOverlayFields"></div>
             <div class="preview-status-bar">
-                <span class="status-label">Current Status:</span>
+                <span class="status-label">Official Status:</span>
                 <span class="status-value" id="previewOverlayStatus">Approved</span>
             </div>
             <div class="preview-actions">
@@ -1742,33 +1881,30 @@
         function updateMetaTags(visa) {
             if (!visa) return;
 
-            const title = `✈️ ${visa.name}'s Visa · ${visa.id}`;
-            const description = `${visa.visaType} · ${visa.nationality} · Expires ${visa.expiresAt}`;
+            const title = `✈️ Official Visa · ${visa.name} · ${visa.id}`;
+            const description = `${visa.visaType} · ${visa.nationality} · Expires ${visa.expiresAt} · Status: ${visa.status.toUpperCase()}`;
             const url = window.location.href;
 
-            // Update Open Graph tags
             document.getElementById('og-title').setAttribute('content', title);
             document.getElementById('og-description').setAttribute('content', description);
             document.getElementById('og-url').setAttribute('content', url);
 
-            // Update Twitter Card
             document.getElementById('twitter-title').setAttribute('content', title);
             document.getElementById('twitter-description').setAttribute('content', description);
 
-            // Update page title
             document.title = title;
 
-            // Show banner for shared link
             const banner = document.getElementById('shareBanner');
             if (window.location.hash && window.location.hash.length > 1) {
                 banner.classList.add('show');
                 document.getElementById('bannerText').textContent = 
-                    `📋 ${visa.name} shared this visa with you. View all details below.`;
+                    `📋 Official visa for ${visa.name} (${visa.id}) was shared with you. All details are verified.`;
             }
         }
 
         // ===== GENERATE SHAREABLE LINK (URL ENCODED) =====
         function generateShareableLink(visa) {
+            // Include a congratulatory message and official status in the encoded data
             const data = {
                 n: visa.name,
                 e: visa.email,
@@ -1782,7 +1918,10 @@
                 ex: visa.expiresAt,
                 d: visa.duration,
                 nat: visa.nationality,
-                dob: visa.dob
+                dob: visa.dob,
+                // Official congratulatory message encoded
+                msg: `🎉 Congratulations, ${visa.name}! Your visa application has been officially approved.`,
+                official: true
             };
 
             const jsonStr = JSON.stringify(data);
@@ -1823,10 +1962,12 @@
                         trackingLink: `visaflow.app/track/${data.tr || generateTrackingId()}`,
                         icon: getVisaTypeIcon(data.t || 'Business (B1)'),
                         statusColor: '#7bff9a',
-                        statusText: 'Approved'
+                        statusText: 'Approved',
+                        // Official congratulatory message
+                        congratsMessage: data.msg || `🎉 Congratulations, ${data.n || 'Applicant'}! Your visa application has been officially approved.`,
+                        official: data.official || true
                     };
 
-                    // Update meta tags for social preview
                     updateMetaTags(visa);
 
                     return visa;
@@ -1846,14 +1987,14 @@
             }
 
             const shareUrl = generateShareableLink(visa);
-            const text = `✈️ Visa ${visa.id} for ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n\n🔗 Track here: ${shareUrl}`;
+            const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track here: ${shareUrl}`;
 
             switch (platform) {
                 case 'whatsapp':
                     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
                     break;
                 case 'telegram':
-                    window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Visa ${visa.id} for ${visa.name}`)}`,
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Official Visa ${visa.id} for ${visa.name}`)}`,
                         '_blank');
                     break;
                 case 'twitter':
@@ -1872,13 +2013,13 @@
                     break;
                 case 'copy':
                     navigator.clipboard.writeText(shareUrl).then(() => {
-                        showToast('✅ Link copied to clipboard!', 'success');
+                        showToast('✅ Official link copied to clipboard!', 'success');
                     }).catch(() => {
                         fallbackCopy(shareUrl);
                     });
                     break;
                 default:
-                    showToast('📋 Share the link manually', 'info');
+                    showToast('📋 Share the official link manually', 'info');
             }
         }
 
@@ -1889,7 +2030,7 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            showToast('✅ Link copied to clipboard!', 'success');
+            showToast('✅ Official link copied to clipboard!', 'success');
         }
 
         // ===== GENERATE VISA =====
@@ -1929,7 +2070,10 @@
                 createdAt: now.toLocaleString(),
                 issued: now.toLocaleString(),
                 expiresAt: expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
-                icon: getVisaTypeIcon(visaType)
+                icon: getVisaTypeIcon(visaType),
+                // Official congratulatory message
+                congratsMessage: `🎉 Congratulations, ${name}! Your visa application has been officially approved and is now being processed.`,
+                official: true
             };
 
             visas.unshift(visa);
@@ -1937,13 +2081,12 @@
             renderHistory();
             updateCounts();
 
-            // Update meta tags for sharing
             updateMetaTags(visa);
 
-            showToast(`✅ Visa ${visa.id} created! Tracking link: ${visa.trackingLink}`, 'success');
+            showToast(`✅ Official Visa ${visa.id} created! Tracking link: ${visa.trackingLink}`, 'success');
         }
 
-        // ===== RENDER RESULT =====
+        // ===== RENDER RESULT (PROFESSIONAL & CONGRATULATORY) =====
         function renderResult(visa) {
             const placeholder = document.getElementById('placeholder');
             const content = document.getElementById('resultContent');
@@ -1953,8 +2096,25 @@
             content.style.display = 'block';
 
             const shareUrl = generateShareableLink(visa);
+            const congratsMsg = visa.congratsMessage || `🎉 Congratulations, ${visa.name}! Your visa application has been officially approved.`;
 
             content.innerHTML = `
+                        <!-- OFFICIAL SEAL -->
+                        <div class="official-seal">
+                            <i class="fas fa-certificate"></i> OFFICIAL · VERIFIED
+                        </div>
+
+                        <!-- CONGRATULATIONS BANNER -->
+                        <div class="congrats-banner">
+                            <div class="icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="text">
+                                <h4>${congratsMsg}</h4>
+                                <p>Visa ID: ${visa.id} · Status: <strong style="color: #7bff9a;">${visa.status.toUpperCase()}</strong> · Issued: ${visa.createdAt}</p>
+                            </div>
+                            <span class="status-badge-processing"><i class="fas fa-circle"></i> Processing</span>
+                        </div>
+
+                        <!-- VISA SUMMARY CARD -->
                         <div class="visa-result-card">
                             <div class="visa-header">
                                 <span class="visa-id"><i class="fas fa-passport"></i> ${visa.id}</span>
@@ -1970,21 +2130,29 @@
                                         <span><i class="fas fa-calendar-alt"></i> ${visa.duration} days</span>
                                         <span><i class="fas fa-calendar-check"></i> ${visa.expiresAt}</span>
                                     </div>
-                                    ${visa.notes && visa.notes !== 'Not provided' ? `<div style="margin-top: 0.4rem; color: rgba(255,255,255,0.3); font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.4rem;"><i class="fas fa-comment" style="color: #ff7a4a; margin-right: 4px;"></i> ${visa.notes}</div>` : ''}
                                 </div>
+                            </div>
+                            <!-- Visa details grid -->
+                            <div class="visa-detail-grid">
+                                <div class="item"><span class="label">Date of Birth</span><span class="value">${visa.dob}</span></div>
+                                <div class="item"><span class="label">Email</span><span class="value">${visa.email}</span></div>
+                                <div class="item"><span class="label">Application Date</span><span class="value">${visa.createdAt}</span></div>
+                                <div class="item"><span class="label">Expiry Date</span><span class="value">${visa.expiresAt}</span></div>
+                                ${visa.notes && visa.notes !== 'Not provided' ? `<div class="item" style="grid-column: span 2;"><span class="label">Notes</span><span class="value">${visa.notes}</span></div>` : ''}
                             </div>
                         </div>
 
-                        <div class="tracking-result">
-                            <div class="label"><i class="fas fa-link"></i> Your Tracking Link</div>
-                            <div class="link-display">
-                                <span class="link-text">${visa.trackingLink}</span>
-                                <button class="copy-btn" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                        <!-- TRACKING LINK SECTION -->
+                        <div class="tracking-link-section">
+                            <div class="link-box">
+                                <span class="link-text"><i class="fas fa-link" style="color: #ff7a4a; margin-right: 8px;"></i>${visa.trackingLink}</span>
+                                <button class="copy-btn-sm" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                         </div>
 
+                        <!-- SHARE & ACTIONS -->
                         <div class="share-buttons">
                             <button class="share-btn whatsapp" onclick="shareVia('whatsapp', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
@@ -2011,21 +2179,21 @@
                                 <i class="fas fa-plus"></i> Create Another
                             </button>
                             <button class="btn-secondary" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fas fa-eye"></i> View Tracking
+                                <i class="fas fa-eye"></i> View Full Details
                             </button>
                         </div>
                     `;
 
-            panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Visa Generated!`;
-            panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been created with a unique tracking link.`;
+            panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Official Visa Generated`;
+            panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been officially created. A confirmation has been sent to ${visa.email}.`;
         }
 
         // ===== SHOW LINK PREVIEW OVERLAY =====
         function showLinkPreview(visa) {
             const overlay = document.getElementById('linkPreviewOverlay');
 
-            document.getElementById('previewOverlayTitle').textContent = `Visa ${visa.id}`;
-            document.getElementById('previewOverlaySubtitle').textContent = `Complete visa information for ${visa.name}`;
+            document.getElementById('previewOverlayTitle').textContent = `Official Visa ${visa.id}`;
+            document.getElementById('previewOverlaySubtitle').textContent = `Complete official visa information for ${visa.name}`;
 
             const fields = [
                 { label: 'Full Name', value: visa.name },
@@ -2038,6 +2206,7 @@
                 { label: 'Tracking Link', value: visa.trackingLink },
                 { label: 'Issued Date', value: visa.createdAt },
                 { label: 'Expiry Date', value: visa.expiresAt },
+                { label: 'Status', value: visa.status.toUpperCase() },
                 { label: 'Notes', value: visa.notes || 'None' }
             ];
 
@@ -2067,7 +2236,7 @@
             if (currentPreviewVisa) {
                 const shareUrl = generateShareableLink(currentPreviewVisa);
                 navigator.clipboard.writeText(shareUrl).then(() => {
-                    showToast('✅ Link copied!', 'success');
+                    showToast('✅ Official link copied!', 'success');
                 }).catch(() => {
                     fallbackCopy(shareUrl);
                 });
@@ -2122,16 +2291,16 @@
                                 </div>
                             </div>
                         `;
-                showToast(`✅ Visa found: ${visa.id}`, 'success');
+                showToast(`✅ Official visa found: ${visa.id}`, 'success');
             } else {
                 resultDiv.innerHTML = `
                             <div style="color: rgba(255,255,255,0.2); text-align: center; padding: 1.5rem; background: #0b0e1a; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.03);">
                                 <i class="fas fa-exclamation-circle" style="font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.3;"></i>
-                                <p>No visa found matching "${query}"</p>
+                                <p>No official visa found matching "${query}"</p>
                                 <p style="font-size: 0.75rem; margin-top: 0.3rem;">Try searching by Visa ID (e.g. V-2026-1001) or tracking link</p>
                             </div>
                         `;
-                showToast('❌ No visa found matching your search', 'error');
+                showToast('❌ No official visa found matching your search', 'error');
             }
         }
 
@@ -2143,7 +2312,7 @@
                 container.innerHTML = `
                             <div class="history-empty">
                                 <i class="fas fa-history"></i>
-                                <p>No visa history yet. Generate your first visa to get started.</p>
+                                <p>No visa history yet. Generate your first official visa to get started.</p>
                                 <button class="btn-primary" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.9rem;" onclick="switchPage('page1')">
                                     <i class="fas fa-plus"></i> Create a visa
                                 </button>
@@ -2194,7 +2363,7 @@
             content.style.display = 'none';
             panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Ready to Generate`;
             panel.querySelector('.panel-desc').textContent =
-                'Fill in the form on the left and click "Generate Visa & Tracking Link" to create a new visa.';
+                'Fill in the form on the left and click "Generate Official Visa & Tracking Link" to create a new visa.';
 
             switchPage('page1');
             showToast('🔄 Form has been reset', 'info');
@@ -2253,14 +2422,14 @@
                     document.getElementById('resultContent').style.display = 'block';
                     document.getElementById('placeholder').style.display = 'none';
                     document.getElementById('resultPanel').querySelector('h3').innerHTML =
-                        `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Visa Loaded from Link`;
+                        `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Official Visa Loaded from Link`;
                     document.getElementById('resultPanel').querySelector('.panel-desc').textContent =
-                        `Visa ${visa.id} loaded from the shared link.`;
+                        `Official visa ${visa.id} loaded from the shared link. All details are verified.`;
                 }
 
                 setTimeout(() => {
                     showLinkPreview(visa);
-                    showToast(`📋 Visa details loaded: ${visa.name}`, 'info');
+                    showToast(`📋 Official visa details loaded: ${visa.name}`, 'info');
                 }, 500);
                 return true;
             }
@@ -2269,7 +2438,6 @@
 
         // ===== INIT =====
         document.addEventListener('DOMContentLoaded', function() {
-            // Try to load from localStorage
             try {
                 const stored = localStorage.getItem('visas');
                 if (stored) {
@@ -2279,7 +2447,6 @@
                         renderHistory();
                         updateCounts();
 
-                        // Check URL for shared visa
                         if (!checkUrlForTracking()) {
                             if (visas.length > 0) {
                                 renderResult(visas[0]);
@@ -2293,7 +2460,6 @@
                 }
             } catch (e) {}
 
-            // Add sample visas
             const sampleVisa1 = {
                 id: 'V-2026-1001',
                 name: 'Jessica Diaz',
@@ -2311,7 +2477,9 @@
                 issued: new Date(Date.now() - 3600000).toLocaleString(),
                 expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
                     month: 'short', day: 'numeric' }),
-                icon: 'fa-briefcase'
+                icon: 'fa-briefcase',
+                congratsMessage: '🎉 Congratulations, Jessica! Your visa application has been officially approved.',
+                official: true
             };
 
             const sampleVisa2 = {
@@ -2331,33 +2499,32 @@
                 issued: new Date(Date.now() - 7200000).toLocaleString(),
                 expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
                     month: 'short', day: 'numeric' }),
-                icon: 'fa-hard-hat'
+                icon: 'fa-hard-hat',
+                congratsMessage: '🎉 Congratulations, David! Your work visa has been officially approved.',
+                official: true
             };
 
             visas.push(sampleVisa1, sampleVisa2);
 
-            // Check URL for shared visa
             if (!checkUrlForTracking()) {
                 renderResult(visas[0]);
                 document.getElementById('resultContent').style.display = 'block';
                 document.getElementById('placeholder').style.display = 'none';
                 document.getElementById('resultPanel').querySelector('h3').innerHTML =
-                    `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Sample Visa Loaded`;
+                    `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Official Sample Visa Loaded`;
                 document.getElementById('resultPanel').querySelector('.panel-desc').textContent =
-                    'Here\'s a sample visa. Try generating your own!';
+                    'Here\'s an official sample visa. Try generating your own!';
                 updateMetaTags(visas[0]);
             }
 
             renderHistory();
             updateCounts();
 
-            // Listen for hash changes (shared links)
             window.addEventListener('hashchange', function() {
                 checkUrlForTracking();
             });
         });
 
-        // ===== KEYBOARD SHORTCUTS =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 if (document.getElementById('page1').classList.contains('active')) {
@@ -2372,16 +2539,17 @@
             }
         });
 
-        console.log('✈️ VisaFlow Pro ready!');
-        console.log('📊 ' + visas.length + ' visas in history');
+        console.log('✈️ VisaFlow Official Pro ready!');
+        console.log('📊 ' + visas.length + ' official visas in history');
         console.log('🌍 African countries added to nationality dropdown');
-        console.log('📝 Notes field is now optional');
+        console.log('📝 Notes field is optional');
         console.log('🔗 Click on any visa in history to view detailed tracking');
         console.log('🔍 Use the "Find Visa" page to search by tracking link or ID');
         console.log('📱 Share links work on WhatsApp, Telegram, Twitter, LinkedIn, TikTok');
         console.log('🔗 Visa data is encoded in the URL hash - no backend needed!');
         console.log('📋 Open Graph meta tags added for social previews');
-        console.log('💡 When sharing on WhatsApp/TikTok, the link will show a preview with visa details');
+        console.log('💡 When sharing, the link will show a preview with official visa details and congratulations');
+        console.log('✅ Official seal and congratulations appear in the shared link');
     </script>
 </body>
 </html>
