@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>VisaFlow · Official Visa</title>
     
-    <!-- ===== OPEN GRAPH META TAGS FOR SOCIAL PREVIEW ===== -->
+    <!-- ===== OPEN GRAPH META TAGS ===== -->
     <meta property="og:title" content="VisaFlow · Official Visa" id="og-title">
     <meta property="og:description" content="Official visa details and tracking" id="og-description">
     <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ===== SAME STYLES AS BEFORE ===== */
+        /* ===== PROFESSIONAL NAVY + GOLD THEME ===== */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +31,7 @@
         }
 
         body {
-            background: #0b0d15;
+            background: #0a0e1a;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -42,14 +42,13 @@
         .visa-card {
             max-width: 1400px;
             width: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.15) 0%, rgba(10, 12, 28, 0.95) 70%),
-                linear-gradient(145deg, #141824 0%, #1b1f2e 100%);
-            backdrop-filter: blur(2px);
-            border-radius: 4rem;
+            background: #0f1a2f;
+            background: radial-gradient(circle at 10% 20%, rgba(26, 67, 113, 0.25) 0%, #0a1322 90%);
+            border-radius: 3rem;
             padding: 2.5rem 3rem;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 120, 80, 0.2) inset, 0 0 30px rgba(255, 70, 50, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(212, 175, 55, 0.15) inset, 0 0 40px rgba(212, 175, 55, 0.08);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 140, 100, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -61,11 +60,11 @@
             right: -10%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(255, 100, 70, 0.25) 0%, rgba(255, 40, 20, 0) 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(10, 19, 34, 0) 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: pulseGlow 6s infinite alternate ease-in-out;
+            animation: pulseGlow 8s infinite alternate ease-in-out;
         }
 
         .visa-card::after {
@@ -75,16 +74,16 @@
             left: -5%;
             width: 350px;
             height: 350px;
-            background: radial-gradient(circle, rgba(255, 180, 70, 0.2) 0%, rgba(255, 100, 30, 0) 70%);
+            background: radial-gradient(circle, rgba(26, 67, 113, 0.12) 0%, rgba(10, 19, 34, 0) 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            animation: pulseGlow 8s infinite alternate-reverse ease-in-out;
+            animation: pulseGlow 10s infinite alternate-reverse ease-in-out;
         }
 
         @keyframes pulseGlow {
-            0% { opacity: 0.4; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.2); }
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.15); }
         }
 
         .content {
@@ -92,6 +91,7 @@
             z-index: 2;
         }
 
+        /* ===== NAVBAR ===== */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -100,38 +100,45 @@
             gap: 1.2rem;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.08);
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 0.7rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             color: #fff;
-            text-shadow: 0 0 12px rgba(255, 120, 80, 0.5);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
         }
 
         .logo i {
-            color: #ff7a4a;
-            filter: drop-shadow(0 0 8px #ff5e2e);
-            font-size: 2.4rem;
+            color: #d4af37;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+            font-size: 2.2rem;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+        .logo span span {
+            color: #d4af37;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.2s;
             padding: 0.4rem 1rem;
             border-radius: 60px;
@@ -142,52 +149,52 @@
         }
 
         .nav-links a i {
-            font-size: 0.85rem;
-            color: #ff7a4a;
+            font-size: 0.8rem;
+            color: #d4af37;
         }
 
         .nav-links a:hover {
             color: #fff;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(212, 175, 55, 0.06);
         }
 
         .nav-links a.active {
             color: #fff;
-            background: rgba(255, 122, 74, 0.12);
-            border: 1px solid rgba(255, 122, 74, 0.15);
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .btn-outline-light {
             background: transparent;
-            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border: 1.5px solid rgba(212, 175, 55, 0.2);
             color: #fff;
             padding: 0.4rem 1.2rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: 0.25s;
             cursor: pointer;
             backdrop-filter: blur(4px);
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(212, 175, 55, 0.03);
             display: flex;
             align-items: center;
             gap: 0.4rem;
         }
 
         .btn-outline-light i {
-            color: #ff7a4a;
+            color: #d4af37;
         }
 
         .btn-outline-light:hover {
-            background: rgba(255, 122, 74, 0.15);
-            border-color: #ff7a4a;
-            box-shadow: 0 0 20px rgba(255, 100, 50, 0.2);
+            background: rgba(212, 175, 55, 0.12);
+            border-color: #d4af37;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
             transform: scale(1.02);
         }
 
         .page {
             display: none;
-            animation: fadeIn 0.35s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         .page.active {
@@ -195,7 +202,7 @@
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(12px); }
+            0% { opacity: 0; transform: translateY(10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
@@ -209,66 +216,72 @@
         @media (max-width: 900px) {
             .create-grid {
                 grid-template-columns: 1fr;
+                gap: 1.8rem;
             }
         }
 
+        /* ===== FORM PANEL ===== */
         .form-panel {
-            background: rgba(16, 19, 32, 0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 2.5rem;
+            background: rgba(15, 26, 47, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
             padding: 2rem 2.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.06);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
         .form-panel h3 {
             color: #fff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.7rem;
         }
 
         .form-panel h3 i {
-            color: #ff7a4a;
+            color: #d4af37;
         }
 
         .form-panel .panel-desc {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+            margin-bottom: 1.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.2);
+            padding-left: 0.8rem;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .form-group label {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
             display: block;
             margin-bottom: 0.3rem;
         }
 
         .form-group label i {
-            color: #ff7a4a;
+            color: #d4af37;
             margin-right: 4px;
             width: 16px;
+            font-size: 0.7rem;
         }
 
         .form-group label .required {
-            color: #ff6b6b;
+            color: #d4af37;
             margin-left: 2px;
         }
 
         .form-group label .optional {
             color: rgba(255, 255, 255, 0.2);
             font-weight: 400;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             margin-left: 4px;
         }
 
@@ -276,9 +289,9 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            background: #0b0e1a;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 60px;
+            background: #0a1322;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
             padding: 0.7rem 1.2rem;
             color: #fff;
             font-size: 0.9rem;
@@ -288,33 +301,34 @@
         }
 
         .form-group textarea {
-            border-radius: 1.5rem;
+            border-radius: 12px;
             resize: vertical;
             min-height: 50px;
             font-family: inherit;
         }
 
         .form-group select option {
-            background: #141824;
+            background: #0a1322;
             padding: 0.3rem;
         }
 
         .form-group select optgroup {
-            background: #0b0e1a;
-            color: rgba(255, 255, 255, 0.4);
+            background: #0a1322;
+            color: rgba(255, 255, 255, 0.3);
             font-weight: 600;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
-            border-color: #ff7a4a;
-            box-shadow: 0 0 0 3px rgba(255, 122, 74, 0.12);
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+            background: #0d1a2e;
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.12);
         }
 
         .form-row {
@@ -326,62 +340,66 @@
         @media (max-width: 500px) {
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 0.4rem;
             }
         }
 
+        /* ===== BUTTONS ===== */
         .btn-full {
             width: 100%;
             justify-content: center;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
             border: none;
             cursor: pointer;
             padding: 0.8rem;
             font-size: 0.95rem;
+            border-radius: 60px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ff6a3d, #ff3c1a);
+            background: linear-gradient(135deg, #d4af37, #b8960f);
             border: none;
             border-radius: 60px;
             font-weight: 700;
-            color: #fff;
-            box-shadow: 0 8px 28px rgba(255, 70, 30, 0.4);
+            color: #0a1322;
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.25);
             transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.6rem;
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .btn-primary i {
             font-size: 1rem;
+            color: #0a1322;
         }
 
         .btn-primary:hover {
             transform: scale(1.02) translateY(-2px);
-            box-shadow: 0 12px 35px rgba(255, 60, 20, 0.6);
-            background: linear-gradient(135deg, #ff7a4a, #ff2a0a);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.35);
+            background: linear-gradient(135deg, #e0c04a, #c4a010);
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #2ecc71, #1a9c54);
-            box-shadow: 0 8px 28px rgba(46, 204, 113, 0.3);
+            background: linear-gradient(135deg, #d4af37, #b8960f);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.2);
         }
 
         .btn-success:hover {
-            background: linear-gradient(135deg, #3ddc84, #1a9c54);
-            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.4);
+            background: linear-gradient(135deg, #e0c04a, #c4a010);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.3);
         }
 
         /* ===== RESULT PANEL ===== */
         .result-panel {
-            background: rgba(16, 19, 32, 0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 2.5rem;
+            background: rgba(15, 26, 47, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
             padding: 2rem 2.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.06);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
@@ -390,22 +408,24 @@
 
         .result-panel h3 {
             color: #fff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.7rem;
         }
 
         .result-panel h3 i {
-            color: #7bff9a;
+            color: #d4af37;
         }
 
         .result-panel .panel-desc {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+            margin-bottom: 1.8rem;
+            border-left: 2px solid rgba(212, 175, 55, 0.2);
+            padding-left: 0.8rem;
         }
 
         .result-placeholder {
@@ -421,25 +441,25 @@
 
         .result-placeholder i {
             font-size: 3.5rem;
-            color: rgba(255, 122, 74, 0.15);
+            color: rgba(212, 175, 55, 0.1);
         }
 
         .result-placeholder .text {
-            color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.12);
             font-size: 0.9rem;
         }
 
         .result-placeholder .sub {
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.06);
             font-size: 0.8rem;
         }
 
         /* ===== VISA RESULT CARD ===== */
         .visa-result-card {
-            background: #0b0e1a;
-            border-radius: 1.8rem;
+            background: #0a1322;
+            border-radius: 1.5rem;
             padding: 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.06);
             margin-bottom: 1rem;
         }
 
@@ -449,25 +469,25 @@
             align-items: center;
             margin-bottom: 0.8rem;
             padding-bottom: 0.6rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.06);
             flex-wrap: wrap;
             gap: 0.3rem;
         }
 
         .visa-result-card .visa-header .visa-id {
-            color: #ff7a4a;
+            color: #d4af37;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .visa-result-card .visa-header .visa-status {
-            background: rgba(0, 255, 100, 0.08);
-            color: #7bff9a;
+            background: rgba(212, 175, 55, 0.08);
+            color: #d4af37;
             padding: 0.15rem 0.8rem;
             border-radius: 60px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
-            border: 1px solid rgba(100, 255, 150, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.1);
             display: flex;
             align-items: center;
             gap: 0.3rem;
@@ -483,13 +503,13 @@
         .visa-result-card .visa-user-detail .avatar-lg {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #ff6a3d, #a8321a);
+            background: linear-gradient(135deg, #d4af37, #b8960f);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            color: #fff;
+            color: #0a1322;
             font-size: 1.2rem;
             flex-shrink: 0;
         }
@@ -501,7 +521,7 @@
         }
 
         .visa-result-card .visa-user-detail .user-info .detail {
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.35);
             font-size: 0.75rem;
             display: flex;
             flex-wrap: wrap;
@@ -515,25 +535,25 @@
         }
 
         .visa-result-card .visa-user-detail .user-info .detail i {
-            color: #ff7a4a;
-            font-size: 0.65rem;
+            color: #d4af37;
+            font-size: 0.6rem;
         }
 
         /* ===== TRACKING LINK ===== */
         .tracking-result {
-            background: #0e111f;
-            border-radius: 1.8rem;
-            padding: 1rem 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: #0d1a2e;
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid rgba(212, 175, 55, 0.06);
             margin-bottom: 1rem;
         }
 
         .tracking-result .label {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.6rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             display: flex;
             align-items: center;
             gap: 0.4rem;
@@ -543,16 +563,16 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            background: #1b1f30;
+            background: #0a1322;
             border-radius: 60px;
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(255, 140, 100, 0.1);
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.08);
             flex-wrap: wrap;
         }
 
         .tracking-result .link-display .link-text {
             flex: 1;
-            color: #ffb092;
+            color: #e8d08a;
             font-weight: 500;
             font-size: 0.85rem;
             word-break: break-all;
@@ -560,13 +580,13 @@
         }
 
         .tracking-result .link-display .copy-btn {
-            background: rgba(255, 122, 74, 0.12);
-            border: 1px solid rgba(255, 122, 74, 0.15);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.1);
             border-radius: 60px;
-            padding: 0.25rem 1rem;
+            padding: 0.2rem 1rem;
             color: #fff;
             font-weight: 500;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             cursor: pointer;
             transition: 0.2s;
             display: flex;
@@ -575,13 +595,13 @@
         }
 
         .tracking-result .link-display .copy-btn:hover {
-            background: rgba(255, 122, 74, 0.2);
-            border-color: #ff7a4a;
+            background: rgba(212, 175, 55, 0.15);
+            border-color: #d4af37;
             transform: scale(1.02);
         }
 
         .tracking-result .link-display .copy-btn i {
-            color: #ff7a4a;
+            color: #d4af37;
         }
 
         .action-buttons {
@@ -592,13 +612,13 @@
         }
 
         .action-buttons .btn-secondary {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             padding: 0.5rem 1.4rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #fff;
             display: inline-flex;
             align-items: center;
@@ -609,31 +629,31 @@
         }
 
         .action-buttons .btn-secondary i {
-            color: #ff8a5c;
+            color: #d4af37;
         }
 
         .action-buttons .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #ff7a4a;
+            background: rgba(212, 175, 55, 0.06);
+            border-color: rgba(212, 175, 55, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 80, 40, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* ===== SHARE BUTTONS ===== */
         .share-buttons {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             flex-wrap: wrap;
             margin-top: 0.5rem;
         }
 
         .share-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 60px;
-            padding: 0.3rem 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.7rem;
+            padding: 0.25rem 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.65rem;
             cursor: pointer;
             transition: 0.2s;
             display: inline-flex;
@@ -642,328 +662,163 @@
         }
 
         .share-btn:hover {
-            background: rgba(255, 122, 74, 0.1);
-            border-color: #ff7a4a;
+            background: rgba(212, 175, 55, 0.06);
+            border-color: rgba(212, 175, 55, 0.15);
             color: #fff;
         }
 
         .share-btn i {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
-        .share-btn.whatsapp:hover { background: rgba(37, 211, 102, 0.15); border-color: #25D366; color: #25D366; }
-        .share-btn.telegram:hover { background: rgba(0, 136, 204, 0.15); border-color: #0088cc; color: #0088cc; }
-        .share-btn.twitter:hover { background: rgba(29, 161, 242, 0.15); border-color: #1DA1F2; color: #1DA1F2; }
-        .share-btn.copy:hover { background: rgba(255, 122, 74, 0.15); border-color: #ff7a4a; color: #ff7a4a; }
-        .share-btn.linkedin:hover { background: rgba(0, 119, 181, 0.15); border-color: #0077b5; color: #0077b5; }
-        .share-btn.tiktok:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); color: #fff; }
+        .share-btn.whatsapp:hover { background: rgba(37, 211, 102, 0.08); border-color: rgba(37, 211, 102, 0.2); color: #25D366; }
+        .share-btn.telegram:hover { background: rgba(0, 136, 204, 0.08); border-color: rgba(0, 136, 204, 0.2); color: #0088cc; }
+        .share-btn.twitter:hover { background: rgba(29, 161, 242, 0.08); border-color: rgba(29, 161, 242, 0.2); color: #1DA1F2; }
+        .share-btn.copy:hover { background: rgba(212, 175, 55, 0.08); border-color: rgba(212, 175, 55, 0.2); color: #d4af37; }
+        .share-btn.linkedin:hover { background: rgba(0, 119, 181, 0.08); border-color: rgba(0, 119, 181, 0.2); color: #0077b5; }
+        .share-btn.tiktok:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.08); color: #fff; }
 
-        /* ===== TRACKING DETAIL PAGE ===== */
-        .tracking-detail-card {
-            background: rgba(16, 19, 32, 0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 2.5rem;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        .tracking-detail-card .tracking-header {
-            display: flex;
-            justify-content: space-between;
+        /* ===== OFFICIAL SEAL & CONGRATS ===== */
+        .official-seal {
+            display: inline-flex;
             align-items: center;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            flex-wrap: wrap;
             gap: 0.5rem;
-        }
-
-        .tracking-detail-card .tracking-header h2 {
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .tracking-detail-card .tracking-header .status-badge-lg {
-            padding: 0.25rem 1.2rem;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
             border-radius: 60px;
+            padding: 0.15rem 1rem 0.15rem 0.6rem;
+            color: #d4af37;
+            font-size: 0.6rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+        .official-seal i {
             font-size: 0.8rem;
         }
 
-        .status-badge-lg.approved {
-            background: rgba(0, 255, 100, 0.08);
-            color: #7bff9a;
-            border: 1px solid rgba(100, 255, 150, 0.1);
+        .congrats-banner {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06), rgba(212, 175, 55, 0.01));
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .congrats-banner .icon {
+            font-size: 2rem;
+            color: #d4af37;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.15));
+        }
+        .congrats-banner .text h4 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.05rem;
+        }
+        .congrats-banner .text p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+        .status-badge-processing {
+            background: rgba(212, 175, 55, 0.08);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 0.1rem 1rem;
+            border-radius: 60px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .status-badge-processing i {
+            font-size: 0.4rem;
+            animation: pulse-dot 1.2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.2; transform: scale(0.8); }
         }
 
-        .status-badge-lg.pending {
-            background: rgba(255, 180, 50, 0.08);
-            color: #ffb84d;
-            border: 1px solid rgba(255, 180, 50, 0.1);
-        }
-
-        .tracking-info-grid {
+        .visa-detail-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            margin: 1rem 0;
-        }
-
-        .tracking-info-item {
-            background: #0b0e1a;
-            border-radius: 1.2rem;
-            padding: 0.8rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .tracking-info-item .label {
-            color: rgba(255, 255, 255, 0.25);
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .tracking-info-item .value {
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 0.15rem;
-        }
-
-        .tracking-info-item .value i {
-            color: #ff7a4a;
-            margin-right: 4px;
-        }
-
-        .tracking-progress {
-            margin: 1rem 0;
-        }
-
-        .tracking-progress .progress-label {
-            display: flex;
-            justify-content: space-between;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.7rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .tracking-progress .progress-bar {
-            height: 5px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 60px;
-            overflow: hidden;
-        }
-
-        .tracking-progress .progress-bar .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff7a4a, #ff3c1a);
-            border-radius: 60px;
-            transition: width 0.8s ease;
-            width: 0%;
-        }
-
-        .tracking-progress .progress-bar .progress-fill.complete {
-            background: linear-gradient(90deg, #2ecc71, #1a9c54);
-            width: 100% !important;
-        }
-
-        .tracking-timeline {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .tracking-timeline .timeline-item {
-            display: flex;
-            gap: 0.8rem;
-            padding: 0.4rem 0;
-            position: relative;
-        }
-
-        .tracking-timeline .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 26px;
-            bottom: 0;
-            width: 2px;
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .tracking-timeline .timeline-item:last-child::before {
-            display: none;
-        }
-
-        .tracking-timeline .timeline-item .timeline-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #ff7a4a;
-            border: 2px solid rgba(255, 122, 74, 0.2);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .tracking-timeline .timeline-item .timeline-dot.complete {
-            background: #2ecc71;
-            border-color: rgba(46, 204, 113, 0.2);
-        }
-
-        .tracking-timeline .timeline-item .timeline-content .title {
-            color: #fff;
-            font-weight: 500;
-            font-size: 0.85rem;
-        }
-
-        .tracking-timeline .timeline-item .timeline-content .time {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 0.65rem;
-        }
-
-        /* ===== HISTORY ===== */
-        .history-section {
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 1.5rem;
-        }
-
-        .history-section .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .history-section .section-header h3 {
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .history-section .section-header h3 i {
-            color: #ff7a4a;
-        }
-
-        .history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .history-item {
-            background: #0b0e1a;
+            gap: 0.4rem 1rem;
+            background: #0a1322;
             border-radius: 1.2rem;
             padding: 0.6rem 1rem;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.03);
+        }
+        .visa-detail-grid .item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            transition: 0.2s;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            cursor: pointer;
+            padding: 0.15rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
-
-        .history-item:hover {
-            border-color: rgba(255, 120, 80, 0.15);
-            background: rgba(255, 122, 74, 0.03);
+        .visa-detail-grid .item .label {
+            color: rgba(255,255,255,0.25);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
-
-        .history-item .h-user {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .history-item .h-user .h-avatar {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff6a3d, #a8321a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: #fff;
-            font-size: 0.6rem;
-            flex-shrink: 0;
-        }
-
-        .history-item .h-user .h-name {
+        .visa-detail-grid .item .value {
             color: #fff;
             font-size: 0.8rem;
             font-weight: 500;
         }
-
-        .history-item .h-user .h-id {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 0.65rem;
+        .visa-detail-grid .item:last-child {
+            border-bottom: none;
         }
-
-        .history-item .h-status {
-            font-size: 0.55rem;
-            padding: 0.1rem 0.6rem;
+        .tracking-link-section {
+            margin-top: 0.8rem;
+        }
+        .tracking-link-section .link-box {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #0d1a2e;
             border-radius: 60px;
-            font-weight: 600;
+            padding: 0.3rem 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            flex-wrap: wrap;
         }
-
-        .history-item .h-status.approved {
-            background: rgba(0, 255, 100, 0.08);
-            color: #7bff9a;
-            border: 1px solid rgba(100, 255, 150, 0.1);
+        .tracking-link-section .link-box .link-text {
+            flex: 1;
+            color: #e8d08a;
+            font-weight: 500;
+            font-size: 0.85rem;
+            word-break: break-all;
         }
-
-        .history-item .h-status.pending {
-            background: rgba(255, 180, 50, 0.08);
-            color: #ffb84d;
-            border: 1px solid rgba(255, 180, 50, 0.1);
-        }
-
-        .history-item .h-time {
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 0.6rem;
-        }
-
-        .history-empty {
-            text-align: center;
-            padding: 2rem 1rem;
-            color: rgba(255, 255, 255, 0.1);
-        }
-
-        .history-empty i {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.8rem;
-            opacity: 0.3;
-        }
-
-        /* ===== FIND VISA ===== */
-        .find-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .find-container h3 {
+        .tracking-link-section .link-box .copy-btn-sm {
+            background: rgba(212,175,55,0.06);
+            border: 1px solid rgba(212,175,55,0.08);
+            border-radius: 60px;
+            padding: 0.1rem 0.9rem;
             color: #fff;
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 0.5rem;
+            font-size: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
-
-        .find-container .sub-text {
-            color: rgba(255, 255, 255, 0.4);
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
+        .tracking-link-section .link-box .copy-btn-sm:hover {
+            background: rgba(212,175,55,0.12);
+            border-color: #d4af37;
+        }
+        .tracking-link-section .link-box .copy-btn-sm i {
+            color: #d4af37;
+        }
+        @media (max-width: 500px) {
+            .visa-detail-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ===== TOAST ===== */
@@ -971,9 +826,9 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: rgba(16, 19, 32, 0.95);
+            background: rgba(15, 26, 47, 0.95);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 140, 100, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.15);
             border-radius: 1.5rem;
             padding: 0.8rem 1.5rem;
             color: #fff;
@@ -999,7 +854,7 @@
             font-size: 1.1rem;
         }
 
-        .toast.success i { color: #7bff9a; }
+        .toast.success i { color: #d4af37; }
         .toast.error i { color: #ff6b6b; }
         .toast.info i { color: #5dade2; }
 
@@ -1011,18 +866,18 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(212, 175, 55, 0.04);
             padding-top: 1.2rem;
         }
 
         .footer span {
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.08);
+            font-size: 0.6rem;
             letter-spacing: 0.5px;
         }
 
         .footer span i {
-            color: #ff7a4a;
+            color: #d4af37;
             margin-right: 4px;
         }
 
@@ -1032,77 +887,54 @@
         }
 
         .footer .footer-links a {
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.08);
+            font-size: 0.6rem;
             text-decoration: none;
             transition: 0.2s;
         }
 
         .footer .footer-links a:hover {
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.2);
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .visa-card {
                 padding: 1.5rem 1.2rem;
-                border-radius: 2.5rem;
+                border-radius: 2rem;
             }
-
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .nav-links {
                 width: 100%;
-                gap: 0.3rem;
+                gap: 0.2rem;
             }
-
             .nav-links a {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 padding: 0.3rem 0.7rem;
             }
-
-            .form-panel,
-            .result-panel {
+            .form-panel, .result-panel {
                 padding: 1.2rem;
             }
-
             .create-grid {
                 gap: 1.2rem;
             }
-
             .tracking-result .link-display {
                 flex-direction: column;
                 align-items: stretch;
             }
-
-            .tracking-result .link-display .link-text {
-                font-size: 0.8rem;
-            }
-
             .action-buttons {
                 flex-direction: column;
             }
-
             .action-buttons .btn-secondary {
                 justify-content: center;
             }
-
             .footer {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
-            .tracking-info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tracking-detail-card {
-                padding: 1.2rem;
-            }
-
             .share-buttons {
                 justify-content: center;
             }
@@ -1111,32 +943,21 @@
         @media (max-width: 480px) {
             .visa-card {
                 padding: 1rem 0.8rem;
-                border-radius: 2rem;
+                border-radius: 1.5rem;
             }
-
-            .form-panel,
-            .result-panel {
+            .form-panel, .result-panel {
                 padding: 1rem;
             }
-
             .form-row {
                 grid-template-columns: 1fr;
             }
-
             .visa-result-card .visa-user-detail {
                 flex-direction: column;
                 text-align: center;
             }
-
             .visa-result-card .visa-header {
                 flex-direction: column;
                 text-align: center;
-            }
-
-            .history-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.2rem;
             }
         }
 
@@ -1147,7 +968,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.88);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(16px);
             z-index: 9999;
             display: none;
@@ -1162,18 +983,17 @@
         }
 
         @keyframes fadeInOverlay {
-            0% { opacity: 0; transform: scale(0.95); }
+            0% { opacity: 0; transform: scale(0.96); }
             100% { opacity: 1; transform: scale(1); }
         }
 
         .link-preview-overlay .preview-content {
             max-width: 700px;
             width: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.12) 0%, rgba(10, 12, 28, 0.98) 70%),
-                linear-gradient(145deg, #141824 0%, #1b1f2e 100%);
+            background: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, #0a1322 90%);
             border-radius: 2.5rem;
             padding: 2rem 2.2rem;
-            border: 1px solid rgba(255, 140, 100, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.1);
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
             position: relative;
             max-height: 90vh;
@@ -1184,7 +1004,7 @@
             position: absolute;
             top: 0.8rem;
             right: 1.2rem;
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.2);
             font-size: 1.8rem;
             cursor: pointer;
             transition: 0.2s;
@@ -1201,45 +1021,45 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: rgba(255, 122, 74, 0.12);
-            border: 1px solid rgba(255, 122, 74, 0.15);
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.08);
             border-radius: 60px;
-            padding: 0.2rem 1rem;
-            color: #ffb092;
-            font-size: 0.7rem;
+            padding: 0.15rem 1rem;
+            color: #d4af37;
+            font-size: 0.65rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
         .link-preview-overlay .preview-title {
             color: #fff;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .link-preview-overlay .preview-subtitle {
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.25);
             font-size: 0.85rem;
             margin-bottom: 1.2rem;
         }
 
         .link-preview-overlay .preview-divider {
             height: 1px;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(212, 175, 55, 0.04);
             margin: 0.8rem 0;
         }
 
         .link-preview-overlay .preview-field {
             display: flex;
             justify-content: space-between;
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .link-preview-overlay .preview-field .field-label {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.75rem;
         }
 
         .link-preview-overlay .preview-field .field-value {
@@ -1254,20 +1074,21 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            padding: 0.6rem 1rem;
+            padding: 0.5rem 1rem;
             background: rgba(0, 0, 0, 0.2);
             border-radius: 1rem;
             margin-top: 0.8rem;
         }
 
         .link-preview-overlay .preview-status-bar .status-label {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.65rem;
         }
 
         .link-preview-overlay .preview-status-bar .status-value {
             font-weight: 600;
             font-size: 0.85rem;
+            color: #d4af37;
         }
 
         .link-preview-overlay .preview-actions {
@@ -1278,29 +1099,28 @@
         }
 
         .link-preview-overlay .preview-actions .btn-preview {
-            background: linear-gradient(135deg, #ff6a3d, #ff3c1a);
+            background: linear-gradient(135deg, #d4af37, #b8960f);
             border: none;
             padding: 0.6rem 1.8rem;
             border-radius: 60px;
             font-weight: 600;
-            color: #fff;
+            color: #0a1322;
             cursor: pointer;
             transition: 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.85rem;
         }
 
         .link-preview-overlay .preview-actions .btn-preview:hover {
             transform: scale(1.03);
-            box-shadow: 0 8px 28px rgba(255, 60, 20, 0.4);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.2);
         }
 
         .link-preview-overlay .preview-actions .btn-preview-secondary {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             padding: 0.6rem 1.8rem;
             border-radius: 60px;
             font-weight: 600;
@@ -1314,8 +1134,8 @@
         }
 
         .link-preview-overlay .preview-actions .btn-preview-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         @media (max-width: 600px) {
@@ -1324,26 +1144,21 @@
                 border-radius: 1.8rem;
                 margin: 0.5rem;
             }
-
             .link-preview-overlay .preview-title {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
-
             .link-preview-overlay .preview-field {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.1rem;
+                gap: 0.05rem;
             }
-
             .link-preview-overlay .preview-field .field-value {
                 text-align: left;
                 max-width: 100%;
             }
-
             .link-preview-overlay .preview-actions {
                 flex-direction: column;
             }
-
             .link-preview-overlay .preview-actions .btn-preview,
             .link-preview-overlay .preview-actions .btn-preview-secondary {
                 justify-content: center;
@@ -1352,10 +1167,10 @@
 
         /* ===== SHARE PREVIEW BANNER ===== */
         .share-preview-banner {
-            background: linear-gradient(135deg, rgba(255, 122, 74, 0.08), rgba(255, 60, 26, 0.05));
-            border: 1px solid rgba(255, 122, 74, 0.1);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.04), rgba(212, 175, 55, 0.01));
+            border: 1px solid rgba(212, 175, 55, 0.06);
             border-radius: 1.5rem;
-            padding: 1rem 1.2rem;
+            padding: 0.8rem 1.2rem;
             margin-bottom: 1rem;
             display: none;
             align-items: center;
@@ -1368,8 +1183,8 @@
         }
 
         .share-preview-banner .icon {
-            font-size: 2rem;
-            color: #ff7a4a;
+            font-size: 1.8rem;
+            color: #d4af37;
         }
 
         .share-preview-banner .info {
@@ -1378,168 +1193,29 @@
 
         .share-preview-banner .info h4 {
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
         .share-preview-banner .info p {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
         }
 
         .share-preview-banner .close-banner {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
             border: none;
-            color: rgba(255, 255, 255, 0.3);
-            padding: 0.3rem 0.8rem;
+            color: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.8rem;
             border-radius: 60px;
             cursor: pointer;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             transition: 0.2s;
         }
 
         .share-preview-banner .close-banner:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
             color: #fff;
-        }
-        /* ===== NEW: CONGRATULATIONS BANNER & PROFESSIONAL STATUS ===== */
-        .congrats-banner {
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.12), rgba(26, 156, 84, 0.05));
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            border-radius: 1.8rem;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .congrats-banner .icon {
-            font-size: 2.2rem;
-            color: #2ecc71;
-            filter: drop-shadow(0 0 10px rgba(46,204,113,0.3));
-        }
-        .congrats-banner .text h4 {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.1rem;
-        }
-        .congrats-banner .text p {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.85rem;
-        }
-        .status-badge-processing {
-            background: rgba(255, 180, 50, 0.12);
-            color: #ffb84d;
-            border: 1px solid rgba(255, 180, 50, 0.15);
-            padding: 0.15rem 1rem;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .status-badge-processing i {
-            font-size: 0.5rem;
-            animation: pulse-dot 1.2s infinite;
-        }
-        @keyframes pulse-dot {
-            0% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0.3; transform: scale(0.8); }
-        }
-        .visa-detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.6rem 1rem;
-            background: #0b0e1a;
-            border-radius: 1.2rem;
-            padding: 0.8rem 1rem;
-            margin-top: 0.5rem;
-            border: 1px solid rgba(255,255,255,0.03);
-        }
-        .visa-detail-grid .item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.2rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
-        }
-        .visa-detail-grid .item .label {
-            color: rgba(255,255,255,0.3);
-            font-size: 0.7rem;
-        }
-        .visa-detail-grid .item .value {
-            color: #fff;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        .visa-detail-grid .item:last-child {
-            border-bottom: none;
-        }
-        .tracking-link-section {
-            margin-top: 0.8rem;
-        }
-        .tracking-link-section .link-box {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: #1b1f30;
-            border-radius: 60px;
-            padding: 0.4rem 1rem;
-            border: 1px solid rgba(255, 140, 100, 0.1);
-            flex-wrap: wrap;
-        }
-        .tracking-link-section .link-box .link-text {
-            flex: 1;
-            color: #ffb092;
-            font-weight: 500;
-            font-size: 0.85rem;
-            word-break: break-all;
-        }
-        .tracking-link-section .link-box .copy-btn-sm {
-            background: rgba(255,122,74,0.1);
-            border: 1px solid rgba(255,122,74,0.15);
-            border-radius: 60px;
-            padding: 0.15rem 0.9rem;
-            color: #fff;
-            font-size: 0.65rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .tracking-link-section .link-box .copy-btn-sm:hover {
-            background: rgba(255,122,74,0.2);
-            border-color: #ff7a4a;
-        }
-        .tracking-link-section .link-box .copy-btn-sm i {
-            color: #ff7a4a;
-        }
-        @media (max-width: 500px) {
-            .visa-detail-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        /* Official Seal */
-        .official-seal {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 215, 0, 0.06);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 60px;
-            padding: 0.2rem 1rem 0.2rem 0.6rem;
-            color: #ffd700;
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.8rem;
-        }
-        .official-seal i {
-            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -1551,7 +1227,7 @@
             <div class="navbar">
                 <div class="logo">
                     <i class="fas fa-passport"></i>
-                    <span>Visa<span style="color: #ff7a4a;">Flow</span></span>
+                    <span>Visa<span>Flow</span></span>
                 </div>
                 <div class="nav-links">
                     <a href="#" class="active" onclick="switchPage('page1')" id="nav-page1">
@@ -1573,7 +1249,7 @@
             <div class="share-preview-banner" id="shareBanner">
                 <div class="icon"><i class="fas fa-share-alt"></i></div>
                 <div class="info">
-                    <h4>📋 Official Visa Shared</h4>
+                    <h4>Official Visa Shared</h4>
                     <p id="bannerText">This official visa document was shared with you. All details are verified.</p>
                 </div>
                 <button class="close-banner" onclick="document.getElementById('shareBanner').classList.remove('show')">✕</button>
@@ -1585,10 +1261,15 @@
                     <!-- Form -->
                     <div class="form-panel">
                         <h3><i class="fas fa-pen-fancy"></i> Create Official Visa</h3>
-                        <p class="panel-desc">Complete the form below to generate an official digital visa with a unique tracking link.</p>
+                        <p class="panel-desc">Complete all sections below to generate a verified digital visa with a secure tracking link.</p>
+
+                        <!-- APPLICANT SECTION -->
+                        <div style="margin-bottom: 1.2rem; border-bottom: 1px solid rgba(212,175,55,0.04); padding-bottom: 0.3rem;">
+                            <span style="color: rgba(255,255,255,0.15); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-user" style="color: #d4af37; margin-right: 6px;"></i> Applicant</span>
+                        </div>
 
                         <div class="form-group">
-                            <label><i class="fas fa-user"></i> Full Name <span class="required">*</span></label>
+                            <label><i class="fas fa-user"></i> Full Legal Name <span class="required">*</span></label>
                             <input type="text" id="fullName" placeholder="e.g. Maria Gonzalez" value="Jessica Diaz">
                         </div>
 
@@ -1600,7 +1281,7 @@
                             <div class="form-group">
                                 <label><i class="fas fa-flag"></i> Nationality <span class="required">*</span></label>
                                 <select id="nationality">
-                                    <optgroup label="🌍 African Countries">
+                                    <optgroup label="African Countries">
                                         <option>Algeria</option>
                                         <option>Angola</option>
                                         <option>Benin</option>
@@ -1656,7 +1337,7 @@
                                         <option>Zambia</option>
                                         <option>Zimbabwe</option>
                                     </optgroup>
-                                    <optgroup label="🌍 Other Countries">
+                                    <optgroup label="Other Countries">
                                         <option>United States</option>
                                         <option>Canada</option>
                                         <option>United Kingdom</option>
@@ -1695,6 +1376,27 @@
                             <input type="email" id="email" placeholder="user@example.com" value="jessica.d@example.com">
                         </div>
 
+                        <!-- PASSPORT SECTION -->
+                        <div style="margin: 1.2rem 0 0.8rem 0; border-bottom: 1px solid rgba(212,175,55,0.04); padding-bottom: 0.3rem;">
+                            <span style="color: rgba(255,255,255,0.15); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-passport" style="color: #d4af37; margin-right: 6px;"></i> Passport & Travel</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-passport"></i> Passport Number <span class="required">*</span></label>
+                                <input type="text" id="passportNumber" placeholder="e.g. AB123456" value="MX987654">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-alt"></i> Passport Expiry <span class="required">*</span></label>
+                                <input type="text" id="passportExpiry" placeholder="MM/YYYY" value="12/2028">
+                            </div>
+                        </div>
+
+                        <!-- VISA SECTION -->
+                        <div style="margin: 1.2rem 0 0.8rem 0; border-bottom: 1px solid rgba(212,175,55,0.04); padding-bottom: 0.3rem;">
+                            <span style="color: rgba(255,255,255,0.15); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-visa" style="color: #d4af37; margin-right: 6px;"></i> Visa & Application</span>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label><i class="fas fa-passport"></i> Visa Type <span class="required">*</span></label>
@@ -1723,15 +1425,35 @@
                             </div>
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-check"></i> Intended Arrival <span class="required">*</span></label>
+                                <input type="text" id="arrivalDate" placeholder="DD/MM/YYYY" value="01/09/2026">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-building"></i> Purpose of Visit <span class="required">*</span></label>
+                                <select id="purpose">
+                                    <option selected>Business</option>
+                                    <option>Tourism</option>
+                                    <option>Study</option>
+                                    <option>Employment</option>
+                                    <option>Medical</option>
+                                    <option>Family Visit</option>
+                                    <option>Transit</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label><i class="fas fa-comment"></i> Additional Notes <span class="optional">(optional)</span></label>
-                            <textarea id="notes" placeholder="e.g. purpose of visit, special requirements, additional information..."></textarea>
+                            <textarea id="notes" placeholder="e.g. purpose of visit, special requirements, additional information..." rows="2"></textarea>
                         </div>
 
                         <button class="btn-primary btn-full btn-success" onclick="generateVisa()">
                             <i class="fas fa-bolt"></i> Generate Official Visa & Tracking Link
                         </button>
-                        <div style="margin-top: 0.5rem; font-size: 0.65rem; color: rgba(255,255,255,0.15); text-align: center;">
+                        <div style="margin-top: 0.5rem; font-size: 0.6rem; color: rgba(255,255,255,0.08); text-align: center;">
                             <i class="fas fa-link"></i> A unique tracking link will be created instantly
                         </div>
                     </div>
@@ -1757,10 +1479,10 @@
             <!-- ===== PAGE 3: HISTORY ===== -->
             <div class="page" id="page3">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
-                    <h3 style="color: #fff; font-size: 1.3rem; font-weight: 600;">
-                        <i class="fas fa-history" style="color: #ff7a4a; margin-right: 10px;"></i> Visa History
+                    <h3 style="color: #fff; font-size: 1.2rem; font-weight: 600;">
+                        <i class="fas fa-history" style="color: #d4af37; margin-right: 10px;"></i> Visa History
                     </h3>
-                    <span style="color: rgba(255,255,255,0.15); font-size: 0.8rem;">
+                    <span style="color: rgba(255,255,255,0.1); font-size: 0.75rem;">
                         <i class="fas fa-passport"></i> <span id="historyCount">0</span> visas issued
                     </span>
                 </div>
@@ -1768,8 +1490,8 @@
                 <div id="historyContainer">
                     <div class="history-empty">
                         <i class="fas fa-history"></i>
-                        <p>No visa history yet. Generate your first visa to get started.</p>
-                        <button class="btn-primary" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.9rem;" onclick="switchPage('page1')">
+                        <p>No visa history yet. Generate your first official visa to get started.</p>
+                        <button class="btn-primary" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.85rem;" onclick="switchPage('page1')">
                             <i class="fas fa-plus"></i> Create a visa
                         </button>
                     </div>
@@ -1779,13 +1501,13 @@
             <!-- ===== PAGE 4: FIND VISA ===== -->
             <div class="page" id="page4">
                 <div class="find-container">
-                    <h3><i class="fas fa-search" style="color: #ff7a4a;"></i> Find Your Visa</h3>
+                    <h3><i class="fas fa-search" style="color: #d4af37;"></i> Find Your Visa</h3>
                     <p class="sub-text">Enter the tracking link or visa ID to view official details</p>
 
                     <div class="form-panel" style="padding: 1.5rem;">
                         <div class="form-group">
                             <label><i class="fas fa-link"></i> Tracking Link or Visa ID</label>
-                            <input type="text" id="searchInput" placeholder="e.g. visaflow.app/track/8x7f3 or V-2026-1001" style="border-radius: 60px; padding: 0.8rem 1.2rem; background: #0b0e1a; border: 1px solid rgba(255,255,255,0.06); color: #fff; font-size: 0.9rem; width: 100%; outline: none;">
+                            <input type="text" id="searchInput" placeholder="e.g. visaflow.app/track/8x7f3 or V-2026-1001" style="border-radius: 12px; padding: 0.8rem 1.2rem; background: #0a1322; border: 1px solid rgba(255,255,255,0.04); color: #fff; font-size: 0.9rem; width: 100%; outline: none;">
                         </div>
                         <button class="btn-primary btn-full" onclick="searchVisa()" style="padding: 0.8rem;">
                             <i class="fas fa-search"></i> Find Visa
@@ -1868,66 +1590,39 @@
             return icons[type] || 'fa-passport';
         }
 
-        function getProgressSteps(visa) {
-            return [
-                { title: 'Application Submitted', time: visa.createdAt },
-                { title: 'Document Verification', time: visa.createdAt },
-                { title: 'Visa Approved', time: visa.createdAt },
-                { title: 'Tracking Link Generated', time: visa.createdAt }
-            ];
-        }
-
-        // ===== UPDATE META TAGS FOR SOCIAL PREVIEW =====
+        // ===== UPDATE META TAGS =====
         function updateMetaTags(visa) {
             if (!visa) return;
-
             const title = `✈️ Official Visa · ${visa.name} · ${visa.id}`;
             const description = `${visa.visaType} · ${visa.nationality} · Expires ${visa.expiresAt} · Status: ${visa.status.toUpperCase()}`;
-            const url = window.location.href;
-
             document.getElementById('og-title').setAttribute('content', title);
             document.getElementById('og-description').setAttribute('content', description);
-            document.getElementById('og-url').setAttribute('content', url);
-
+            document.getElementById('og-url').setAttribute('content', window.location.href);
             document.getElementById('twitter-title').setAttribute('content', title);
             document.getElementById('twitter-description').setAttribute('content', description);
-
             document.title = title;
-
             const banner = document.getElementById('shareBanner');
             if (window.location.hash && window.location.hash.length > 1) {
                 banner.classList.add('show');
-                document.getElementById('bannerText').textContent = 
-                    `📋 Official visa for ${visa.name} (${visa.id}) was shared with you. All details are verified.`;
+                document.getElementById('bannerText').textContent = `Official visa for ${visa.name} (${visa.id}) was shared with you. All details are verified.`;
             }
         }
 
-        // ===== GENERATE SHAREABLE LINK (URL ENCODED) =====
+        // ===== GENERATE SHAREABLE LINK =====
         function generateShareableLink(visa) {
-            // Include a congratulatory message and official status in the encoded data
             const data = {
-                n: visa.name,
-                e: visa.email,
-                t: visa.visaType,
-                nt: visa.notes || 'Not provided',
-                st: visa.status,
-                id: visa.id,
-                tr: visa.trackingId,
-                i: visa.initials,
-                is: visa.issued || visa.createdAt,
-                ex: visa.expiresAt,
-                d: visa.duration,
-                nat: visa.nationality,
-                dob: visa.dob,
-                // Official congratulatory message encoded
+                n: visa.name, e: visa.email, t: visa.visaType, nt: visa.notes || 'Not provided',
+                st: visa.status, id: visa.id, tr: visa.trackingId, i: visa.initials,
+                is: visa.issued || visa.createdAt, ex: visa.expiresAt, d: visa.duration,
+                nat: visa.nationality, dob: visa.dob,
+                pp: visa.passportNumber || 'N/A', pe: visa.passportExpiry || 'N/A',
+                ar: visa.arrivalDate || 'N/A', pu: visa.purpose || 'Business',
                 msg: `🎉 Congratulations, ${visa.name}! Your visa application has been officially approved.`,
                 official: true
             };
-
             const jsonStr = JSON.stringify(data);
             const encoded = btoa(encodeURIComponent(jsonStr));
-            const url = window.location.href.split('#')[0] + '#' + encoded;
-            return url;
+            return window.location.href.split('#')[0] + '#' + encoded;
         }
 
         // ===== DECODE VISA FROM URL =====
@@ -1938,11 +1633,9 @@
                     const encoded = hash.substring(1);
                     const decoded = decodeURIComponent(atob(encoded));
                     const data = JSON.parse(decoded);
-
                     const now = new Date();
                     const expires = new Date(now);
                     expires.setDate(expires.getDate() + (data.d || 60));
-
                     const visa = {
                         name: data.n || 'Unknown',
                         email: data.e || 'unknown@example.com',
@@ -1954,25 +1647,22 @@
                         initials: data.i || getInitials(data.n || 'Unknown'),
                         issued: data.is || now.toLocaleString(),
                         createdAt: data.is || now.toLocaleString(),
-                        expiresAt: data.ex || expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short',
-                            day: 'numeric' }),
+                        expiresAt: data.ex || expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
                         duration: data.d || 60,
                         nationality: data.nat || 'Unknown',
                         dob: data.dob || 'Not provided',
+                        passportNumber: data.pp || 'N/A',
+                        passportExpiry: data.pe || 'N/A',
+                        arrivalDate: data.ar || 'N/A',
+                        purpose: data.pu || 'Business',
                         trackingLink: `visaflow.app/track/${data.tr || generateTrackingId()}`,
                         icon: getVisaTypeIcon(data.t || 'Business (B1)'),
-                        statusColor: '#7bff9a',
-                        statusText: 'Approved',
-                        // Official congratulatory message
                         congratsMessage: data.msg || `🎉 Congratulations, ${data.n || 'Applicant'}! Your visa application has been officially approved.`,
-                        official: data.official || true
+                        official: true
                     };
-
                     updateMetaTags(visa);
-
                     return visa;
                 } catch (e) {
-                    console.log('No valid visa data in URL');
                     return null;
                 }
             }
@@ -1981,45 +1671,21 @@
 
         // ===== SHARE VIA PLATFORMS =====
         function shareVia(platform, visa) {
-            if (!visa) {
-                showToast('⚠️ No visa selected to share', 'error');
-                return;
-            }
-
+            if (!visa) { showToast('⚠️ No visa selected to share', 'error'); return; }
             const shareUrl = generateShareableLink(visa);
             const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track here: ${shareUrl}`;
-
             switch (platform) {
-                case 'whatsapp':
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                    break;
-                case 'telegram':
-                    window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Official Visa ${visa.id} for ${visa.name}`)}`,
-                        '_blank');
-                    break;
-                case 'twitter':
-                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
-                    break;
-                case 'linkedin':
-                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-                    '_blank');
-                    break;
+                case 'whatsapp': window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); break;
+                case 'telegram': window.open(`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`Official Visa ${visa.id} for ${visa.name}`)}`, '_blank'); break;
+                case 'twitter': window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank'); break;
+                case 'linkedin': window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank'); break;
                 case 'tiktok':
-                    navigator.clipboard.writeText(shareUrl).then(() => {
-                        showToast('✅ Link copied! Share it on TikTok', 'success');
-                    }).catch(() => {
-                        fallbackCopy(shareUrl);
-                    });
+                    navigator.clipboard.writeText(shareUrl).then(() => showToast('✅ Link copied! Share it on TikTok', 'success')).catch(() => fallbackCopy(shareUrl));
                     break;
                 case 'copy':
-                    navigator.clipboard.writeText(shareUrl).then(() => {
-                        showToast('✅ Official link copied to clipboard!', 'success');
-                    }).catch(() => {
-                        fallbackCopy(shareUrl);
-                    });
+                    navigator.clipboard.writeText(shareUrl).then(() => showToast('✅ Official link copied!', 'success')).catch(() => fallbackCopy(shareUrl));
                     break;
-                default:
-                    showToast('📋 Share the official link manually', 'info');
+                default: showToast('📋 Share the official link manually', 'info');
             }
         }
 
@@ -2030,7 +1696,7 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            showToast('✅ Official link copied to clipboard!', 'success');
+            showToast('✅ Official link copied!', 'success');
         }
 
         // ===== GENERATE VISA =====
@@ -2042,9 +1708,13 @@
             const visaType = document.getElementById('visaType').value;
             const duration = parseInt(document.getElementById('duration').value);
             const notes = document.getElementById('notes').value.trim();
+            const passportNumber = document.getElementById('passportNumber').value.trim();
+            const passportExpiry = document.getElementById('passportExpiry').value.trim();
+            const arrivalDate = document.getElementById('arrivalDate').value.trim();
+            const purpose = document.getElementById('purpose').value;
 
-            if (!name || !dob || !email) {
-                showToast('⚠️ Please fill in all required fields (Name, Date of Birth, Email).', 'error');
+            if (!name || !dob || !email || !passportNumber || !passportExpiry || !arrivalDate) {
+                showToast('⚠️ Please fill in all required fields (Name, DOB, Email, Passport, Arrival).', 'error');
                 return;
             }
 
@@ -2056,22 +1726,15 @@
 
             const visa = {
                 id: `V-2026-${visaCounter}`,
-                name: name,
-                initials: getInitials(name),
-                dob: dob,
-                nationality: nationality,
-                email: email,
-                visaType: visaType,
-                duration: duration,
-                notes: notes || 'Not provided',
-                trackingId: trackingId,
-                trackingLink: `visaflow.app/track/${trackingId}`,
+                name, initials: getInitials(name), dob, nationality, email,
+                visaType, duration, notes: notes || 'Not provided',
+                trackingId, trackingLink: `visaflow.app/track/${trackingId}`,
                 status: 'approved',
                 createdAt: now.toLocaleString(),
                 issued: now.toLocaleString(),
                 expiresAt: expires.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
                 icon: getVisaTypeIcon(visaType),
-                // Official congratulatory message
+                passportNumber, passportExpiry, arrivalDate, purpose,
                 congratsMessage: `🎉 Congratulations, ${name}! Your visa application has been officially approved and is now being processed.`,
                 official: true
             };
@@ -2080,41 +1743,29 @@
             renderResult(visa);
             renderHistory();
             updateCounts();
-
             updateMetaTags(visa);
-
-            showToast(`✅ Official Visa ${visa.id} created! Tracking link: ${visa.trackingLink}`, 'success');
+            showToast(`✅ Official Visa ${visa.id} created!`, 'success');
         }
 
-        // ===== RENDER RESULT (PROFESSIONAL & CONGRATULATORY) =====
+        // ===== RENDER RESULT =====
         function renderResult(visa) {
             const placeholder = document.getElementById('placeholder');
             const content = document.getElementById('resultContent');
             const panel = document.getElementById('resultPanel');
-
             placeholder.style.display = 'none';
             content.style.display = 'block';
 
-            const shareUrl = generateShareableLink(visa);
-            const congratsMsg = visa.congratsMessage || `🎉 Congratulations, ${visa.name}! Your visa application has been officially approved.`;
-
             content.innerHTML = `
-                        <!-- OFFICIAL SEAL -->
-                        <div class="official-seal">
-                            <i class="fas fa-certificate"></i> OFFICIAL · VERIFIED
-                        </div>
-
-                        <!-- CONGRATULATIONS BANNER -->
+                        <div class="official-seal"><i class="fas fa-certificate"></i> OFFICIAL · VERIFIED</div>
                         <div class="congrats-banner">
                             <div class="icon"><i class="fas fa-check-circle"></i></div>
                             <div class="text">
-                                <h4>${congratsMsg}</h4>
-                                <p>Visa ID: ${visa.id} · Status: <strong style="color: #7bff9a;">${visa.status.toUpperCase()}</strong> · Issued: ${visa.createdAt}</p>
+                                <h4>${visa.congratsMessage}</h4>
+                                <p>Visa ID: ${visa.id} · Status: <strong style="color: #d4af37;">${visa.status.toUpperCase()}</strong> · Issued: ${visa.createdAt}</p>
                             </div>
                             <span class="status-badge-processing"><i class="fas fa-circle"></i> Processing</span>
                         </div>
 
-                        <!-- VISA SUMMARY CARD -->
                         <div class="visa-result-card">
                             <div class="visa-header">
                                 <span class="visa-id"><i class="fas fa-passport"></i> ${visa.id}</span>
@@ -2132,69 +1783,49 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Visa details grid -->
                             <div class="visa-detail-grid">
-                                <div class="item"><span class="label">Date of Birth</span><span class="value">${visa.dob}</span></div>
+                                <div class="item"><span class="label">Passport</span><span class="value">${visa.passportNumber || 'N/A'}</span></div>
+                                <div class="item"><span class="label">Passport Expiry</span><span class="value">${visa.passportExpiry || 'N/A'}</span></div>
+                                <div class="item"><span class="label">Arrival</span><span class="value">${visa.arrivalDate || 'N/A'}</span></div>
+                                <div class="item"><span class="label">Purpose</span><span class="value">${visa.purpose || 'Business'}</span></div>
+                                <div class="item"><span class="label">DOB</span><span class="value">${visa.dob}</span></div>
                                 <div class="item"><span class="label">Email</span><span class="value">${visa.email}</span></div>
-                                <div class="item"><span class="label">Application Date</span><span class="value">${visa.createdAt}</span></div>
-                                <div class="item"><span class="label">Expiry Date</span><span class="value">${visa.expiresAt}</span></div>
-                                ${visa.notes && visa.notes !== 'Not provided' ? `<div class="item" style="grid-column: span 2;"><span class="label">Notes</span><span class="value">${visa.notes}</span></div>` : ''}
                             </div>
                         </div>
 
-                        <!-- TRACKING LINK SECTION -->
                         <div class="tracking-link-section">
                             <div class="link-box">
-                                <span class="link-text"><i class="fas fa-link" style="color: #ff7a4a; margin-right: 8px;"></i>${visa.trackingLink}</span>
+                                <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${visa.trackingLink}</span>
                                 <button class="copy-btn-sm" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                         </div>
 
-                        <!-- SHARE & ACTIONS -->
                         <div class="share-buttons">
-                            <button class="share-btn whatsapp" onclick="shareVia('whatsapp', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                            </button>
-                            <button class="share-btn telegram" onclick="shareVia('telegram', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fab fa-telegram"></i> Telegram
-                            </button>
-                            <button class="share-btn twitter" onclick="shareVia('twitter', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fab fa-twitter"></i> Twitter
-                            </button>
-                            <button class="share-btn linkedin" onclick="shareVia('linkedin', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fab fa-linkedin-in"></i> LinkedIn
-                            </button>
-                            <button class="share-btn tiktok" onclick="shareVia('tiktok', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fab fa-tiktok"></i> TikTok
-                            </button>
-                            <button class="share-btn copy" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fas fa-copy"></i> Copy Link
-                            </button>
+                            <button class="share-btn whatsapp" onclick="shareVia('whatsapp', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="share-btn telegram" onclick="shareVia('telegram', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-telegram"></i> Telegram</button>
+                            <button class="share-btn twitter" onclick="shareVia('twitter', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-twitter"></i> Twitter</button>
+                            <button class="share-btn linkedin" onclick="shareVia('linkedin', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
+                            <button class="share-btn tiktok" onclick="shareVia('tiktok', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-tiktok"></i> TikTok</button>
+                            <button class="share-btn copy" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fas fa-copy"></i> Copy Link</button>
                         </div>
 
                         <div class="action-buttons">
-                            <button class="btn-secondary" onclick="resetForm()">
-                                <i class="fas fa-plus"></i> Create Another
-                            </button>
-                            <button class="btn-secondary" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                <i class="fas fa-eye"></i> View Full Details
-                            </button>
+                            <button class="btn-secondary" onclick="resetForm()"><i class="fas fa-plus"></i> Create Another</button>
+                            <button class="btn-secondary" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fas fa-eye"></i> View Full Details</button>
                         </div>
                     `;
 
-            panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Official Visa Generated`;
+            panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Official Visa Generated`;
             panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been officially created. A confirmation has been sent to ${visa.email}.`;
         }
 
         // ===== SHOW LINK PREVIEW OVERLAY =====
         function showLinkPreview(visa) {
             const overlay = document.getElementById('linkPreviewOverlay');
-
             document.getElementById('previewOverlayTitle').textContent = `Official Visa ${visa.id}`;
             document.getElementById('previewOverlaySubtitle').textContent = `Complete official visa information for ${visa.name}`;
-
             const fields = [
                 { label: 'Full Name', value: visa.name },
                 { label: 'Email Address', value: visa.email },
@@ -2202,44 +1833,37 @@
                 { label: 'Visa Type', value: visa.visaType },
                 { label: 'Nationality', value: visa.nationality },
                 { label: 'Date of Birth', value: visa.dob },
+                { label: 'Passport Number', value: visa.passportNumber || 'N/A' },
+                { label: 'Passport Expiry', value: visa.passportExpiry || 'N/A' },
+                { label: 'Arrival Date', value: visa.arrivalDate || 'N/A' },
+                { label: 'Purpose', value: visa.purpose || 'Business' },
                 { label: 'Duration', value: `${visa.duration} days` },
                 { label: 'Tracking Link', value: visa.trackingLink },
                 { label: 'Issued Date', value: visa.createdAt },
                 { label: 'Expiry Date', value: visa.expiresAt },
-                { label: 'Status', value: visa.status.toUpperCase() },
-                { label: 'Notes', value: visa.notes || 'None' }
+                { label: 'Status', value: visa.status.toUpperCase() }
             ];
-
             document.getElementById('previewOverlayFields').innerHTML = fields.map(f => `
                         <div class="preview-field">
                             <span class="field-label">${f.label}</span>
                             <span class="field-value">${f.value}</span>
                         </div>
                     `).join('');
-
-            const statusValue = document.getElementById('previewOverlayStatus');
-            statusValue.textContent = visa.status.toUpperCase();
-            statusValue.style.color = '#7bff9a';
-
+            document.getElementById('previewOverlayStatus').textContent = visa.status.toUpperCase();
+            document.getElementById('previewOverlayStatus').style.color = '#d4af37';
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // ===== CLOSE LINK PREVIEW =====
         function closeLinkPreview() {
             document.getElementById('linkPreviewOverlay').classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // ===== COPY PREVIEW LINK =====
         function copyPreviewLink() {
             if (currentPreviewVisa) {
                 const shareUrl = generateShareableLink(currentPreviewVisa);
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                    showToast('✅ Official link copied!', 'success');
-                }).catch(() => {
-                    fallbackCopy(shareUrl);
-                });
+                navigator.clipboard.writeText(shareUrl).then(() => showToast('✅ Official link copied!', 'success')).catch(() => fallbackCopy(shareUrl));
             }
         }
 
@@ -2247,43 +1871,29 @@
         function searchVisa() {
             const query = document.getElementById('searchInput').value.trim().toLowerCase();
             const resultDiv = document.getElementById('searchResult');
-
             if (!query) {
-                resultDiv.innerHTML =
-                `<div style="color: rgba(255,255,255,0.3); text-align: center; padding: 1rem;">Please enter a tracking link or visa ID</div>`;
+                resultDiv.innerHTML = `<div style="color: rgba(255,255,255,0.3); text-align: center; padding: 1rem;">Please enter a tracking link or visa ID</div>`;
                 return;
             }
-
             let searchTerm = query;
-            if (query.includes('track/')) {
-                searchTerm = query.split('track/').pop();
-            }
-
-            const visa = visas.find(v =>
-                v.trackingId === searchTerm ||
-                v.trackingLink.toLowerCase().includes(searchTerm) ||
-                v.id.toLowerCase() === searchTerm ||
-                v.id.toLowerCase().includes(searchTerm)
-            );
-
+            if (query.includes('track/')) searchTerm = query.split('track/').pop();
+            const visa = visas.find(v => v.trackingId === searchTerm || v.trackingLink.toLowerCase().includes(searchTerm) || v.id.toLowerCase() === searchTerm || v.id.toLowerCase().includes(searchTerm));
             if (visa) {
                 resultDiv.innerHTML = `
-                            <div style="background: #0b0e1a; border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(255,255,255,0.04);">
+                            <div style="background: #0a1322; border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(212,175,55,0.06);">
                                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
-                                    <span style="color: #ff7a4a; font-weight: 700;">${visa.id}</span>
-                                    <span style="background: rgba(0,255,100,0.08); color: #7bff9a; padding: 0.15rem 0.8rem; border-radius: 60px; font-size: 0.7rem; border: 1px solid rgba(100,255,150,0.1);">${visa.status}</span>
+                                    <span style="color: #d4af37; font-weight: 700;">${visa.id}</span>
+                                    <span style="background: rgba(212,175,55,0.08); color: #d4af37; padding: 0.1rem 0.8rem; border-radius: 60px; font-size: 0.65rem; border: 1px solid rgba(212,175,55,0.1);">${visa.status}</span>
                                 </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; font-size: 0.8rem;">
                                     <div><span style="color: rgba(255,255,255,0.3);">Name:</span> <span style="color: #fff;">${visa.name}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Type:</span> <span style="color: #fff;">${visa.visaType}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Nationality:</span> <span style="color: #fff;">${visa.nationality}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Duration:</span> <span style="color: #fff;">${visa.duration} days</span></div>
-                                    <div style="grid-column: span 2;"><span style="color: rgba(255,255,255,0.3);">Tracking:</span> <span style="color: #ffb092; font-size: 0.75rem;">${visa.trackingLink}</span></div>
+                                    <div style="grid-column: span 2;"><span style="color: rgba(255,255,255,0.3);">Tracking:</span> <span style="color: #e8d08a; font-size: 0.75rem;">${visa.trackingLink}</span></div>
                                 </div>
-                                <button class="btn-secondary" style="margin-top: 0.8rem; padding: 0.4rem 1.2rem; font-size: 0.75rem;" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})">
-                                    <i class="fas fa-eye"></i> View Full Details
-                                </button>
-                                <div style="margin-top: 0.6rem; display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                                <button class="btn-secondary" style="margin-top: 0.8rem; padding: 0.3rem 1.2rem; font-size: 0.7rem;" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fas fa-eye"></i> View Full Details</button>
+                                <div style="margin-top: 0.5rem; display: flex; gap: 0.3rem; flex-wrap: wrap;">
                                     <button class="share-btn whatsapp" onclick="shareVia('whatsapp', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-whatsapp"></i></button>
                                     <button class="share-btn telegram" onclick="shareVia('telegram', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-telegram"></i></button>
                                     <button class="share-btn twitter" onclick="shareVia('twitter', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-twitter"></i></button>
@@ -2293,123 +1903,76 @@
                         `;
                 showToast(`✅ Official visa found: ${visa.id}`, 'success');
             } else {
-                resultDiv.innerHTML = `
-                            <div style="color: rgba(255,255,255,0.2); text-align: center; padding: 1.5rem; background: #0b0e1a; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.03);">
-                                <i class="fas fa-exclamation-circle" style="font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.3;"></i>
-                                <p>No official visa found matching "${query}"</p>
-                                <p style="font-size: 0.75rem; margin-top: 0.3rem;">Try searching by Visa ID (e.g. V-2026-1001) or tracking link</p>
-                            </div>
-                        `;
-                showToast('❌ No official visa found matching your search', 'error');
+                resultDiv.innerHTML = `<div style="color: rgba(255,255,255,0.15); text-align: center; padding: 1.5rem; background: #0a1322; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.02);"><i class="fas fa-exclamation-circle" style="font-size: 2rem; display: block; margin-bottom: 0.5rem; opacity: 0.2;"></i><p>No official visa found matching "${query}"</p></div>`;
+                showToast('❌ No official visa found', 'error');
             }
         }
 
         // ===== RENDER HISTORY =====
         function renderHistory() {
             const container = document.getElementById('historyContainer');
-
             if (visas.length === 0) {
-                container.innerHTML = `
-                            <div class="history-empty">
-                                <i class="fas fa-history"></i>
-                                <p>No visa history yet. Generate your first official visa to get started.</p>
-                                <button class="btn-primary" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.9rem;" onclick="switchPage('page1')">
-                                    <i class="fas fa-plus"></i> Create a visa
-                                </button>
-                            </div>
-                        `;
+                container.innerHTML = `<div class="history-empty"><i class="fas fa-history"></i><p>No visa history yet. Generate your first official visa.</p><button class="btn-primary" style="margin-top: 1rem; padding: 0.6rem 2rem; font-size: 0.85rem;" onclick="switchPage('page1')"><i class="fas fa-plus"></i> Create a visa</button></div>`;
                 return;
             }
-
             let html = `<div class="history-list">`;
-            visas.forEach((v) => {
-                html += `
-                            <div class="history-item" onclick="showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
-                                <div class="h-user">
-                                    <span class="h-avatar">${v.initials}</span>
-                                    <span class="h-name">${v.name}</span>
-                                    <span class="h-id">${v.id}</span>
-                                </div>
-                                <span class="h-status ${v.status}">${v.status}</span>
-                                <span class="h-time"><i class="far fa-clock"></i> ${v.createdAt}</span>
-                                <button class="copy-btn" style="background: rgba(255,122,74,0.06); border: 1px solid rgba(255,122,74,0.06); border-radius: 60px; padding: 0.15rem 0.8rem; color: rgba(255,255,255,0.4); font-size: 0.6rem; cursor: pointer;" onclick="event.stopPropagation(); showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
-                                    <i class="fas fa-eye" style="color: #ff7a4a;"></i> View
-                                </button>
-                            </div>
-                        `;
+            visas.forEach(v => {
+                html += `<div class="history-item" onclick="showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
+                            <div class="h-user"><span class="h-avatar">${v.initials}</span><span class="h-name">${v.name}</span><span class="h-id">${v.id}</span></div>
+                            <span class="h-status ${v.status}">${v.status}</span>
+                            <span class="h-time"><i class="far fa-clock"></i> ${v.createdAt}</span>
+                            <button class="copy-btn" style="background: rgba(212,175,55,0.04); border: 1px solid rgba(212,175,55,0.04); border-radius: 60px; padding: 0.1rem 0.8rem; color: rgba(255,255,255,0.3); font-size: 0.55rem; cursor: pointer;" onclick="event.stopPropagation(); showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})"><i class="fas fa-eye" style="color: #d4af37;"></i> View</button>
+                        </div>`;
             });
             html += `</div>`;
-
             container.innerHTML = html;
         }
 
-        // ===== UPDATE COUNTS =====
         function updateCounts() {
             document.getElementById('historyCount').textContent = visas.length;
         }
 
-        // ===== RESET FORM =====
         function resetForm() {
             document.getElementById('fullName').value = '';
             document.getElementById('dob').value = '';
             document.getElementById('email').value = '';
             document.getElementById('notes').value = '';
-
+            document.getElementById('passportNumber').value = '';
+            document.getElementById('passportExpiry').value = '';
+            document.getElementById('arrivalDate').value = '';
             const panel = document.getElementById('resultPanel');
             const placeholder = document.getElementById('placeholder');
             const content = document.getElementById('resultContent');
-
             placeholder.style.display = 'flex';
             content.style.display = 'none';
-            panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Ready to Generate`;
-            panel.querySelector('.panel-desc').textContent =
-                'Fill in the form on the left and click "Generate Official Visa & Tracking Link" to create a new visa.';
-
+            panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Ready to Generate`;
+            panel.querySelector('.panel-desc').textContent = 'Fill in the form and click "Generate Official Visa & Tracking Link" to create a new visa.';
             switchPage('page1');
-            showToast('🔄 Form has been reset', 'info');
+            showToast('🔄 Form reset', 'info');
         }
 
-        // ===== SWITCH PAGE =====
         function switchPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             document.getElementById('nav-' + pageId).classList.add('active');
-
-            if (pageId === 'page3') {
-                renderHistory();
-            }
+            if (pageId === 'page3') renderHistory();
         }
 
-        // ===== TOAST =====
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             const toastMessage = document.getElementById('toastMessage');
             const icon = toast.querySelector('i');
-
             toastMessage.textContent = message;
-
             toast.className = 'toast';
-            if (type === 'error') {
-                toast.classList.add('error');
-                icon.className = 'fas fa-exclamation-circle';
-            } else if (type === 'info') {
-                toast.classList.add('info');
-                icon.className = 'fas fa-info-circle';
-            } else {
-                toast.classList.add('success');
-                icon.className = 'fas fa-check-circle';
-            }
-
+            if (type === 'error') { toast.classList.add('error'); icon.className = 'fas fa-exclamation-circle'; }
+            else if (type === 'info') { toast.classList.add('info'); icon.className = 'fas fa-info-circle'; }
+            else { toast.classList.add('success'); icon.className = 'fas fa-check-circle'; }
             toast.classList.add('show');
             clearTimeout(toast._timeout);
-            toast._timeout = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3200);
+            toast._timeout = setTimeout(() => toast.classList.remove('show'), 3200);
         }
 
-        // ===== CHECK URL FOR TRACKING LINK ON LOAD =====
         function checkUrlForTracking() {
             const visa = decodeVisaFromUrl();
             if (visa) {
@@ -2421,16 +1984,10 @@
                     renderResult(visa);
                     document.getElementById('resultContent').style.display = 'block';
                     document.getElementById('placeholder').style.display = 'none';
-                    document.getElementById('resultPanel').querySelector('h3').innerHTML =
-                        `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Official Visa Loaded from Link`;
-                    document.getElementById('resultPanel').querySelector('.panel-desc').textContent =
-                        `Official visa ${visa.id} loaded from the shared link. All details are verified.`;
+                    document.getElementById('resultPanel').querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Official Visa Loaded from Link`;
+                    document.getElementById('resultPanel').querySelector('.panel-desc').textContent = `Official visa ${visa.id} loaded from the shared link. All details are verified.`;
                 }
-
-                setTimeout(() => {
-                    showLinkPreview(visa);
-                    showToast(`📋 Official visa details loaded: ${visa.name}`, 'info');
-                }, 500);
+                setTimeout(() => { showLinkPreview(visa); showToast(`📋 Official visa details loaded: ${visa.name}`, 'info'); }, 500);
                 return true;
             }
             return false;
@@ -2446,14 +2003,11 @@
                         visas = parsed;
                         renderHistory();
                         updateCounts();
-
-                        if (!checkUrlForTracking()) {
-                            if (visas.length > 0) {
-                                renderResult(visas[0]);
-                                document.getElementById('resultContent').style.display = 'block';
-                                document.getElementById('placeholder').style.display = 'none';
-                                updateMetaTags(visas[0]);
-                            }
+                        if (!checkUrlForTracking() && visas.length > 0) {
+                            renderResult(visas[0]);
+                            document.getElementById('resultContent').style.display = 'block';
+                            document.getElementById('placeholder').style.display = 'none';
+                            updateMetaTags(visas[0]);
                         }
                         return;
                     }
@@ -2461,95 +2015,61 @@
             } catch (e) {}
 
             const sampleVisa1 = {
-                id: 'V-2026-1001',
-                name: 'Jessica Diaz',
-                initials: 'JD',
-                dob: '15/08/1990',
-                nationality: 'Mexico',
-                email: 'jessica.d@example.com',
-                visaType: 'Business (B1)',
-                duration: 60,
-                notes: 'Business conference & meetings',
-                trackingId: '8x7f3',
-                trackingLink: 'visaflow.app/track/8x7f3',
-                status: 'approved',
+                id: 'V-2026-1001', name: 'Jessica Diaz', initials: 'JD', dob: '15/08/1990',
+                nationality: 'Mexico', email: 'jessica.d@example.com', visaType: 'Business (B1)',
+                duration: 60, notes: 'Business conference & meetings', trackingId: '8x7f3',
+                trackingLink: 'visaflow.app/track/8x7f3', status: 'approved',
                 createdAt: new Date(Date.now() - 3600000).toLocaleString(),
                 issued: new Date(Date.now() - 3600000).toLocaleString(),
-                expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
-                    month: 'short', day: 'numeric' }),
-                icon: 'fa-briefcase',
-                congratsMessage: '🎉 Congratulations, Jessica! Your visa application has been officially approved.',
+                expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                icon: 'fa-briefcase', passportNumber: 'MX987654', passportExpiry: '12/2028',
+                arrivalDate: '01/09/2026', purpose: 'Business',
+                congratsMessage: '🎉 Congratulations, Jessica! Your visa has been officially approved.',
                 official: true
             };
-
             const sampleVisa2 = {
-                id: 'V-2026-1002',
-                name: 'David Okafor',
-                initials: 'DO',
-                dob: '22/03/1985',
-                nationality: 'Nigeria',
-                email: 'david.o@example.com',
-                visaType: 'Work (H1B)',
-                duration: 365,
-                notes: 'Tech company sponsorship',
-                trackingId: '9k2m4',
-                trackingLink: 'visaflow.app/track/9k2m4',
-                status: 'approved',
+                id: 'V-2026-1002', name: 'David Okafor', initials: 'DO', dob: '22/03/1985',
+                nationality: 'Nigeria', email: 'david.o@example.com', visaType: 'Work (H1B)',
+                duration: 365, notes: 'Tech company sponsorship', trackingId: '9k2m4',
+                trackingLink: 'visaflow.app/track/9k2m4', status: 'approved',
                 createdAt: new Date(Date.now() - 7200000).toLocaleString(),
                 issued: new Date(Date.now() - 7200000).toLocaleString(),
-                expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric',
-                    month: 'short', day: 'numeric' }),
-                icon: 'fa-hard-hat',
+                expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                icon: 'fa-hard-hat', passportNumber: 'NG123456', passportExpiry: '06/2029',
+                arrivalDate: '15/10/2026', purpose: 'Employment',
                 congratsMessage: '🎉 Congratulations, David! Your work visa has been officially approved.',
                 official: true
             };
-
             visas.push(sampleVisa1, sampleVisa2);
 
             if (!checkUrlForTracking()) {
                 renderResult(visas[0]);
                 document.getElementById('resultContent').style.display = 'block';
                 document.getElementById('placeholder').style.display = 'none';
-                document.getElementById('resultPanel').querySelector('h3').innerHTML =
-                    `<i class="fas fa-check-circle" style="color: #7bff9a;"></i> Official Sample Visa Loaded`;
-                document.getElementById('resultPanel').querySelector('.panel-desc').textContent =
-                    'Here\'s an official sample visa. Try generating your own!';
+                document.getElementById('resultPanel').querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Official Sample Visa Loaded`;
+                document.getElementById('resultPanel').querySelector('.panel-desc').textContent = 'Here\'s an official sample visa. Try generating your own!';
                 updateMetaTags(visas[0]);
             }
-
             renderHistory();
             updateCounts();
-
-            window.addEventListener('hashchange', function() {
-                checkUrlForTracking();
-            });
+            window.addEventListener('hashchange', function() { checkUrlForTracking(); });
         });
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 if (document.getElementById('page1').classList.contains('active')) {
                     const target = e.target;
-                    if (target.tagName !== 'TEXTAREA') {
-                        generateVisa();
-                    }
+                    if (target.tagName !== 'TEXTAREA') generateVisa();
                 }
-                if (document.getElementById('page4').classList.contains('active')) {
-                    searchVisa();
-                }
+                if (document.getElementById('page4').classList.contains('active')) searchVisa();
             }
         });
 
         console.log('✈️ VisaFlow Official Pro ready!');
         console.log('📊 ' + visas.length + ' official visas in history');
-        console.log('🌍 African countries added to nationality dropdown');
-        console.log('📝 Notes field is optional');
-        console.log('🔗 Click on any visa in history to view detailed tracking');
-        console.log('🔍 Use the "Find Visa" page to search by tracking link or ID');
-        console.log('📱 Share links work on WhatsApp, Telegram, Twitter, LinkedIn, TikTok');
-        console.log('🔗 Visa data is encoded in the URL hash - no backend needed!');
-        console.log('📋 Open Graph meta tags added for social previews');
-        console.log('💡 When sharing, the link will show a preview with official visa details and congratulations');
-        console.log('✅ Official seal and congratulations appear in the shared link');
+        console.log('✅ Professional Navy + Gold theme applied');
+        console.log('📋 Added Passport, Arrival, Purpose fields');
+        console.log('🔗 All data encoded in URL hash for sharing');
     </script>
 </body>
 </html>
