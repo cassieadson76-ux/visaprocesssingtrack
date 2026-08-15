@@ -678,7 +678,7 @@
         .share-btn.linkedin:hover { background: rgba(0, 119, 181, 0.08); border-color: rgba(0, 119, 181, 0.2); color: #0077b5; }
         .share-btn.tiktok:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.08); color: #fff; }
 
-        /* ===== OFFICIAL SEAL & CONGRATS ===== */
+        /* ===== OFFICIAL SEAL & CONGRATS (FOR LINKED PAGE) ===== */
         .official-seal {
             display: inline-flex;
             align-items: center;
@@ -998,7 +998,7 @@
             }
         }
 
-        /* ===== LINK PREVIEW OVERLAY ===== */
+        /* ===== LINK PREVIEW OVERLAY (POPUP) ===== */
         .link-preview-overlay {
             position: fixed;
             top: 0;
@@ -1541,7 +1541,7 @@
 
         // ===== UTILITY FUNCTIONS =====
         function generateTrackingId() {
-            // Generate a 5-character alphanumeric code for short links
+            // Generate a 5-character alphanumeric code for short links (under 35 chars total)
             const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
             let result = '';
             for (let i = 0; i < 5; i++) {
@@ -1586,9 +1586,9 @@
             }
         }
 
-        // ===== GENERATE SHAREABLE LINK (SHORT UNDER 35 CHARS) =====
+        // ===== GENERATE SHAREABLE LINK (STRICTLY UNDER 35 CHARS) =====
         function generateShareableLink(visa) {
-            // Use short domain "vsf.ly" + 5-char code = 13 chars total (within 35 limit)
+            // Use short domain "vsf.ly/" + 5-char code = 13 chars total (well under 35)
             const shortCode = visa.trackingId || generateTrackingId();
             const shortLink = `vsf.ly/${shortCode}`;
             
@@ -1657,7 +1657,6 @@
         function shareVia(platform, visa) {
             if (!visa) { showToast('⚠️ No visa selected to share', 'error'); return; }
             const shareUrl = generateShareableLink(visa);
-            // Short link is now vsf.ly/xxxxx
             const shortDisplay = `vsf.ly/${visa.trackingId}`;
             const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track: ${shortDisplay}`;
             switch (platform) {
@@ -1733,7 +1732,7 @@
             showToast(`✅ Official Visa ${visa.id} created!`, 'success');
         }
 
-        // ===== RENDER RESULT =====
+        // ===== RENDER RESULT (shows in the result panel after generation) =====
         function renderResult(visa) {
             const placeholder = document.getElementById('placeholder');
             const content = document.getElementById('resultContent');
@@ -1864,7 +1863,6 @@
                 return;
             }
             let searchTerm = query;
-            // Handle short link format: vsf.ly/xxxxx
             if (query.includes('vsf.ly/')) {
                 searchTerm = query.split('vsf.ly/').pop();
             }
@@ -1986,7 +1984,11 @@
                     document.getElementById('resultPanel').querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Official Visa Loaded from Link`;
                     document.getElementById('resultPanel').querySelector('.panel-desc').textContent = `Official visa ${visa.id} loaded from the shared link. All details are verified.`;
                 }
-                setTimeout(() => { showLinkPreview(visa); showToast(`📋 Official visa details loaded: ${visa.name}`, 'info'); }, 500);
+                // Show the congrats banner prominently when loaded from link
+                setTimeout(() => { 
+                    showLinkPreview(visa); 
+                    showToast(`📋 Official visa details loaded: ${visa.name}`, 'info');
+                }, 500);
                 return true;
             }
             return false;
@@ -2068,7 +2070,8 @@
         console.log('📊 ' + visas.length + ' official visas in history');
         console.log('✅ Short links: vsf.ly/xxxxx (under 35 chars)');
         console.log('🔗 All data encoded in URL hash for sharing');
-        console.log('🎉 Congratulations message appears on linked page with official seal');
+        console.log('🎉 Official Verified & Congratulations appear on linked page');
+        console.log('🎨 Navy + Gold theme applied consistently');
     </script>
 </body>
 </html>
