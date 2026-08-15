@@ -678,150 +678,183 @@
         .share-btn.linkedin:hover { background: rgba(0, 119, 181, 0.08); border-color: rgba(0, 119, 181, 0.2); color: #0077b5; }
         .share-btn.tiktok:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.08); color: #fff; }
 
-        /* ===== OFFICIAL SEAL & CONGRATS (FOR LINKED PAGE) ===== */
-        .official-seal {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            border-radius: 60px;
-            padding: 0.15rem 1rem 0.15rem 0.6rem;
-            color: #d4af37;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.8rem;
-        }
-        .official-seal i {
-            font-size: 0.8rem;
+        /* ===== OFFICIAL SEAL & CONGRATS - SHARED LINK VIEW ===== */
+        .shared-link-view {
+            display: none;
+            animation: fadeIn 0.6s ease;
+            padding: 0.5rem 0;
         }
 
-        .congrats-banner {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(212, 175, 55, 0.02));
-            border: 1px solid rgba(212, 175, 55, 0.12);
-            border-radius: 1.5rem;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
+        .shared-link-view.active {
+            display: block;
+        }
+
+        .shared-link-view .official-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.08);
+        }
+
+        .shared-link-view .official-seal-lg {
+            display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+            gap: 0.8rem;
+            background: rgba(212, 175, 55, 0.06);
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            border-radius: 60px;
+            padding: 0.3rem 1.8rem 0.3rem 1.2rem;
+            color: #d4af37;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .shared-link-view .official-seal-lg i {
+            font-size: 1rem;
+        }
+
+        .shared-link-view .congrats-hero {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 2rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .congrats-banner::before {
+
+        .shared-link-view .congrats-hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+            top: -60%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
-        .congrats-banner .icon {
-            font-size: 2.2rem;
+
+        .shared-link-view .congrats-hero .icon-wrap {
+            font-size: 3.5rem;
             color: #d4af37;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
-            flex-shrink: 0;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
+            margin-bottom: 0.5rem;
         }
-        .congrats-banner .text {
-            flex: 1;
-            min-width: 180px;
-        }
-        .congrats-banner .text h4 {
+
+        .shared-link-view .congrats-hero h2 {
             color: #fff;
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.1rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
             line-height: 1.3;
         }
-        .congrats-banner .text p {
-            color: rgba(255,255,255,0.45);
-            font-size: 0.8rem;
+
+        .shared-link-view .congrats-hero .sub-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
         }
-        .congrats-banner .text p strong {
+
+        .shared-link-view .congrats-hero .sub-text strong {
             color: #d4af37;
         }
-        .status-badge-processing {
-            background: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            padding: 0.2rem 1.2rem;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            font-weight: 600;
+
+        .shared-link-view .status-badge-lg {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            flex-shrink: 0;
-            letter-spacing: 0.3px;
+            gap: 0.6rem;
+            background: rgba(212, 175, 55, 0.08);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            padding: 0.3rem 1.5rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
         }
-        .status-badge-processing i {
-            font-size: 0.45rem;
+
+        .shared-link-view .status-badge-lg i {
+            font-size: 0.5rem;
             animation: pulse-dot 1.2s infinite;
         }
+
         @keyframes pulse-dot {
             0% { opacity: 0.2; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
             100% { opacity: 0.2; transform: scale(0.8); }
         }
 
-        .visa-detail-grid {
+        .shared-link-view .visa-details-card {
+            background: #0a1322;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            margin-bottom: 1rem;
+        }
+
+        .shared-link-view .visa-details-card .card-title {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .shared-link-view .visa-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.4rem 1rem;
-            background: #0a1322;
-            border-radius: 1.2rem;
-            padding: 0.6rem 1rem;
-            margin-top: 0.5rem;
-            border: 1px solid rgba(212, 175, 55, 0.03);
+            gap: 0.5rem 1.5rem;
         }
-        .visa-detail-grid .item {
+
+        .shared-link-view .visa-details-grid .item {
             display: flex;
             justify-content: space-between;
-            padding: 0.15rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
+            padding: 0.3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
-        .visa-detail-grid .item .label {
-            color: rgba(255,255,255,0.25);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+
+        .shared-link-view .visa-details-grid .item .label {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.7rem;
         }
-        .visa-detail-grid .item .value {
+
+        .shared-link-view .visa-details-grid .item .value {
             color: #fff;
             font-size: 0.8rem;
             font-weight: 500;
         }
-        .visa-detail-grid .item:last-child {
+
+        .shared-link-view .visa-details-grid .item:last-child {
             border-bottom: none;
         }
-        .tracking-link-section {
-            margin-top: 0.8rem;
-        }
-        .tracking-link-section .link-box {
+
+        .shared-link-view .tracking-link-box {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             background: #0d1a2e;
             border-radius: 60px;
-            padding: 0.3rem 1rem;
+            padding: 0.4rem 1rem;
             border: 1px solid rgba(212, 175, 55, 0.06);
             flex-wrap: wrap;
+            margin-top: 0.5rem;
         }
-        .tracking-link-section .link-box .link-text {
+
+        .shared-link-view .tracking-link-box .link-text {
             flex: 1;
             color: #e8d08a;
             font-weight: 500;
             font-size: 0.85rem;
             word-break: break-all;
         }
-        .tracking-link-section .link-box .copy-btn-sm {
-            background: rgba(212,175,55,0.06);
-            border: 1px solid rgba(212,175,55,0.08);
+
+        .shared-link-view .tracking-link-box .copy-btn-sm {
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.08);
             border-radius: 60px;
             padding: 0.1rem 0.9rem;
             color: #fff;
@@ -832,26 +865,75 @@
             align-items: center;
             gap: 0.3rem;
         }
-        .tracking-link-section .link-box .copy-btn-sm:hover {
-            background: rgba(212,175,55,0.12);
+
+        .shared-link-view .tracking-link-box .copy-btn-sm:hover {
+            background: rgba(212, 175, 55, 0.12);
             border-color: #d4af37;
         }
-        .tracking-link-section .link-box .copy-btn-sm i {
+
+        .shared-link-view .tracking-link-box .copy-btn-sm i {
             color: #d4af37;
         }
-        @media (max-width: 500px) {
-            .visa-detail-grid {
+
+        .shared-link-view .action-row {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.8rem;
+        }
+
+        .shared-link-view .action-row .btn-gold {
+            background: linear-gradient(135deg, #d4af37, #b8960f);
+            border: none;
+            border-radius: 60px;
+            padding: 0.5rem 1.8rem;
+            font-weight: 600;
+            color: #0a1322;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .shared-link-view .action-row .btn-gold:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.2);
+        }
+
+        .shared-link-view .action-row .btn-outline {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 0.5rem 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .shared-link-view .action-row .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .shared-link-view .visa-details-grid {
                 grid-template-columns: 1fr;
             }
-            .congrats-banner {
-                flex-direction: column;
-                align-items: flex-start;
+            .shared-link-view .congrats-hero h2 {
+                font-size: 1.2rem;
             }
-            .congrats-banner .icon {
-                font-size: 1.8rem;
+            .shared-link-view .congrats-hero .icon-wrap {
+                font-size: 2.5rem;
             }
-            .congrats-banner .text h4 {
-                font-size: 0.95rem;
+            .shared-link-view .congrats-hero {
+                padding: 1rem 1.2rem;
             }
         }
 
@@ -992,9 +1074,6 @@
             .visa-result-card .visa-header {
                 flex-direction: column;
                 text-align: center;
-            }
-            .congrats-banner .text h4 {
-                font-size: 0.9rem;
             }
         }
 
@@ -1494,6 +1573,11 @@
                 </div>
             </div>
 
+            <!-- ===== SHARED LINK VIEW (shown when visa is loaded from URL) ===== -->
+            <div class="shared-link-view" id="sharedLinkView">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+
             <!-- ===== FOOTER ===== -->
             <div class="footer">
                 <span><i class="fas fa-bolt"></i> every visa includes a unique tracking link</span>
@@ -1541,7 +1625,6 @@
 
         // ===== UTILITY FUNCTIONS =====
         function generateTrackingId() {
-            // Generate a 5-character alphanumeric code for short links (under 35 chars total)
             const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
             let result = '';
             for (let i = 0; i < 5; i++) {
@@ -1588,11 +1671,7 @@
 
         // ===== GENERATE SHAREABLE LINK (STRICTLY UNDER 35 CHARS) =====
         function generateShareableLink(visa) {
-            // Use short domain "vsf.ly/" + 5-char code = 13 chars total (well under 35)
             const shortCode = visa.trackingId || generateTrackingId();
-            const shortLink = `vsf.ly/${shortCode}`;
-            
-            // Store the full data in the hash for decoding
             const data = {
                 n: visa.name, e: visa.email, t: visa.visaType, nt: visa.notes || 'Not provided',
                 st: visa.status, id: visa.id, tr: shortCode, i: visa.initials,
@@ -1605,7 +1684,6 @@
             };
             const jsonStr = JSON.stringify(data);
             const encoded = btoa(encodeURIComponent(jsonStr));
-            // Return short link with hash containing the encoded data
             return window.location.href.split('#')[0] + '#' + encoded;
         }
 
@@ -1730,6 +1808,86 @@
             updateCounts();
             updateMetaTags(visa);
             showToast(`✅ Official Visa ${visa.id} created!`, 'success');
+        }
+
+        // ===== RENDER SHARED LINK VIEW (professional after-link page) =====
+        function renderSharedLinkView(visa) {
+            const container = document.getElementById('sharedLinkView');
+            const shortLink = `vsf.ly/${visa.trackingId}`;
+            
+            // Hide other pages, show shared link view
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            container.classList.add('active');
+            
+            container.innerHTML = `
+                <div class="official-header">
+                    <div class="official-seal-lg">
+                        <i class="fas fa-certificate"></i> OFFICIAL · VERIFIED
+                    </div>
+                </div>
+
+                <div class="congrats-hero">
+                    <div class="icon-wrap">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>${visa.congratsMessage}</h2>
+                    <p class="sub-text">
+                        Visa ID: <strong>${visa.id}</strong> · 
+                        Status: <strong>${visa.status.toUpperCase()}</strong> · 
+                        Issued: ${visa.createdAt}
+                    </p>
+                    <div class="status-badge-lg">
+                        <i class="fas fa-circle"></i> Processing
+                    </div>
+                </div>
+
+                <div class="visa-details-card">
+                    <div class="card-title"><i class="fas fa-passport"></i> Visa Details</div>
+                    <div class="visa-details-grid">
+                        <div class="item"><span class="label">Full Name</span><span class="value">${visa.name}</span></div>
+                        <div class="item"><span class="label">Visa Type</span><span class="value">${visa.visaType}</span></div>
+                        <div class="item"><span class="label">Nationality</span><span class="value">${visa.nationality}</span></div>
+                        <div class="item"><span class="label">Date of Birth</span><span class="value">${visa.dob}</span></div>
+                        <div class="item"><span class="label">Passport Number</span><span class="value">${visa.passportNumber}</span></div>
+                        <div class="item"><span class="label">Passport Expiry</span><span class="value">${visa.passportExpiry}</span></div>
+                        <div class="item"><span class="label">Arrival Date</span><span class="value">${visa.arrivalDate}</span></div>
+                        <div class="item"><span class="label">Purpose</span><span class="value">${visa.purpose}</span></div>
+                        <div class="item"><span class="label">Duration</span><span class="value">${visa.duration} days</span></div>
+                        <div class="item"><span class="label">Expiry Date</span><span class="value">${visa.expiresAt}</span></div>
+                        <div class="item"><span class="label">Email</span><span class="value">${visa.email}</span></div>
+                        <div class="item"><span class="label">Status</span><span class="value" style="color: #d4af37;">${visa.status.toUpperCase()}</span></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 0.5rem;">
+                    <div style="font-size: 0.6rem; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem;">
+                        <i class="fas fa-link" style="color: #d4af37;"></i> Tracking Link
+                    </div>
+                    <div class="tracking-link-box">
+                        <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${shortLink}</span>
+                        <button class="copy-btn-sm" onclick="copyLinkToClipboard('${shortLink}')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-gold" onclick="window.location.href = window.location.href.split('#')[0]">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                    <button class="btn-outline" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                        <i class="fas fa-share-alt"></i> Share Visa
+                    </button>
+                </div>
+            `;
+        }
+
+        function copyLinkToClipboard(link) {
+            navigator.clipboard.writeText(link).then(() => {
+                showToast('✅ Link copied to clipboard!', 'success');
+            }).catch(() => {
+                fallbackCopy(link);
+            });
         }
 
         // ===== RENDER RESULT (shows in the result panel after generation) =====
@@ -1944,11 +2102,15 @@
             content.style.display = 'none';
             panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Ready to Generate`;
             panel.querySelector('.panel-desc').textContent = 'Fill in the form and click "Generate Official Visa & Tracking Link" to create a new visa.';
+            // Hide shared link view if visible
+            document.getElementById('sharedLinkView').classList.remove('active');
             switchPage('page1');
             showToast('🔄 Form reset', 'info');
         }
 
         function switchPage(pageId) {
+            // Hide shared link view when switching pages
+            document.getElementById('sharedLinkView').classList.remove('active');
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -1978,15 +2140,11 @@
                     visas.unshift(visa);
                     renderHistory();
                     updateCounts();
-                    renderResult(visa);
-                    document.getElementById('resultContent').style.display = 'block';
-                    document.getElementById('placeholder').style.display = 'none';
-                    document.getElementById('resultPanel').querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Official Visa Loaded from Link`;
-                    document.getElementById('resultPanel').querySelector('.panel-desc').textContent = `Official visa ${visa.id} loaded from the shared link. All details are verified.`;
                 }
-                // Show the congrats banner prominently when loaded from link
+                // Render the professional shared link view
+                renderSharedLinkView(visa);
+                updateMetaTags(visa);
                 setTimeout(() => { 
-                    showLinkPreview(visa); 
                     showToast(`📋 Official visa details loaded: ${visa.name}`, 'info');
                 }, 500);
                 return true;
