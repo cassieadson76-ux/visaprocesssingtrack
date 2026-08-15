@@ -1,7 +1,4 @@
-  
-
- 
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,6 +12,10 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -239,9 +240,10 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      cursor: default;
+      cursor: pointer;
       letter-spacing: 0.3px;
       border: 1px solid rgba(255, 255, 255, 0.15);
+      text-decoration: none;
     }
 
     .btn-primary i {
@@ -604,6 +606,7 @@
       width: 100%;
       justify-content: center;
       margin-top: 0.6rem;
+      cursor: pointer;
     }
 
     .tracking-list {
@@ -843,6 +846,11 @@
     .mt-2 { margin-top: 1.5rem; }
     .mb-1 { margin-bottom: 0.8rem; }
     .flex { display: flex; align-items: center; gap: 0.6rem; }
+
+    /* anchor for smooth scroll */
+    #visa-create {
+      scroll-margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -873,7 +881,7 @@
             <strong style="color:#ffb092;">Super hot</strong> & secure.
           </p>
           <div class="btn-group">
-            <span class="btn-primary"><i class="fas fa-bolt"></i> Create visa now</span>
+            <a href="#visa-create" class="btn-primary"><i class="fas fa-bolt"></i> Create visa now</a>
             <span class="btn-secondary"><i class="fas fa-eye"></i> Track existing</span>
           </div>
           <div style="margin-top: 1.8rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
@@ -938,7 +946,7 @@
       </div>
 
       <!-- dual panel: form + tracking list -->
-      <div class="dual-panel">
+      <div class="dual-panel" id="visa-create">
         <!-- left: create visa form -->
         <div class="panel">
           <h3><i class="fas fa-pen-fancy" style="color: #ff7a4a; margin-right: 10px;"></i> Create new visa</h3>
@@ -955,7 +963,7 @@
             <label><i class="fas fa-passport"></i> Visa type</label>
             <input type="text" placeholder="e.g. Tourist, Business, Student" value="Business (B1)">
           </div>
-          <button class="btn-primary btn-full" style="border: none; cursor: default;"><i class="fas fa-bolt"></i> Generate visa & tracking</button>
+          <button class="btn-primary btn-full" style="border: none;"><i class="fas fa-bolt"></i> Generate visa & tracking</button>
           <div style="margin-top: 0.8rem; font-size: 0.75rem; color: rgba(255,255,255,0.2); text-align: center;">
             <i class="fas fa-link"></i> tracking link will be created automatically
           </div>
@@ -1081,4 +1089,4 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
-</html>  
+</html>
