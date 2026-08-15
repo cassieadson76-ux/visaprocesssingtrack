@@ -1183,53 +1183,6 @@
                 justify-content: center;
             }
         }
-
-        /* ===== SHARE BANNER ===== */
-        .share-banner {
-            background: rgba(255, 122, 74, 0.06);
-            border: 1px solid rgba(255, 122, 74, 0.1);
-            border-radius: 1rem;
-            padding: 0.8rem 1.2rem;
-            margin-top: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .share-banner .share-icon {
-            color: #ff7a4a;
-            font-size: 1.2rem;
-        }
-
-        .share-banner .share-text {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.75rem;
-            flex: 1;
-        }
-
-        .share-banner .share-btn-sm {
-            background: rgba(255, 122, 74, 0.12);
-            border: 1px solid rgba(255, 122, 74, 0.1);
-            border-radius: 60px;
-            padding: 0.25rem 1rem;
-            color: #fff;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .share-banner .share-btn-sm:hover {
-            background: rgba(255, 122, 74, 0.2);
-            border-color: #ff7a4a;
-        }
-
-        .share-banner .share-btn-sm i {
-            color: #ff7a4a;
-        }
     </style>
 </head>
 <body>
@@ -1303,12 +1256,6 @@
                         </div>
                         <div class="preview-notes-mini">
                             <i class="fas fa-comment"></i> <span id="previewNotes">Business conference &amp; networking</span>
-                        </div>
-                        <div class="share-banner">
-                            <i class="fas fa-share-alt share-icon"></i>
-                            <span class="share-text">Share this link with anyone — they'll see all visa details instantly!</span>
-                            <button class="share-btn-sm" onclick="copyFullShareLink()"><i class="fas fa-copy"></i> Copy Link</button>
-                            <button class="share-btn-sm" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i> Share</button>
                         </div>
                     </div>
                 </div>
@@ -1606,38 +1553,6 @@
             return 365;
         }
 
-        // ===== ENCODE VISA DATA FOR URL =====
-        function encodeVisaData(visa) {
-            const data = {
-                id: visa.id,
-                name: visa.name,
-                email: visa.email,
-                visaType: visa.visaType,
-                notes: visa.notes,
-                handle: visa.handle,
-                status: visa.status,
-                issued: visa.issued,
-                expires: visa.expires,
-                duration: visa.duration
-            };
-            return btoa(JSON.stringify(data));
-        }
-
-        function decodeVisaData(encoded) {
-            try {
-                return JSON.parse(atob(encoded));
-            } catch (e) {
-                return null;
-            }
-        }
-
-        // ===== BUILD FULL SHAREABLE LINK =====
-        function buildFullLink(visa) {
-            const encoded = encodeVisaData(visa);
-            const baseUrl = window.location.origin + window.location.pathname;
-            return `${baseUrl}?visa=${encoded}`;
-        }
-
         // ===== GENERATE VISA FROM FORM =====
         function generateVisaFromForm() {
             const name = document.getElementById('formName').value.trim();
@@ -1679,12 +1594,8 @@
                 createdAt: now.toLocaleString(),
                 duration: duration,
                 statusColor: getStatusColor(status),
-                statusText: getStatusText(status),
-                fullLink: ''
+                statusText: getStatusText(status)
             };
-
-            // Generate the full shareable link
-            visa.fullLink = buildFullLink(visa);
 
             visas.unshift(visa);
             renderTrackingList();
@@ -1741,7 +1652,7 @@
                 const duration = getDuration(data.visaType);
                 expires.setDate(expires.getDate() + duration);
 
-                const visa = {
+                visas.push({
                     id: `V-2026-${visaCounter}`,
                     name: data.name,
                     email: data.email,
@@ -1759,12 +1670,8 @@
                     createdAt: now.toLocaleString(),
                     duration: duration,
                     statusColor: getStatusColor(data.status),
-                    statusText: getStatusText(data.status),
-                    fullLink: ''
-                };
-
-                visa.fullLink = buildFullLink(visa);
-                visas.push(visa);
+                    statusText: getStatusText(data.status)
+                });
             });
 
             renderTrackingList();
@@ -1807,51 +1714,6 @@
             previewCard.style.borderColor = `rgba(${color === '#7bff9a' ? '123,255,154' : color === '#ffb84d' ? '255,184,77' : color === '#6ab0ff' ? '106,176,255' : '255,107,107'}, 0.3)`;
         }
 
-        // ===== COPY FULL SHAREABLE LINK =====
-        function copyFullShareLink() {
-            if (!currentPreviewVisa) {
-                showToast('⚠️ No visa selected', 'error');
-                return;
-            }
-
-            const fullLink = currentPreviewVisa.fullLink;
-            navigator.clipboard.writeText(fullLink).then(() => {
-                showToast(`✅ Shareable link copied!`, 'success');
-            }).catch(() => {
-                // Fallback
-                const textArea = document.createElement('textarea');
-                textArea.value = fullLink;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showToast(`✅ Shareable link copied!`, 'success');
-            });
-        }
-
-        // ===== SHARE ON WHATSAPP =====
-        function shareOnWhatsApp() {
-            if (!currentPreviewVisa) {
-                showToast('⚠️ No visa selected', 'error');
-                return;
-            }
-
-            const fullLink = currentPreviewVisa.fullLink;
-            const message = `📋 Visa Details for ${currentPreviewVisa.name}\n\n` +
-                `🆔 Visa ID: ${currentPreviewVisa.id}\n` +
-                `👤 Name: ${currentPreviewVisa.name}\n` +
-                `📧 Email: ${currentPreviewVisa.email}\n` +
-                `📄 Type: ${currentPreviewVisa.visaType}\n` +
-                `📅 Issued: ${currentPreviewVisa.issued}\n` +
-                `⏰ Expires: ${currentPreviewVisa.expires}\n` +
-                `📌 Status: ${currentPreviewVisa.statusText}\n` +
-                `📝 Notes: ${currentPreviewVisa.notes}\n\n` +
-                `🔗 View full details: ${fullLink}`;
-
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
         // ===== PREVIEW LINK FROM PREVIEW CARD =====
         function previewLinkFromPreview() {
             if (currentPreviewVisa) {
@@ -1885,11 +1747,13 @@
                         </div>
                     `).join('');
 
+            // Status bar
             const statusValue = document.getElementById('previewOverlayStatusValue');
             const statusColor = visa.statusColor;
             statusValue.innerHTML = `<span class="status-dot" style="background: ${statusColor};"></span> ${visa.statusText}`;
             statusValue.style.color = statusColor;
 
+            // Notes section
             const notesSection = document.getElementById('previewOverlayNotesSection');
             const notesText = document.getElementById('previewOverlayNotesText');
             if (visa.notes && visa.notes !== 'No additional notes provided') {
@@ -1911,9 +1775,25 @@
 
         // ===== COPY PREVIEW LINK =====
         function copyPreviewLink() {
-            if (currentPreviewVisa) {
-                copyFullShareLink();
+            if (currentPreviewLink) {
+                copyLink(currentPreviewLink);
             }
+        }
+
+        // ===== COPY LINK =====
+        function copyLink(link) {
+            const fullLink = `https://${link}`;
+            navigator.clipboard.writeText(fullLink).then(() => {
+                showToast(`✅ Copied: ${fullLink}`, 'success');
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = fullLink;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast(`✅ Copied: ${fullLink}`, 'success');
+            });
         }
 
         // ===== TOAST =====
@@ -1959,35 +1839,11 @@
 
         // ===== CHECK URL FOR TRACKING LINK ON LOAD =====
         function checkUrlForTracking() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const encoded = urlParams.get('visa');
-
-            if (encoded) {
-                const visaData = decodeVisaData(encoded);
-                if (visaData) {
-                    // Check if visa already exists
-                    let visa = visas.find(v => v.id === visaData.id);
-                    if (!visa) {
-                        // Create visa from URL data
-                        const now = new Date();
-                        visa = {
-                            ...visaData,
-                            initials: getInitials(visaData.name),
-                            icon: getVisaTypeIcon(visaData.visaType),
-                            issuedFull: visaData.issued,
-                            expiresFull: visaData.expires,
-                            statusColor: getStatusColor(visaData.status),
-                            statusText: getStatusText(visaData.status),
-                            fullLink: window.location.href,
-                            createdAt: now.toLocaleString()
-                        };
-                        visas.unshift(visa);
-                        renderTrackingList();
-                        try {
-                            localStorage.setItem('visas', JSON.stringify(visas));
-                        } catch (e) {}
-                    }
-
+            const url = window.location.href;
+            if (url.includes('@')) {
+                const handle = url.split('@').pop().split('#')[0].split('?')[0];
+                const visa = visas.find(v => v.handle === handle);
+                if (visa) {
                     setTimeout(() => {
                         updatePreview(visa);
                         showLinkPreview(visa);
@@ -2008,35 +1864,18 @@
                 const parsed = JSON.parse(stored);
                 if (parsed && parsed.length > 0) {
                     visas = parsed;
-                    // Ensure fullLink exists for each visa
-                    visas.forEach(v => {
-                        if (!v.fullLink) {
-                            v.fullLink = buildFullLink(v);
-                        }
-                    });
                     renderTrackingList();
                     if (visas.length > 0) {
                         updatePreview(visas[0]);
                     }
-                    // Check URL after loading
                     setTimeout(checkUrlForTracking, 300);
                     return;
                 }
             }
         } catch (e) {}
 
-        // If no stored data, load samples
         loadSampleVisas();
-
-        // Check URL for tracking link
-        setTimeout(() => {
-            if (!checkUrlForTracking()) {
-                // If no URL param, show default preview
-                if (visas.length > 0) {
-                    updatePreview(visas[0]);
-                }
-            }
-        }, 400);
+        setTimeout(checkUrlForTracking, 400);
 
         window.addEventListener('hashchange', function() {
             checkUrlForTracking();
@@ -2059,9 +1898,8 @@
         console.log('✈️ VisaFlow ready!');
         console.log('📊 ' + visas.length + ' visas loaded');
         console.log('🔗 Share links work on WhatsApp, TikTok, and all platforms');
-        console.log('📱 Data is encoded in the URL - no backend needed!');
+        console.log('📱 Links are under 30 characters: vf.li/@name');
         console.log('👁️ Click any visa in the tracking list to preview all details');
-        console.log('📋 When you copy a link, all visa data is included');
     </script>
 </body>
 </html>
