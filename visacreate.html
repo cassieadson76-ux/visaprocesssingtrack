@@ -883,6 +883,26 @@
             justify-content: center;
         }
 
+        .shared-link-view .action-row .btn-gold {
+            background: linear-gradient(135deg, #d4af37, #b8960f);
+            border: none;
+            border-radius: 60px;
+            padding: 0.5rem 1.8rem;
+            font-weight: 600;
+            color: #0a1322;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .shared-link-view .action-row .btn-gold:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.2);
+        }
+
         .shared-link-view .action-row .btn-outline {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -1648,14 +1668,13 @@
             }
         }
 
-        // ===== GET SHORT TRACKING LINK (UNDER 35 CHARS) =====
+        // ===== GET SHORT TRACKING LINK (UNDER 35 CHARS - 8 CHARS TOTAL) =====
         function getShortTrackingLink(visa) {
-            // This is the DISPLAY link (short and clean)
             return `v.to/${visa.trackingId}`;
         }
 
-        // ===== GET FULL WORKING URL (WITH HASH ENCODED DATA) =====
-        function getFullWorkingUrl(visa) {
+        // ===== GENERATE FULL WORKING URL (WITH ENCODED DATA) =====
+        function generateFullUrl(visa) {
             const data = {
                 n: visa.name, e: visa.email, t: visa.visaType, nt: visa.notes || 'Not provided',
                 st: visa.status, id: visa.id, tr: visa.trackingId, i: visa.initials,
@@ -1719,8 +1738,8 @@
         function shareVia(platform, visa) {
             if (!visa) { showToast('⚠️ No visa selected to share', 'error'); return; }
             
-            const shortDisplay = getShortTrackingLink(visa);
-            const fullUrl = getFullWorkingUrl(visa);
+            const shortLink = getShortTrackingLink(visa);
+            const fullUrl = generateFullUrl(visa);
             const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track: ${fullUrl}`;
             
             switch (platform) {
@@ -1741,7 +1760,6 @@
                     showToast('✅ Link copied! Share it on TikTok', 'success');
                     break;
                 case 'copy':
-                    // Copy the FULL working URL (with hash)
                     copyToClipboard(fullUrl);
                     break;
                 default: 
@@ -1753,7 +1771,7 @@
         function copyToClipboard(text) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
-                    showToast('✅ Link copied: ' + text, 'success');
+                    showToast('✅ Link copied!', 'success');
                 }).catch(() => {
                     fallbackCopy(text);
                 });
@@ -1769,7 +1787,7 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            showToast('✅ Link copied: ' + text, 'success');
+            showToast('✅ Link copied!', 'success');
         }
 
         // ===== GENERATE VISA =====
@@ -1823,8 +1841,8 @@
         // ===== RENDER SHARED LINK VIEW =====
         function renderSharedLinkView(visa) {
             const container = document.getElementById('sharedLinkView');
-            const shortDisplay = getShortTrackingLink(visa);
-            const fullUrl = getFullWorkingUrl(visa);
+            const shortLink = getShortTrackingLink(visa);
+            const fullUrl = generateFullUrl(visa);
             
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             container.classList.add('active');
@@ -1874,7 +1892,7 @@
                         <i class="fas fa-link" style="color: #d4af37;"></i> Tracking Link
                     </div>
                     <div class="tracking-link-box">
-                        <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${fullUrl}</span>
+                        <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${shortLink}</span>
                         <button class="copy-btn-sm" onclick="copyToClipboard('${fullUrl}')">
                             <i class="fas fa-copy"></i> Copy
                         </button>
@@ -1882,7 +1900,7 @@
                 </div>
 
                 <div class="action-row">
-                    <button class="btn-outline" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
+                    <button class="btn-gold" onclick="shareVia('copy', ${JSON.stringify(visa).replace(/"/g, '&quot;')})">
                         <i class="fas fa-share-alt"></i> Share Visa
                     </button>
                 </div>
@@ -1897,8 +1915,8 @@
             placeholder.style.display = 'none';
             content.style.display = 'block';
 
-            const shortDisplay = getShortTrackingLink(visa);
-            const fullUrl = getFullWorkingUrl(visa);
+            const shortLink = getShortTrackingLink(visa);
+            const fullUrl = generateFullUrl(visa);
 
             content.innerHTML = `
                         <div class="official-seal"><i class="fas fa-certificate"></i> OFFICIAL · VERIFIED</div>
@@ -1940,16 +1958,13 @@
 
                         <div class="tracking-link-section">
                             <div style="font-size: 0.6rem; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem;">
-                                <i class="fas fa-link" style="color: #d4af37;"></i> Shareable Link
+                                <i class="fas fa-link" style="color: #d4af37;"></i> Tracking Link
                             </div>
                             <div class="link-box">
-                                <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${fullUrl}</span>
+                                <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${shortLink}</span>
                                 <button class="copy-btn-sm" onclick="copyToClipboard('${fullUrl}')">
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
-                            </div>
-                            <div style="margin-top: 0.3rem; font-size: 0.65rem; color: rgba(255,255,255,0.15);">
-                                <i class="fas fa-info-circle" style="color: #d4af37;"></i> Short link: ${shortDisplay}
                             </div>
                         </div>
 
@@ -1969,7 +1984,7 @@
                     `;
 
             panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Official Visa Generated`;
-            panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been officially created. Share link: ${fullUrl}`;
+            panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been officially created. Share link: ${shortLink}`;
         }
 
         // ===== SHOW LINK PREVIEW OVERLAY =====
@@ -1989,8 +2004,7 @@
                 { label: 'Arrival Date', value: visa.arrivalDate || 'N/A' },
                 { label: 'Purpose', value: visa.purpose || 'Business' },
                 { label: 'Duration', value: `${visa.duration} days` },
-                { label: 'Tracking Link', value: getFullWorkingUrl(visa) },
-                { label: 'Short Link', value: getShortTrackingLink(visa) },
+                { label: 'Tracking Link', value: getShortTrackingLink(visa) },
                 { label: 'Issued Date', value: visa.createdAt },
                 { label: 'Expiry Date', value: visa.expiresAt },
                 { label: 'Status', value: visa.status.toUpperCase() }
@@ -2014,7 +2028,7 @@
 
         function copyPreviewLink() {
             if (currentPreviewVisa) {
-                const fullUrl = getFullWorkingUrl(currentPreviewVisa);
+                const fullUrl = generateFullUrl(currentPreviewVisa);
                 copyToClipboard(fullUrl);
             }
         }
@@ -2041,7 +2055,7 @@
                 v.id.toLowerCase().includes(searchTerm)
             );
             if (visa) {
-                const fullUrl = getFullWorkingUrl(visa);
+                const fullUrl = generateFullUrl(visa);
                 resultDiv.innerHTML = `
                             <div style="background: #0a1322; border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(212,175,55,0.06);">
                                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
@@ -2053,7 +2067,7 @@
                                     <div><span style="color: rgba(255,255,255,0.3);">Type:</span> <span style="color: #fff;">${visa.visaType}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Nationality:</span> <span style="color: #fff;">${visa.nationality}</span></div>
                                     <div><span style="color: rgba(255,255,255,0.3);">Duration:</span> <span style="color: #fff;">${visa.duration} days</span></div>
-                                    <div style="grid-column: span 2;"><span style="color: rgba(255,255,255,0.3);">Link:</span> <span style="color: #e8d08a; font-size: 0.7rem; word-break: break-all;">${fullUrl}</span></div>
+                                    <div style="grid-column: span 2;"><span style="color: rgba(255,255,255,0.3);">Link:</span> <span style="color: #e8d08a; font-size: 0.7rem;">${getShortTrackingLink(visa)}</span></div>
                                 </div>
                                 <button class="btn-secondary" style="margin-top: 0.8rem; padding: 0.3rem 1.2rem; font-size: 0.7rem;" onclick="showLinkPreview(${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fas fa-eye"></i> View Full Details</button>
                                 <div style="margin-top: 0.5rem; display: flex; gap: 0.3rem; flex-wrap: wrap;">
@@ -2080,7 +2094,7 @@
             }
             let html = `<div class="history-list">`;
             visas.forEach(v => {
-                const fullUrl = getFullWorkingUrl(v);
+                const fullUrl = generateFullUrl(v);
                 html += `<div class="history-item" onclick="showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
                             <div class="h-user"><span class="h-avatar">${v.initials}</span><span class="h-name">${v.name}</span><span class="h-id">${v.id}</span></div>
                             <span class="h-status ${v.status}">${v.status}</span>
@@ -2233,10 +2247,11 @@
 
         console.log('✈️ VisaFlow Official Pro ready!');
         console.log('📊 ' + visas.length + ' official visas in history');
-        console.log('✅ Short display: v.to/xxx (8 chars)');
-        console.log('🔗 Full working URL includes encoded data in hash');
-        console.log('📋 Copy function copies the FULL working URL');
+        console.log('✅ Short display: v.to/xxx (8 chars - under 35 limit)');
+        console.log('📋 Copy copies FULL working URL with encoded data');
         console.log('🎉 Official Verified & Congratulations appear on linked page');
+        console.log('🎨 Navy + Gold theme applied consistently');
+        console.log('🟡 All buttons are visible and well-styled');
     </script>
 </body>
 </html>
