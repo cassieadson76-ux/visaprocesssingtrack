@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisaFlow · Create Visa & Get Tracking Link</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #0b0d15;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .visa-card {
+            max-width: 1400px;
+            width: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.15) 0%, rgba(10, 12, 28, 0.95) 70%),
+                linear-gradient(145deg, #141824 0%, #1b1f2e 100%);
+            backdrop-filter: blur(2px);
+            border-radius: 4.5rem;
+            padding: 3rem 3.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 120, 80, 0.2) inset, 0 0 30px rgba(255, 70, 50, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 140, 100, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visa-card::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 100, 70, 0.25) 0%, rgba(255, 40, 20, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 6s infinite alternate ease-in-out;
+        }
+
+        .visa-card::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 180, 70, 0.2) 0%, rgba(255, 100, 30, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 8s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-shadow: 0 0 12px rgba(255, 120, 80, 0.5);
+        }
+
+        .logo i {
+            color: #ff7a4a;
+            filter: drop-shadow(0 0 8px #ff5e2e);
+            font-size: 2.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: 0.2s;
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            border-bottom-color: #ff7a4a;
+            text-shadow: 0 0 12px rgba(255, 120, 80, 0.4);
+        }
+
+        .nav-links a.active {
+            color: #fff;
+            border-bottom-color: #ff7a4a;
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.25s;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-outline-light i {
+            margin-right: 8px;
+            color: #ff7a4a;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 122, 74, 0.15);
+            border-color: #ff7a4a;
+            box-shadow: 0 0 20px rgba(255, 100, 50, 0.2);
+            transform: scale(1.02);
+        }
+
+        .page-tabs {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .page-tab {
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+            transition: 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .page-tab i {
+            color: #ff7a4a;
+            font-size: 0.9rem;
+        }
+
+        .page-tab.active {
+            background: rgba(255, 122, 74, 0.12);
+            border-color: rgba(255, 122, 74, 0.2);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 70, 30, 0.05);
+        }
+
+        .page-tab:hover {
+            background: rgba(255, 122, 74, 0.06);
+            color: #fff;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== CREATE VISA PAGE ===== */
+        .create-visa-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 850px) {
+            .create-visa-grid {
+                grid-template-columns: 1fr;
+            }
+            .visa-card {
+                padding: 2rem 1.8rem;
+                border-radius: 3rem;
+            }
+        }
+
+        .form-panel {
+            background: rgba(16, 19, 32, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2.8rem;
+            padding: 2.2rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-panel h3 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-panel .panel-desc {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group label i {
+            color: #ff7a4a;
+            margin-right: 6px;
+            width: 16px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            background: #0b0e1a;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 0.85rem 1.4rem;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.2s;
+            appearance: none;
+        }
+
+        .form-group select option {
+            background: #141824;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff7a4a;
+            box-shadow: 0 0 0 3px rgba(255, 122, 74, 0.15);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.8rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6a3d, #ff3c1a);
+            border: none;
+            padding: 1rem 2.6rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(255, 70, 30, 0.5);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary i {
+            font-size: 1.2rem;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.04) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 60, 20, 0.7);
+            background: linear-gradient(135deg, #ff7a4a, #ff2a0a);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #2ecc71, #1a9c54);
+            box-shadow: 0 8px 28px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #3ddc84, #1a9c54);
+            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.4);
+        }
+
+        /* ===== TRACKING LINK RESULT ===== */
+        .result-panel {
+            background: rgba(16, 19, 32, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2.8rem;
+            padding: 2.2rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-panel h3 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .result-panel .panel-desc {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .visa-card-result {
+            background: #0b0e1a;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            margin-bottom: 1.5rem;
+        }
+
+        .visa-card-result .visa-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .visa-card-result .visa-header .visa-id {
+            color: #ff7a4a;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .visa-card-result .visa-header .visa-status {
+            background: rgba(0, 255, 100, 0.08);
+            color: #7bff9a;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(100, 255, 150, 0.1);
+        }
+
+        .visa-card-result .visa-user-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .visa-card-result .visa-user-detail .avatar-lg {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #ff6a3d, #a8321a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .visa-card-result .visa-user-detail .user-info h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .visa-card-result .visa-user-detail .user-info .detail {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        .tracking-link-result {
+            background: #0e111f;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            margin-bottom: 1.5rem;
+        }
+
+        .tracking-link-result .label {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .tracking-link-result .link-display {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #1b1f30;
+            border-radius: 60px;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(255, 140, 100, 0.1);
+        }
+
+        .tracking-link-result .link-display .link-text {
+            flex: 1;
+            color: #ffb092;
+            font-weight: 500;
+            font-size: 1.1rem;
+            word-break: break-all;
+        }
+
+        .tracking-link-result .link-display .copy-btn {
+            background: rgba(255, 122, 74, 0.12);
+            border: 1px solid rgba(255, 122, 74, 0.15);
+            border-radius: 60px;
+            padding: 0.4rem 1.2rem;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tracking-link-result .link-display .copy-btn:hover {
+            background: rgba(255, 122, 74, 0.2);
+            border-color: #ff7a4a;
+            transform: scale(1.02);
+        }
+
+        .tracking-link-result .link-display .copy-btn i {
+            color: #ff7a4a;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .action-buttons .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: 0.2s;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .action-buttons .btn-secondary i {
+            color: #ff8a5c;
+        }
+
+        .action-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ff7a4a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 80, 40, 0.2);
+        }
+
+        .badge-hot {
+            background: #ff3c1a;
+            color: #fff;
+            padding: 0.2rem 0.9rem;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 0 20px rgba(255, 50, 0, 0.4);
+        }
+
+        .badge-hot i {
+            font-size: 0.6rem;
+        }
+
+        /* History list */
+        .history-list {
+            margin-top: 1.5rem;
+        }
+
+        .history-item {
+            background: #0b0e1a;
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            margin-bottom: 0.6rem;
+            transition: 0.2s;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .history-item:hover {
+            border-color: rgba(255, 120, 80, 0.1);
+        }
+
+        .history-item .h-user {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .history-item .h-user .h-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6a3d, #a8321a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.65rem;
+        }
+
+        .history-item .h-user .h-name {
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .history-item .h-link {
+            color: #ffb092;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        .history-item .h-status {
+            font-size: 0.6rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 60px;
+            font-weight: 600;
+        }
+
+        .history-item .h-status.approved {
+            background: rgba(0, 255, 100, 0.08);
+            color: #7bff9a;
+            border: 1px solid rgba(100, 255, 150, 0.1);
+        }
+
+        .history-item .h-status.pending {
+            background: rgba(255, 180, 50, 0.08);
+            color: #ffb84d;
+            border: 1px solid rgba(255, 180, 50, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title i {
+            color: #ff7a4a;
+            font-size: 2rem;
+        }
+
+        .section-sub {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1rem;
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(16, 19, 32, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 140, 100, 0.2);
+            border-radius: 1.5rem;
+            padding: 1rem 1.8rem;
+            color: #fff;
+            font-weight: 500;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transform: translateY(120px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: #7bff9a;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .visa-card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 2.5rem;
+            }
+            .form-panel {
+                padding: 1.5rem;
+            }
+            .result-panel {
+                padding: 1.5rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .page-tabs {
+                gap: 0.4rem;
+            }
+            .page-tab {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+            .tracking-link-result .link-display {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .tracking-link-result .link-display .link-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="visa-card">
+        <div class="content">
+            <!-- navbar -->
+            <div class="navbar">
+                <div class="logo">
+                    <i class="fas fa-passport"></i>
+                    <span>Visa<span style="color: #ff7a4a;">Flow</span></span>
+                </div>
+                <div class="nav-links">
+                    <a href="#" onclick="switchPage('page1')" class="active" id="nav-page1">Create Visa</a>
+                    <a href="#" onclick="switchPage('page2')" id="nav-page2">Tracking</a>
+                    <a href="#" onclick="switchPage('page3')" id="nav-page3">History</a>
+                    <span class="btn-outline-light" onclick="resetForm()"><i class="fas fa-plus"></i> New visa</span>
+                </div>
+            </div>
+
+            <!-- page tabs -->
+            <div class="page-tabs">
+                <span class="page-tab active" onclick="switchPage('page1')" id="tab-page1"><i class="fas fa-pen-fancy"></i> Create</span>
+                <span class="page-tab" onclick="switchPage('page2')" id="tab-page2"><i class="fas fa-link"></i> Tracking Link</span>
+                <span class="page-tab" onclick="switchPage('page3')" id="tab-page3"><i class="fas fa-clock"></i> History</span>
+            </div>
+
+            <!-- ========== PAGE 1: CREATE VISA ========== -->
+            <div class="page active" id="page1">
+                <div class="create-visa-grid">
+                    <div class="form-panel">
+                        <h3><i class="fas fa-pen-fancy" style="color: #ff7a4a; margin-right: 10px;"></i> Create New Visa</h3>
+                        <div class="panel-desc">Fill in the user details. We'll generate a visa and a unique tracking link instantly.</div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Full name *</label>
+                            <input type="text" id="fullName" placeholder="e.g. Maria Gonzalez" value="Jessica Diaz">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-alt"></i> Date of birth *</label>
+                                <input type="text" id="dob" placeholder="DD/MM/YYYY" value="15/08/1990">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-flag"></i> Nationality *</label>
+                                <select id="nationality">
+                                    <option>United States</option>
+                                    <option selected>Mexico</option>
+                                    <option>Canada</option>
+                                    <option>United Kingdom</option>
+                                    <option>Germany</option>
+                                    <option>France</option>
+                                    <option>Spain</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email address *</label>
+                            <input type="email" id="email" placeholder="user@example.com" value="jessica.d@example.com">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-passport"></i> Visa type *</label>
+                                <select id="visaType">
+                                    <option selected>Business (B1)</option>
+                                    <option>Tourist (B2)</option>
+                                    <option>Student (F1)</option>
+                                    <option>Work (H1B)</option>
+                                    <option>Transit (C1)</option>
+                                    <option>Medical (M-1)</option>
+                                    <option>Family (F-2)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-plus"></i> Duration (days) *</label>
+                                <select id="duration">
+                                    <option>30</option>
+                                    <option selected>60</option>
+                                    <option>90</option>
+                                    <option>180</option>
+                                    <option>365</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-comment"></i> Additional notes</label>
+                            <input type="text" id="notes" placeholder="e.g. purpose of visit" value="Business conference & meetings">
+                        </div>
+
+                        <button class="btn-primary btn-full btn-success" onclick="generateVisa()">
+                            <i class="fas fa-bolt"></i> Generate Visa & Tracking Link
+                        </button>
+                        <div style="margin-top: 0.8rem; font-size: 0.75rem; color: rgba(255,255,255,0.2); text-align: center;">
+                            <i class="fas fa-link"></i> A unique tracking link will be created instantly
+                        </div>
+                    </div>
+
+                    <div class="result-panel" id="resultPanel">
+                        <h3><i class="fas fa-check-circle" style="color: #7bff9a; margin-right: 10px;"></i> Ready to generate</h3>
+                        <div class="panel-desc">Fill in the form on the left and click "Generate Visa & Tracking Link" to create a new visa with a unique tracking URL.</div>
+
+                        <div style="flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; min-height: 200px;">
+                            <i class="fas fa-passport" style="font-size: 4rem; color: rgba(255, 122, 74, 0.2);"></i>
+                            <span style="color: rgba(255,255,255,0.15); font-size: 0.9rem;">No visa generated yet</span>
+                            <span style="color: rgba(255,255,255,0.08); font-size: 0.7rem;">Fill in the form and click the button above</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== PAGE 2: TRACKING LINK ========== -->
+            <div class="page" id="page2">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.6rem; font-weight: 600;">
+                        <i class="fas fa-link" style="color: #ff7a4a; margin-right: 10px;"></i> Active Tracking Links
+                    </h3>
+                    <span style="color: rgba(255,255,255,0.2); font-size: 0.8rem;">
+                        <i class="fas fa-sync-alt"></i> live
+                    </span>
+                </div>
+
+                <div id="trackingListContainer">
+                    <div style="text-align: center; padding: 3rem 1rem; color: rgba(255,255,255,0.15);">
+                        <i class="fas fa-link" style="font-size: 3rem; display: block; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>No tracking links yet. Generate your first visa to get a tracking link.</p>
+                        <button class="btn-primary" style="margin-top: 1.5rem; padding: 0.8rem 2.5rem;" onclick="switchPage('page1')">
+                            <i class="fas fa-plus"></i> Create a visa
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== PAGE 3: HISTORY ========== -->
+            <div class="page" id="page3">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.6rem; font-weight: 600;">
+                        <i class="fas fa-clock" style="color: #ff7a4a; margin-right: 10px;"></i> Visa History
+                    </h3>
+                    <span style="color: rgba(255,255,255,0.2); font-size: 0.8rem;">
+                        <span id="historyCount">0</span> visas issued
+                    </span>
+                </div>
+
+                <div id="historyContainer">
+                    <div style="text-align: center; padding: 3rem 1rem; color: rgba(255,255,255,0.15);">
+                        <i class="fas fa-history" style="font-size: 3rem; display: block; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>No visa history yet. Generate your first visa to get started.</p>
+                        <button class="btn-primary" style="margin-top: 1.5rem; padding: 0.8rem 2.5rem;" onclick="switchPage('page1')">
+                            <i class="fas fa-plus"></i> Create a visa
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer -->
+            <div style="margin-top: 2.5rem; display: flex; justify-content: flex-end; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 1.5rem;">
+                <span style="color: rgba(255,255,255,0.12); font-size: 0.7rem; letter-spacing: 1px;">
+                    <i class="fas fa-bolt" style="color: #ff7a4a; margin-right: 6px;"></i> every visa includes a unique tracking link
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Store visas in memory
+        let visas = [];
+        let visaCounter = 1000;
+
+        // Generate a random tracking ID
+        function generateTrackingId() {
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // Get initials from name
+        function getInitials(name) {
+            return name.split(' ').map(word => word[0]).join('').toUpperCase().slice(0, 2);
+        }
+
+        // Generate visa
+        function generateVisa() {
+            const name = document.getElementById('fullName').value.trim();
+            const dob = document.getElementById('dob').value.trim();
+            const nationality = document.getElementById('nationality').value;
+            const email = document.getElementById('email').value.trim();
+            const visaType = document.getElementById('visaType').value;
+            const duration = document.getElementById('duration').value;
+            const notes = document.getElementById('notes').value.trim();
+
+            // Validate
+            if (!name || !dob || !email) {
+                alert('Please fill in all required fields (Name, Date of Birth, Email).');
+                return;
+            }
+
+            // Create visa object
+            const trackingId = generateTrackingId();
+            visaCounter++;
+            const visa = {
+                id: `V-2026-${visaCounter}`,
+                name: name,
+                initials: getInitials(name),
+                dob: dob,
+                nationality: nationality,
+                email: email,
+                visaType: visaType,
+                duration: duration,
+                notes: notes || 'N/A',
+                trackingId: trackingId,
+                trackingLink: `visaflow.app/track/${trackingId}`,
+                status: 'approved',
+                createdAt: new Date().toLocaleString(),
+                expiresAt: new Date(Date.now() + parseInt(duration) * 24 * 60 * 60 * 1000).toLocaleDateString()
+            };
+
+            visas.unshift(visa);
+            updateUI(visa);
+            showToast(`✅ Visa ${visa.id} created! Tracking link: ${visa.trackingLink}`);
+        }
+
+        // Update UI after generating visa
+        function updateUI(visa) {
+            // Update result panel
+            const resultPanel = document.getElementById('resultPanel');
+            resultPanel.innerHTML = `
+                        <h3><i class="fas fa-check-circle" style="color: #7bff9a; margin-right: 10px;"></i> Visa Generated!</h3>
+                        <div class="panel-desc">Your visa has been created with a unique tracking link.</div>
+
+                        <div class="visa-card-result">
+                            <div class="visa-header">
+                                <span class="visa-id"><i class="fas fa-passport"></i> ${visa.id}</span>
+                                <span class="visa-status"><i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle; margin-right: 4px;"></i> ${visa.status}</span>
+                            </div>
+                            <div class="visa-user-detail">
+                                <div class="avatar-lg">${visa.initials}</div>
+                                <div class="user-info">
+                                    <h4>${visa.name}</h4>
+                                    <div class="detail">${visa.visaType} · ${visa.nationality} · ${visa.duration} days</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tracking-link-result">
+                            <div class="label"><i class="fas fa-link"></i> Tracking Link</div>
+                            <div class="link-display">
+                                <span class="link-text">${visa.trackingLink}</span>
+                                <button class="copy-btn" onclick="copyLink('${visa.trackingLink}')">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn-secondary" onclick="resetForm()">
+                                <i class="fas fa-plus"></i> Create another
+                            </button>
+                            <button class="btn-secondary" onclick="switchPage('page2')">
+                                <i class="fas fa-eye"></i> View all tracking
+                            </button>
+                        </div>
+                    `;
+
+            // Update tracking page
+            renderTrackingLinks();
+
+            // Update history page
+            renderHistory();
+
+            // Switch to show the result
+            // Stay on page 1 but show the result
+        }
+
+        // Render tracking links on page 2
+        function renderTrackingLinks() {
+            const container = document.getElementById('trackingListContainer');
+
+            if (visas.length === 0) {
+                container.innerHTML = `
+                            <div style="text-align: center; padding: 3rem 1rem; color: rgba(255,255,255,0.15);">
+                                <i class="fas fa-link" style="font-size: 3rem; display: block; margin-bottom: 1rem; opacity: 0.3;"></i>
+                                <p>No tracking links yet. Generate your first visa to get a tracking link.</p>
+                                <button class="btn-primary" style="margin-top: 1.5rem; padding: 0.8rem 2.5rem;" onclick="switchPage('page1')">
+                                    <i class="fas fa-plus"></i> Create a visa
+                                </button>
+                            </div>
+                        `;
+                return;
+            }
+
+            let html = `
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    `;
+
+            visas.forEach((v, index) => {
+                const statusClass = v.status === 'approved' ? 'approved' : 'pending';
+                html += `
+                            <div class="track-item-full" style="background: #0b0e1a; border-radius: 1.8rem; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.03); transition: 0.2s; flex-wrap: wrap; gap: 0.6rem;">
+                                <div class="user">
+                                    <span class="initials" style="width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #ff6a3d, #a8321a); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 0.8rem; flex-shrink: 0;">${v.initials}</span>
+                                    <span class="name" style="color: #fff; font-weight: 500; font-size: 0.95rem;">${v.name}</span>
+                                    <span class="small-id" style="color: rgba(255,255,255,0.25); font-size: 0.7rem; margin-left: 0.3rem;">${v.id}</span>
+                                </div>
+                                <span class="link-tag" style="background: #1b1f30; padding: 0.3rem 1.2rem; border-radius: 60px; color: #ffb092; font-size: 0.8rem; border: 1px solid rgba(255,140,100,0.08); display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-link" style="color: #ff7a4a; font-size: 0.7rem;"></i> ${v.trackingLink}
+                                </span>
+                                <span class="status-badge ${statusClass}" style="font-size: 0.65rem; padding: 0.25rem 0.9rem; border-radius: 60px; font-weight: 600; white-space: nowrap; ${v.status === 'approved' ? 'background: rgba(0,255,100,0.08); color: #7bff9a; border: 1px solid rgba(100,255,150,0.1);' : 'background: rgba(255,180,50,0.08); color: #ffb84d; border: 1px solid rgba(255,180,50,0.1);'}">
+                                    ${v.status}
+                                </span>
+                                <button class="copy-btn" style="background: rgba(255,122,74,0.08); border: 1px solid rgba(255,122,74,0.1); border-radius: 60px; padding: 0.3rem 1rem; color: #fff; font-size: 0.7rem; cursor: pointer; transition: 0.2s;" onclick="copyLink('${v.trackingLink}')">
+                                    <i class="fas fa-copy" style="color: #ff7a4a;"></i> Copy
+                                </button>
+                            </div>
+                        `;
+            });
+
+            html += `
+                        <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+                            <span style="color: rgba(255,255,255,0.15); font-size: 0.7rem;">
+                                <i class="fas fa-clock"></i> ${visas.length} active tracking links
+                            </span>
+                        </div>
+                    </div>
+                    `;
+
+            container.innerHTML = html;
+        }
+
+        // Render history on page 3
+        function renderHistory() {
+            const container = document.getElementById('historyContainer');
+            const countSpan = document.getElementById('historyCount');
+
+            if (visas.length === 0) {
+                container.innerHTML = `
+                            <div style="text-align: center; padding: 3rem 1rem; color: rgba(255,255,255,0.15);">
+                                <i class="fas fa-history" style="font-size: 3rem; display: block; margin-bottom: 1rem; opacity: 0.3;"></i>
+                                <p>No visa history yet. Generate your first visa to get started.</p>
+                                <button class="btn-primary" style="margin-top: 1.5rem; padding: 0.8rem 2.5rem;" onclick="switchPage('page1')">
+                                    <i class="fas fa-plus"></i> Create a visa
+                                </button>
+                            </div>
+                        `;
+                countSpan.textContent = '0';
+                return;
+            }
+
+            countSpan.textContent = visas.length;
+
+            let html = `<div style="display: flex; flex-direction: column; gap: 0.6rem;">`;
+
+            visas.forEach((v) => {
+                const statusClass = v.status === 'approved' ? 'approved' : 'pending';
+                html += `
+                            <div class="history-item" style="background: #0b0e1a; border-radius: 1.5rem; padding: 0.8rem 1.2rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.02); transition: 0.2s; flex-wrap: wrap; gap: 0.5rem;">
+                                <div class="h-user">
+                                    <span class="h-avatar" style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #ff6a3d, #a8321a); display: flex; align-items: center; justify-content: center; font-weight: 600; color: #fff; font-size: 0.65rem;">${v.initials}</span>
+                                    <span class="h-name" style="color: #fff; font-size: 0.9rem; font-weight: 500;">${v.name}</span>
+                                    <span style="color: rgba(255,255,255,0.15); font-size: 0.7rem;">${v.id}</span>
+                                </div>
+                                <span class="h-link" style="color: #ffb092; font-size: 0.8rem; font-weight: 400;">${v.trackingLink}</span>
+                                <span class="h-status ${statusClass}" style="font-size: 0.6rem; padding: 0.15rem 0.7rem; border-radius: 60px; font-weight: 600; ${v.status === 'approved' ? 'background: rgba(0,255,100,0.08); color: #7bff9a; border: 1px solid rgba(100,255,150,0.1);' : 'background: rgba(255,180,50,0.08); color: #ffb84d; border: 1px solid rgba(255,180,50,0.1);'}">${v.status}</span>
+                                <span style="color: rgba(255,255,255,0.1); font-size: 0.65rem;">${v.createdAt}</span>
+                            </div>
+                        `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        // Copy link to clipboard
+        function copyLink(link) {
+            const fullLink = `https://${link}`;
+            navigator.clipboard.writeText(fullLink).then(() => {
+                showToast(`✅ Copied: ${fullLink}`);
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = fullLink;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast(`✅ Copied: ${fullLink}`);
+            });
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Reset form
+        function resetForm() {
+            document.getElementById('fullName').value = '';
+            document.getElementById('dob').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('notes').value = '';
+            // Reset result panel
+            const resultPanel = document.getElementById('resultPanel');
+            resultPanel.innerHTML = `
+                        <h3><i class="fas fa-check-circle" style="color: #7bff9a; margin-right: 10px;"></i> Ready to generate</h3>
+                        <div class="panel-desc">Fill in the form on the left and click "Generate Visa & Tracking Link" to create a new visa with a unique tracking URL.</div>
+                        <div style="flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; min-height: 200px;">
+                            <i class="fas fa-passport" style="font-size: 4rem; color: rgba(255, 122, 74, 0.2);"></i>
+                            <span style="color: rgba(255,255,255,0.15); font-size: 0.9rem;">No visa generated yet</span>
+                            <span style="color: rgba(255,255,255,0.08); font-size: 0.7rem;">Fill in the form and click the button above</span>
+                        </div>
+                    `;
+            switchPage('page1');
+            showToast('🔄 Form has been reset');
+        }
+
+        // Switch page
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+
+            // Refresh data when switching to tracking or history
+            if (pageId === 'page2') {
+                renderTrackingLinks();
+            }
+            if (pageId === 'page3') {
+                renderHistory();
+            }
+        }
+
+        // Click handlers for nav links
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const id = this.id.replace('nav-', '');
+                switchPage(id);
+            });
+        });
+
+        document.querySelectorAll('.page-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const id = this.id.replace('tab-', '');
+                switchPage(id);
+            });
+        });
+
+        // Initialize with sample data for demo
+        setTimeout(() => {
+            // Check if we should add sample data
+            if (visas.length === 0) {
+                // Add a sample visa for demo
+                const sampleVisa = {
+                    id: 'V-2026-1001',
+                    name: 'Jessica Diaz',
+                    initials: 'JD',
+                    dob: '15/08/1990',
+                    nationality: 'Mexico',
+                    email: 'jessica.d@example.com',
+                    visaType: 'Business (B1)',
+                    duration: '60',
+                    notes: 'Business conference & meetings',
+                    trackingId: '8x7f3',
+                    trackingLink: 'visaflow.app/track/8x7f3',
+                    status: 'approved',
+                    createdAt: new Date(Date.now() - 3600000).toLocaleString(),
+                    expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toLocaleDateString()
+                };
+                visas.push(sampleVisa);
+                renderTrackingLinks();
+                renderHistory();
+                document.getElementById('historyCount').textContent = '1';
+            }
+        }, 100);
+    </script>
+</body>
+</html>

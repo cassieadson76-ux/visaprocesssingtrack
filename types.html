@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisaFlow · instant visa & tracking</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #0b0d15;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .visa-card {
+            max-width: 1400px;
+            width: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 90, 90, 0.15) 0%, rgba(10, 12, 28, 0.95) 70%),
+                linear-gradient(145deg, #141824 0%, #1b1f2e 100%);
+            backdrop-filter: blur(2px);
+            border-radius: 4.5rem;
+            padding: 3rem 3.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 120, 80, 0.2) inset, 0 0 30px rgba(255, 70, 50, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 140, 100, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visa-card::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 100, 70, 0.25) 0%, rgba(255, 40, 20, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 6s infinite alternate ease-in-out;
+        }
+
+        .visa-card::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 180, 70, 0.2) 0%, rgba(255, 100, 30, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 8s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-shadow: 0 0 12px rgba(255, 120, 80, 0.5);
+        }
+
+        .logo i {
+            color: #ff7a4a;
+            filter: drop-shadow(0 0 8px #ff5e2e);
+            font-size: 2.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: 0.2s;
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            border-bottom-color: #ff7a4a;
+            text-shadow: 0 0 12px rgba(255, 120, 80, 0.4);
+        }
+
+        .nav-links a.active {
+            color: #fff;
+            border-bottom-color: #ff7a4a;
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.25s;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-outline-light i {
+            margin-right: 8px;
+            color: #ff7a4a;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 122, 74, 0.15);
+            border-color: #ff7a4a;
+            box-shadow: 0 0 20px rgba(255, 100, 50, 0.2);
+            transform: scale(1.02);
+        }
+
+        .page-tabs {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .page-tab {
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+            transition: 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .page-tab i {
+            color: #ff7a4a;
+            font-size: 0.9rem;
+        }
+
+        .page-tab.active {
+            background: rgba(255, 122, 74, 0.12);
+            border-color: rgba(255, 122, 74, 0.2);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 70, 30, 0.05);
+        }
+
+        .page-tab:hover {
+            background: rgba(255, 122, 74, 0.06);
+            color: #fff;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PAGE 1: HERO ===== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .visa-card {
+                padding: 2rem 1.8rem;
+                border-radius: 3rem;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #ff8a5c, #ff4d2a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(255, 90, 40, 0.3));
+        }
+
+        .hero-text p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-bottom: 2.8rem;
+            font-weight: 400;
+        }
+
+        @media (max-width: 850px) {
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .btn-group {
+                justify-content: center;
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6a3d, #ff3c1a);
+            border: none;
+            padding: 1rem 2.6rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(255, 70, 30, 0.5);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary i {
+            font-size: 1.2rem;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.04) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 60, 20, 0.7);
+            background: linear-gradient(135deg, #ff7a4a, #ff2a0a);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: 0.2s;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary i {
+            color: #ff8a5c;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ff7a4a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 80, 40, 0.2);
+        }
+
+        .visa-preview {
+            background: rgba(20, 24, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2.8rem;
+            padding: 2rem 2rem 1.8rem;
+            border: 1px solid rgba(255, 140, 100, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 100, 60, 0.1) inset;
+            transition: 0.3s;
+        }
+
+        .visa-preview:hover {
+            border-color: rgba(255, 120, 80, 0.5);
+            box-shadow: 0 25px 50px rgba(255, 70, 30, 0.2);
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.8rem;
+        }
+
+        .preview-header i {
+            color: #ff7a4a;
+            font-size: 1.4rem;
+        }
+
+        .visa-user {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #ff6a3d, #b83b1a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 0 0 2px rgba(255, 140, 100, 0.3);
+        }
+
+        .user-info h4 {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .user-info .status {
+            color: #7bff9a;
+            font-size: 0.85rem;
+            background: rgba(0, 255, 100, 0.08);
+            padding: 0.25rem 1rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid rgba(100, 255, 150, 0.15);
+        }
+
+        .tracking-link-box {
+            background: #0e111f;
+            border-radius: 2rem;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            margin-top: 0.5rem;
+        }
+
+        .tracking-link-box span {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .tracking-link-box .link {
+            background: #1b1f30;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            color: #ffb092;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 140, 100, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .tracking-link-box .link i {
+            color: #ff7a4a;
+            font-size: 0.9rem;
+        }
+
+        .badge-hot {
+            background: #ff3c1a;
+            color: #fff;
+            padding: 0.2rem 0.9rem;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 0 20px rgba(255, 50, 0, 0.4);
+        }
+
+        .badge-hot i {
+            font-size: 0.6rem;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 2.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .stat-item i {
+            font-size: 1.6rem;
+            color: #ff7a4a;
+            filter: drop-shadow(0 0 8px rgba(255, 100, 50, 0.3));
+        }
+
+        .stat-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-item .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title i {
+            color: #ff7a4a;
+            font-size: 2rem;
+        }
+
+        .section-sub {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1rem;
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .feature-card {
+            background: rgba(20, 24, 40, 0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover {
+            border-color: rgba(255, 120, 80, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(255, 70, 30, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 2.4rem;
+            color: #ff7a4a;
+            margin-bottom: 1rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(255, 100, 50, 0.2));
+        }
+
+        .feature-card h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .feature-card .tag {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            background: rgba(255, 122, 74, 0.12);
+            color: #ffb092;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 122, 74, 0.1);
+        }
+
+        /* ===== PAGE 2: APPLICATION ===== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 850px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-panel {
+            background: rgba(16, 19, 32, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2.8rem;
+            padding: 2.2rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-panel h3 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-panel .panel-desc {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group label i {
+            color: #ff7a4a;
+            margin-right: 6px;
+            width: 16px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            background: #0b0e1a;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 0.85rem 1.4rem;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.2s;
+            appearance: none;
+        }
+
+        .form-group select option {
+            background: #141824;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff7a4a;
+            box-shadow: 0 0 0 3px rgba(255, 122, 74, 0.15);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.8rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #2ecc71, #1a9c54);
+            box-shadow: 0 8px 28px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #3ddc84, #1a9c54);
+            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.4);
+        }
+
+        .summary-box {
+            background: #0b0e1a;
+            border-radius: 1.8rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .summary-box .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .summary-box .row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-box .row .value {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .summary-box .row .value i {
+            color: #ff7a4a;
+            margin-right: 6px;
+        }
+
+        /* ===== PAGE 3: TRACKING ===== */
+        .tracking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 850px) {
+            .tracking-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .track-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .track-stat-card {
+            background: rgba(16, 19, 32, 0.5);
+            border-radius: 1.8rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+
+        .track-stat-card .num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .track-stat-card .label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.2rem;
+        }
+
+        .track-stat-card .num.green {
+            color: #7bff9a;
+        }
+        .track-stat-card .num.orange {
+            color: #ffb84d;
+        }
+        .track-stat-card .num.red {
+            color: #ff6b6b;
+        }
+
+        .track-list-full {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .track-item-full {
+            background: #0b0e1a;
+            border-radius: 1.8rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: 0.2s;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .track-item-full:hover {
+            border-color: rgba(255, 120, 80, 0.15);
+        }
+
+        .track-item-full .user {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .track-item-full .user .initials {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6a3d, #a8321a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .track-item-full .user .name {
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .track-item-full .user .small-id {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+        }
+
+        .track-item-full .link-tag {
+            background: #1b1f30;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            color: #ffb092;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 140, 100, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .track-item-full .link-tag i {
+            color: #ff7a4a;
+            font-size: 0.7rem;
+        }
+
+        .status-badge {
+            font-size: 0.65rem;
+            padding: 0.25rem 0.9rem;
+            border-radius: 60px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status-badge.approved {
+            background: rgba(0, 255, 100, 0.08);
+            color: #7bff9a;
+            border: 1px solid rgba(100, 255, 150, 0.1);
+        }
+
+        .status-badge.pending {
+            background: rgba(255, 180, 50, 0.08);
+            color: #ffb84d;
+            border: 1px solid rgba(255, 180, 50, 0.1);
+        }
+
+        .status-badge.expired {
+            background: rgba(255, 0, 0, 0.08);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+        }
+
+        .status-badge.processing {
+            background: rgba(52, 152, 219, 0.08);
+            color: #5dade2;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .track-search {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .track-search input {
+            flex: 1;
+            background: #0b0e1a;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 0.7rem 1.4rem;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .track-search input:focus {
+            border-color: #ff7a4a;
+        }
+
+        .track-search input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .track-search button {
+            background: rgba(255, 122, 74, 0.12);
+            border: 1px solid rgba(255, 122, 74, 0.15);
+            border-radius: 60px;
+            padding: 0.7rem 1.5rem;
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .track-search button:hover {
+            background: rgba(255, 122, 74, 0.2);
+        }
+
+        /* ===== PAGE 4: ADMIN ===== */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .admin-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 550px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .admin-stat-card {
+            background: rgba(16, 19, 32, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .admin-stat-card:hover {
+            border-color: rgba(255, 120, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .admin-stat-card .admin-icon {
+            font-size: 2rem;
+            color: #ff7a4a;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-stat-card .admin-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .admin-stat-card .admin-label {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        .admin-stat-card .admin-change {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+            padding: 0.15rem 0.8rem;
+            border-radius: 60px;
+        }
+
+        .admin-change.up {
+            color: #7bff9a;
+            background: rgba(0, 255, 100, 0.08);
+        }
+
+        .admin-change.down {
+            color: #ff6b6b;
+            background: rgba(255, 0, 0, 0.08);
+        }
+
+        .admin-table-wrap {
+            background: rgba(16, 19, 32, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            overflow-x: auto;
+        }
+
+        .admin-table-wrap h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .admin-table th {
+            text-align: left;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .admin-table td {
+            padding: 0.8rem 0.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .admin-table .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .admin-table .user-cell .mini-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6a3d, #a8321a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.7rem;
+        }
+
+        .admin-table .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .status-dot.green {
+            background: #7bff9a;
+        }
+        .status-dot.orange {
+            background: #ffb84d;
+        }
+        .status-dot.red {
+            background: #ff6b6b;
+        }
+        .status-dot.blue {
+            background: #5dade2;
+        }
+
+        .admin-action-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 0.3rem 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .admin-action-btn:hover {
+            background: rgba(255, 122, 74, 0.1);
+            border-color: rgba(255, 122, 74, 0.2);
+            color: #fff;
+        }
+
+        .admin-action-btn i {
+            margin-right: 4px;
+            color: #ff7a4a;
+        }
+
+        /* ===== PAGE 5: VISA TYPES ===== */
+        .visa-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .visa-type-card {
+            background: rgba(16, 19, 32, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 2.5rem;
+            padding: 2rem 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visa-type-card:hover {
+            border-color: rgba(255, 120, 80, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(255, 70, 30, 0.15);
+        }
+
+        .visa-type-card .type-icon {
+            font-size: 2.8rem;
+            color: #ff7a4a;
+            margin-bottom: 1rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 15px rgba(255, 100, 50, 0.2));
+        }
+
+        .visa-type-card .type-name {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .visa-type-card .type-code {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .visa-type-card .type-desc {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .visa-type-card .type-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .visa-type-card .type-features span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 0.2rem 0.9rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .visa-type-card .type-features span i {
+            color: #ff7a4a;
+            margin-right: 4px;
+        }
+
+        .visa-type-card .type-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .visa-type-card .type-price {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .visa-type-card .type-price span {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 400;
+        }
+
+        .visa-type-card .type-btn {
+            background: rgba(255, 122, 74, 0.12);
+            border: 1px solid rgba(255, 122, 74, 0.15);
+            border-radius: 60px;
+            padding: 0.5rem 1.5rem;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .visa-type-card .type-btn:hover {
+            background: rgba(255, 122, 74, 0.2);
+            border-color: #ff7a4a;
+            transform: scale(1.02);
+        }
+
+        .visa-type-card .type-btn i {
+            color: #ff7a4a;
+        }
+
+        .visa-type-card .popular-badge {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: linear-gradient(135deg, #ff6a3d, #ff3c1a);
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0.25rem 1rem;
+            border-radius: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 70, 30, 0.3);
+        }
+
+        .visa-type-card .popular-badge i {
+            margin-right: 4px;
+        }
+
+        .faq-section {
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 2.5rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: rgba(16, 19, 32, 0.3);
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-item h5 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item h5 i {
+            color: #ff7a4a;
+            font-size: 0.8rem;
+        }
+
+        .faq-item p {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* responsive */
+        @media (max-width: 600px) {
+            .visa-card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 2.5rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .stats {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .tracking-link-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .form-panel {
+                padding: 1.5rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .track-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .page-tabs {
+                gap: 0.4rem;
+            }
+            .page-tab {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+            .visa-types-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-muted {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="visa-card">
+        <div class="content">
+            <!-- navbar -->
+            <div class="navbar">
+                <div class="logo">
+                    <i class="fas fa-passport"></i>
+                    <span>Visa<span style="color: #ff7a4a;">Flow</span></span>
+                </div>
+                <div class="nav-links">
+                    <a href="#" onclick="switchPage('page1')" class="active" id="nav-page1">Home</a>
+                    <a href="#" onclick="switchPage('page2')" id="nav-page2">Apply</a>
+                    <a href="#" onclick="switchPage('page3')" id="nav-page3">Tracking</a>
+                    <a href="#" onclick="switchPage('page4')" id="nav-page4">Admin</a>
+                    <a href="#" onclick="switchPage('page5')" id="nav-page5">Visa Types</a>
+                    <span class="btn-outline-light" onclick="switchPage('page2')"><i class="fas fa-link"></i> + Create visa</span>
+                </div>
+            </div>
+
+            <!-- page tabs -->
+            <div class="page-tabs">
+                <span class="page-tab active" onclick="switchPage('page1')" id="tab-page1"><i class="fas fa-home"></i> Overview</span>
+                <span class="page-tab" onclick="switchPage('page2')" id="tab-page2"><i class="fas fa-pen-fancy"></i> Application</span>
+                <span class="page-tab" onclick="switchPage('page3')" id="tab-page3"><i class="fas fa-map-pin"></i> Tracking</span>
+                <span class="page-tab" onclick="switchPage('page4')" id="tab-page4"><i class="fas fa-chart-pie"></i> Admin</span>
+                <span class="page-tab" onclick="switchPage('page5')" id="tab-page5"><i class="fas fa-passport"></i> Visa Types</span>
+            </div>
+
+            <!-- ========== PAGE 1: OVERVIEW ========== -->
+            <div class="page active" id="page1">
+                <div class="hero">
+                    <div class="hero-text">
+                        <h1>
+                            Instant visa <br><span>in 3 clicks</span>
+                        </h1>
+                        <p>
+                            Generate digital visas for your users and share real‑time tracking links.
+                            <strong style="color:#ffb092;">Super hot</strong> & secure.
+                        </p>
+                        <div class="btn-group">
+                            <span class="btn-primary" onclick="switchPage('page2')"><i class="fas fa-bolt"></i> Apply now</span>
+                            <span class="btn-secondary" onclick="switchPage('page3')"><i class="fas fa-eye"></i> Track visa</span>
+                        </div>
+                        <div style="margin-top: 1.8rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                            <span style="display: flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.4); font-size: 0.9rem;">
+                                <i class="fas fa-check-circle" style="color: #7bff9a;"></i> 2,400+ visas issued
+                            </span>
+                            <span style="display: flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.4); font-size: 0.9rem;">
+                                <i class="fas fa-clock" style="color: #ffb092;"></i> real‑time tracking
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="visa-preview">
+                        <div class="preview-header">
+                            <span><i class="fas fa-shield-alt"></i> Visa #V-2026-08</span>
+                            <span class="badge-hot"><i class="fas fa-fire"></i> active</span>
+                        </div>
+                        <div class="visa-user">
+                            <div class="avatar">JD</div>
+                            <div class="user-info">
+                                <h4>Jessica Diaz</h4>
+                                <span class="status"><i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle; margin-right: 5px; color: #7bff9a;"></i> approved</span>
+                            </div>
+                        </div>
+                        <div class="tracking-link-box">
+                            <span><i class="fas fa-link" style="margin-right: 6px;"></i> tracking link</span>
+                            <div class="link">
+                                <i class="fas fa-copy"></i> visaflow.app/track/8x7f3
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end; margin-top: 1rem; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.2);">
+                            <span><i class="far fa-calendar-alt"></i> expires: 12/2027</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-bolt"></i> Why VisaFlow <span class="section-sub">· built for speed</span>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <i class="fas fa-rocket"></i>
+                        <h4>Instant issuance</h4>
+                        <p>Generate a complete digital visa in under 30 seconds. No waiting, no paperwork.</p>
+                        <span class="tag"><i class="fas fa-clock"></i> avg. 12s</span>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-link"></i>
+                        <h4>Tracking for each user</h4>
+                        <p>Every visa gets a unique tracking link. Share it with your user and monitor status live.</p>
+                        <span class="tag"><i class="fas fa-check-circle"></i> 100% unique</span>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Secure & compliant</h4>
+                        <p>End‑to‑end encryption, GDPR ready, and blockchain‑anchored hashes for each visa.</p>
+                        <span class="tag"><i class="fas fa-lock"></i> SOC2 ready</span>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <i class="fas fa-user-plus"></i>
+                        <div>
+                            <span class="number">+128</span>
+                            <span class="label">new visas today</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-map-pin"></i>
+                        <div>
+                            <span class="number">84%</span>
+                            <span class="label">approval rate</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-hourglass-half"></i>
+                        <div>
+                            <span class="number">2.4k</span>
+                            <span class="label">active tracking links</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <span class="number">32</span>
+                            <span class="label">countries covered</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <div class="section-title" style="font-size: 1.4rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-question-circle"></i> Quick answers
+                    </div>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h5><i class="fas fa-link"></i> How do I get a tracking link?</h5>
+                            <p>After you create a visa, a unique tracking link is generated automatically for each user.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-clock"></i> How long is a visa valid?</h5>
+                            <p>Visa validity depends on the type. Tourist visas are typically valid for 90 days.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-shield-alt"></i> Is my data secure?</h5>
+                            <p>Yes. All data is encrypted and we never share your information with third parties.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== PAGE 2: APPLICATION ========== -->
+            <div class="page" id="page2">
+                <div class="form-grid">
+                    <div class="form-panel">
+                        <h3><i class="fas fa-pen-fancy" style="color: #ff7a4a; margin-right: 10px;"></i> Visa application</h3>
+                        <div class="panel-desc">Fill in the details below. We'll generate a visa and a tracking link instantly.</div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Full name</label>
+                            <input type="text" placeholder="e.g. Maria Gonzalez" value="Alex Rivera">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-alt"></i> Date of birth</label>
+                                <input type="text" placeholder="DD/MM/YYYY" value="15/08/1990">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-flag"></i> Nationality</label>
+                                <select>
+                                    <option>United States</option>
+                                    <option selected>Mexico</option>
+                                    <option>Canada</option>
+                                    <option>United Kingdom</option>
+                                    <option>Germany</option>
+                                    <option>France</option>
+                                    <option>Spain</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email address</label>
+                            <input type="email" placeholder="user@example.com" value="alex.r@example.com">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-passport"></i> Visa type</label>
+                                <select>
+                                    <option selected>Business (B1)</option>
+                                    <option>Tourist (B2)</option>
+                                    <option>Student (F1)</option>
+                                    <option>Work (H1B)</option>
+                                    <option>Transit (C1)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-plus"></i> Duration (days)</label>
+                                <select>
+                                    <option>30</option>
+                                    <option selected>60</option>
+                                    <option>90</option>
+                                    <option>180</option>
+                                    <option>365</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-comment"></i> Additional notes</label>
+                            <input type="text" placeholder="e.g. purpose of visit" value="Business conference & meetings">
+                        </div>
+
+                        <button class="btn-primary btn-full btn-success" style="border: none; cursor: pointer;" onclick="alert('✅ Visa created! Tracking link: visaflow.app/track/8x7f3')">
+                            <i class="fas fa-bolt"></i> Generate visa & tracking link
+                        </button>
+                        <div style="margin-top: 0.8rem; font-size: 0.75rem; color: rgba(255,255,255,0.2); text-align: center;">
+                            <i class="fas fa-link"></i> A unique tracking link will be created instantly
+                        </div>
+                    </div>
+
+                    <div class="form-panel">
+                        <h3><i class="fas fa-file-alt" style="color: #ff7a4a; margin-right: 10px;"></i> Application summary</h3>
+                        <div class="panel-desc">Review your details before submission.</div>
+
+                        <div class="summary-box">
+                            <div class="row"><span>Full name</span><span class="value">Alex Rivera</span></div>
+                            <div class="row"><span>Date of birth</span><span class="value">15/08/1990</span></div>
+                            <div class="row"><span>Nationality</span><span class="value">Mexico</span></div>
+                            <div class="row"><span>Email</span><span class="value">alex.r@example.com</span></div>
+                            <div class="row"><span>Visa type</span><span class="value"><i class="fas fa-briefcase"></i> Business (B1)</span></div>
+                            <div class="row"><span>Duration</span><span class="value">60 days</span></div>
+                            <div class="row"><span>Notes</span><span class="value" style="font-size:0.85rem;">Business conference & meetings</span></div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; background: rgba(255, 122, 74, 0.06); border-radius: 1.5rem; padding: 1rem 1.5rem; border: 1px solid rgba(255, 122, 74, 0.08);">
+                            <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                <i class="fas fa-link" style="color: #ff7a4a; font-size: 1.4rem;"></i>
+                                <div>
+                                    <div style="color: rgba(255,255,255,0.5); font-size: 0.75rem;">Your tracking link will be</div>
+                                    <div style="color: #ffb092; font-weight: 500; font-size: 0.95rem;">visaflow.app/track/</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.02); padding: 0.3rem 1rem; border-radius: 60px; font-size: 0.7rem; color: rgba(255,255,255,0.3);">
+                                <i class="fas fa-check-circle" style="color: #7bff9a;"></i> 100% digital
+                            </span>
+                            <span style="background: rgba(255,255,255,0.02); padding: 0.3rem 1rem; border-radius: 60px; font-size: 0.7rem; color: rgba(255,255,255,0.3);">
+                                <i class="fas fa-shield-alt" style="color: #ff7a4a;"></i> encrypted
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== PAGE 3: TRACKING ========== -->
+            <div class="page" id="page3">
+                <div class="tracking-grid">
+                    <div>
+                        <h3 style="color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.3rem;">
+                            <i class="fas fa-map-pin" style="color: #ff7a4a; margin-right: 10px;"></i> Tracking dashboard
+                        </h3>
+                        <p style="color: rgba(255,255,255,0.4); margin-bottom: 1.5rem;">Monitor all your visa applications in real time.</p>
+
+                        <div class="track-stats">
+                            <div class="track-stat-card">
+                                <div class="num green">24</div>
+                                <div class="label">Approved</div>
+                            </div>
+                            <div class="track-stat-card">
+                                <div class="num orange">8</div>
+                                <div class="label">Pending</div>
+                            </div>
+                            <div class="track-stat-card">
+                                <div class="num red">3</div>
+                                <div class="label">Expired</div>
+                            </div>
+                            <div class="track-stat-card">
+                                <div class="num" style="color: #5dade2;">6</div>
+                                <div class="label">Processing</div>
+                            </div>
+                        </div>
+
+                        <div class="track-search">
+                            <input type="text" placeholder="Search by name, ID or tracking link...">
+                            <button><i class="fas fa-search"></i> Search</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                            <h4 style="color: #fff; font-weight: 600;"><i class="fas fa-list" style="color: #ff7a4a; margin-right: 8px;"></i> Recent visas</h4>
+                            <span style="color: rgba(255,255,255,0.2); font-size: 0.75rem;"><i class="fas fa-sync-alt"></i> live</span>
+                        </div>
+
+                        <div class="track-list-full">
+                            <div class="track-item-full">
+                                <div class="user">
+                                    <span class="initials">MR</span>
+                                    <span class="name">Maria R.</span>
+                                    <span class="small-id">#V-4321</span>
+                                </div>
+                                <span class="link-tag"><i class="fas fa-link"></i> /track/9k2m4</span>
+                                <span class="status-badge approved">approved</span>
+                            </div>
+
+                            <div class="track-item-full">
+                                <div class="user">
+                                    <span class="initials">JT</span>
+                                    <span class="name">James T.</span>
+                                    <span class="small-id">#V-4322</span>
+                                </div>
+                                <span class="link-tag"><i class="fas fa-link"></i> /track/7h8q1</span>
+                                <span class="status-badge pending">pending</span>
+                            </div>
+
+                            <div class="track-item-full">
+                                <div class="user">
+                                    <span class="initials">LW</span>
+                                    <span class="name">Lisa W.</span>
+                                    <span class="small-id">#V-4323</span>
+                                </div>
+                                <span class="link-tag"><i class="fas fa-link"></i> /track/3f6p9</span>
+                                <span class="status-badge approved">approved</span>
+                            </div>
+
+                            <div class="track-item-full">
+                                <div class="user">
+                                    <span class="initials">CN</span>
+                                    <span class="name">Carlos N.</span>
+                                    <span class="small-id">#V-4324</span>
+                                </div>
+                                <span class="link-tag"><i class="fas fa-link"></i> /track/5r2z7</span>
+                                <span class="status-badge processing">processing</span>
+                            </div>
+
+                            <div class="track-item-full">
+                                <div class="user">
+                                    <span class="initials">AK</span>
+                                    <span class="name">Anna K.</span>
+                                    <span class="small-id">#V-4325</span>
+                                </div>
+                                <span class="link-tag"><i class="fas fa-link"></i> /track/8x7f3</span>
+                                <span class="status-badge approved">approved</span>
+                            </div>
+
+                            <div class="track-item-full">
+                                <div class="user">
+                                    <span class="initials">PS</span>
+                                    <span class="name">Pablo S.</span>
+                                    <span class="small-id">#V-4326</span>
+                                </div>
+                                <span class="link-tag"><i class="fas fa-link"></i> /track/2w9q6</span>
+                                <span class="status-badge expired">expired</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.2rem; display: flex; justify-content: flex-end;">
+                            <span style="color: rgba(255,255,255,0.15); font-size: 0.7rem;">
+                                <i class="fas fa-clock"></i> last updated: just now
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section" style="margin-top: 2rem;">
+                    <div class="section-title" style="font-size: 1.2rem; margin-bottom: 1.2rem;">
+                        <i class="fas fa-question-circle"></i> Tracking help
+                    </div>
+                    <div class="faq-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="faq-item">
+                            <h5><i class="fas fa-link"></i> How to share a link?</h5>
+                            <p>Copy the unique tracking link and send it to your user via email or message.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-sync-alt"></i> How often is it updated?</h5>
+                            <p>Tracking status updates in real time as soon as the visa is processed.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-clock"></i> How long is it active?</h5>
+                            <p>Tracking links remain active for 30 days after the visa expires.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== PAGE 4: ADMIN ========== -->
+            <div class="page" id="page4">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.6rem; font-weight: 600;">
+                        <i class="fas fa-chart-pie" style="color: #ff7a4a; margin-right: 10px;"></i> Admin Dashboard
+                    </h3>
+                    <span style="color: rgba(255,255,255,0.2); font-size: 0.8rem;">
+                        <i class="fas fa-sync-alt"></i> last updated: 2 min ago
+                    </span>
+                </div>
+
+                <div class="admin-grid">
+                    <div class="admin-stat-card">
+                        <div class="admin-icon"><i class="fas fa-passport"></i></div>
+                        <div class="admin-number">1,847</div>
+                        <div class="admin-label">Total visas issued</div>
+                        <span class="admin-change up"><i class="fas fa-arrow-up"></i> +12.4%</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-icon"><i class="fas fa-users"></i></div>
+                        <div class="admin-number">1,203</div>
+                        <div class="admin-label">Active users</div>
+                        <span class="admin-change up"><i class="fas fa-arrow-up"></i> +8.1%</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-icon"><i class="fas fa-link"></i></div>
+                        <div class="admin-number">2,431</div>
+                        <div class="admin-label">Tracking links generated</div>
+                        <span class="admin-change up"><i class="fas fa-arrow-up"></i> +23.7%</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-icon"><i class="fas fa-clock"></i></div>
+                        <div class="admin-number">94.2%</div>
+                        <div class="admin-label">Approval rate</div>
+                        <span class="admin-change up"><i class="fas fa-arrow-up"></i> +2.3%</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-icon"><i class="fas fa-globe"></i></div>
+                        <div class="admin-number">42</div>
+                        <div class="admin-label">Countries served</div>
+                        <span class="admin-change up"><i class="fas fa-arrow-up"></i> +6</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="admin-number">$47.8k</div>
+                        <div class="admin-label">Revenue (this month)</div>
+                        <span class="admin-change up"><i class="fas fa-arrow-up"></i> +18.6%</span>
+                    </div>
+                </div>
+
+                <div class="admin-table-wrap">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem;">
+                        <h4><i class="fas fa-users" style="color: #ff7a4a; margin-right: 8px;"></i> Recent visa holders</h4>
+                        <div style="display: flex; gap: 0.6rem; align-items: center;">
+                            <span style="color: rgba(255,255,255,0.2); font-size: 0.7rem;"><i class="fas fa-filter"></i> Filter: All</span>
+                            <button class="admin-action-btn" style="padding: 0.4rem 1.2rem;"><i class="fas fa-file-export"></i> Export</button>
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Visa ID</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Tracking Link</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="user-cell"><span class="mini-avatar">MR</span> Maria R.</div></td>
+                                <td>#V-4321</td>
+                                <td>Tourist</td>
+                                <td><span class="status-dot green"></span> Approved</td>
+                                <td><span style="color: #ffb092; font-size: 0.8rem;">/track/9k2m4</span></td>
+                                <td><button class="admin-action-btn"><i class="fas fa-eye"></i> View</button></td>
+                            </tr>
+                            <tr>
+                                <td><div class="user-cell"><span class="mini-avatar">JT</span> James T.</div></td>
+                                <td>#V-4322</td>
+                                <td>Business</td>
+                                <td><span class="status-dot orange"></span> Pending</td>
+                                <td><span style="color: #ffb092; font-size: 0.8rem;">/track/7h8q1</span></td>
+                                <td><button class="admin-action-btn"><i class="fas fa-edit"></i> Review</button></td>
+                            </tr>
+                            <tr>
+                                <td><div class="user-cell"><span class="mini-avatar">LW</span> Lisa W.</div></td>
+                                <td>#V-4323</td>
+                                <td>Student</td>
+                                <td><span class="status-dot green"></span> Approved</td>
+                                <td><span style="color: #ffb092; font-size: 0.8rem;">/track/3f6p9</span></td>
+                                <td><button class="admin-action-btn"><i class="fas fa-eye"></i> View</button></td>
+                            </tr>
+                            <tr>
+                                <td><div class="user-cell"><span class="mini-avatar">CN</span> Carlos N.</div></td>
+                                <td>#V-4324</td>
+                                <td>Work</td>
+                                <td><span class="status-dot blue"></span> Processing</td>
+                                <td><span style="color: #ffb092; font-size: 0.8rem;">/track/5r2z7</span></td>
+                                <td><button class="admin-action-btn"><i class="fas fa-edit"></i> Review</button></td>
+                            </tr>
+                            <tr>
+                                <td><div class="user-cell"><span class="mini-avatar">AK</span> Anna K.</div></td>
+                                <td>#V-4325</td>
+                                <td>Tourist</td>
+                                <td><span class="status-dot green"></span> Approved</td>
+                                <td><span style="color: #ffb092; font-size: 0.8rem;">/track/8x7f3</span></td>
+                                <td><button class="admin-action-btn"><i class="fas fa-eye"></i> View</button></td>
+                            </tr>
+                            <tr>
+                                <td><div class="user-cell"><span class="mini-avatar">PS</span> Pablo S.</div></td>
+                                <td>#V-4326</td>
+                                <td>Business</td>
+                                <td><span class="status-dot red"></span> Expired</td>
+                                <td><span style="color: #ffb092; font-size: 0.8rem;">/track/2w9q6</span></td>
+                                <td><button class="admin-action-btn"><i class="fas fa-undo"></i> Renew</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 1rem; gap: 0.6rem;">
+                        <span style="color: rgba(255,255,255,0.15); font-size: 0.7rem;">Showing 6 of 1,203 users</span>
+                        <span style="display: flex; gap: 0.3rem;">
+                            <button class="admin-action-btn" style="background: rgba(255,122,74,0.08); border-color: rgba(255,122,74,0.15);">1</button>
+                            <button class="admin-action-btn">2</button>
+                            <button class="admin-action-btn">3</button>
+                            <button class="admin-action-btn">⋯</button>
+                            <button class="admin-action-btn">12</button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="faq-section" style="margin-top: 2rem;">
+                    <div class="section-title" style="font-size: 1.2rem; margin-bottom: 1.2rem;">
+                        <i class="fas fa-question-circle"></i> Admin help
+                    </div>
+                    <div class="faq-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="faq-item">
+                            <h5><i class="fas fa-user-plus"></i> How to add a user?</h5>
+                            <p>Go to the Application page and fill in the form. A visa and tracking link will be generated.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-edit"></i> How to update status?</h5>
+                            <p>Click the "Review" button next to a pending visa to update its status.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-file-export"></i> How to export data?</h5>
+                            <p>Use the "Export" button in the user table to download a CSV of all visa holders.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== PAGE 5: VISA TYPES ========== -->
+            <div class="page" id="page5">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                    <h3 style="color: #fff; font-size: 1.8rem; font-weight: 700;">
+                        <i class="fas fa-passport" style="color: #ff7a4a; margin-right: 12px;"></i> Visa Types
+                        <span style="color: rgba(255,255,255,0.3); font-size: 1rem; font-weight: 400; margin-left: 0.5rem;">· choose your perfect match</span>
+                    </h3>
+                    <span style="color: rgba(255,255,255,0.15); font-size: 0.8rem;">
+                        <i class="fas fa-check-circle" style="color: #7bff9a;"></i> 8 types available
+                    </span>
+                </div>
+
+                <div class="visa-types-grid">
+                    <!-- Tourist Visa -->
+                    <div class="visa-type-card">
+                        <span class="popular-badge"><i class="fas fa-star"></i> most popular</span>
+                        <div class="type-icon"><i class="fas fa-umbrella-beach"></i></div>
+                        <div class="type-name">Tourist Visa</div>
+                        <div class="type-code">B-2</div>
+                        <div class="type-desc">Perfect for leisure travel, sightseeing, and visiting family. Valid for up to 90 days.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 90 days</span>
+                            <span><i class="fas fa-check"></i> Multiple entry</span>
+                            <span><i class="fas fa-check"></i> Family included</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$79 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+
+                    <!-- Business Visa -->
+                    <div class="visa-type-card">
+                        <div class="type-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="type-name">Business Visa</div>
+                        <div class="type-code">B-1</div>
+                        <div class="type-desc">For business meetings, conferences, and professional events. Includes networking perks.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 60 days</span>
+                            <span><i class="fas fa-check"></i> Multiple entry</span>
+                            <span><i class="fas fa-check"></i> Conference access</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$149 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+
+                    <!-- Student Visa -->
+                    <div class="visa-type-card">
+                        <div class="type-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="type-name">Student Visa</div>
+                        <div class="type-code">F-1</div>
+                        <div class="type-desc">For international students pursuing education. Includes work authorization for internships.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 1 year</span>
+                            <span><i class="fas fa-check"></i> Work permit</span>
+                            <span><i class="fas fa-check"></i> Renewable</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$199 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+
+                    <!-- Work Visa -->
+                    <div class="visa-type-card">
+                        <div class="type-icon"><i class="fas fa-hard-hat"></i></div>
+                        <div class="type-name">Work Visa</div>
+                        <div class="type-code">H-1B</div>
+                        <div class="type-desc">For skilled professionals with a job offer. Includes full work authorization.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 3 years</span>
+                            <span><i class="fas fa-check"></i> Full work rights</span>
+                            <span><i class="fas fa-check"></i> Family included</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$299 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+
+                    <!-- Transit Visa -->
+                    <div class="visa-type-card">
+                        <div class="type-icon"><i class="fas fa-plane"></i></div>
+                        <div class="type-name">Transit Visa</div>
+                        <div class="type-code">C-1</div>
+                        <div class="type-desc">For travelers passing through to a third country. Valid for layovers and stopovers.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 7 days</span>
+                            <span><i class="fas fa-check"></i> Single entry</span>
+                            <span><i class="fas fa-check"></i> Airport transit</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$49 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+
+                    <!-- Medical Visa -->
+                    <div class="visa-type-card">
+                        <div class="type-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="type-name">Medical Visa</div>
+                        <div class="type-code">M-1</div>
+                        <div class="type-desc">For individuals seeking medical treatment. Includes caregiver and family provisions.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 180 days</span>
+                            <span><i class="fas fa-check"></i> Caregiver included</span>
+                            <span><i class="fas fa-check"></i> Multiple entry</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$159 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+
+                    <!-- Diplomatic Visa -->
+                    <div class="visa-type-card">
+                        <div class="type-icon"><i class="fas fa-flag"></i></div>
+                        <div class="type-name">Diplomatic Visa</div>
+                        <div class="type-code">A-1</div>
+                        <div class="type-desc">For diplomats, government officials, and embassy staff. Includes full diplomatic immunity.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 2 years</span>
+                            <span><i class="fas fa-check"></i> Diplomatic immunity</span>
+                            <span><i class="fas fa-check"></i> Full family</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$499 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+
+                    <!-- Family Visa -->
+                    <div class="visa-type-card">
+                        <div class="type-icon"><i class="fas fa-users"></i></div>
+                        <div class="type-name">Family Visa</div>
+                        <div class="type-code">F-2</div>
+                        <div class="type-desc">For family members of legal residents. Includes dependents and children.</div>
+                        <div class="type-features">
+                            <span><i class="fas fa-check"></i> 1 year</span>
+                            <span><i class="fas fa-check"></i> Dependents included</span>
+                            <span><i class="fas fa-check"></i> Renewable</span>
+                        </div>
+                        <div class="type-footer">
+                            <div class="type-price">$129 <span>/ visa</span></div>
+                            <button class="type-btn" onclick="switchPage('page2')"><i class="fas fa-arrow-right"></i> Apply now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visa Types FAQ -->
+                <div class="faq-section">
+                    <div class="section-title" style="font-size: 1.2rem; margin-bottom: 1.2rem;">
+                        <i class="fas fa-question-circle"></i> Visa types FAQ
+                    </div>
+                    <div class="faq-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="faq-item">
+                            <h5><i class="fas fa-clock"></i> How long does it take?</h5>
+                            <p>All visas are issued instantly upon application approval. Processing takes under 30 seconds.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-undo"></i> Can I renew my visa?</h5>
+                            <p>Most visas can be renewed up to 3 times. Simply submit a new application before expiration.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-globe"></i> Are these valid worldwide?</h5>
+                            <p>Our visas are compliant with international standards and accepted in 42+ countries.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5><i class="fas fa-shield-alt"></i> What about refunds?</h5>
+                            <p>We offer a 30-day money-back guarantee if your visa application is not approved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer -->
+            <div style="margin-top: 2.5rem; display: flex; justify-content: flex-end; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 1.5rem;">
+                <span style="color: rgba(255,255,255,0.12); font-size: 0.7rem; letter-spacing: 1px;">
+                    <i class="fas fa-bolt" style="color: #ff7a4a; margin-right: 6px;"></i> every visa includes a unique tracking link
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const id = this.id.replace('nav-', '');
+                switchPage(id);
+            });
+        });
+
+        document.querySelectorAll('.page-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const id = this.id.replace('tab-', '');
+                switchPage(id);
+            });
+        });
+    </script>
+</body>
+</html>
