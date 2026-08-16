@@ -1352,6 +1352,24 @@
         .history-empty i {
             color: rgba(212, 175, 55, 0.1);
         }
+
+        /* ===== TINYURL BADGE ===== */
+        .tinyurl-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            border-radius: 60px;
+            padding: 0.1rem 0.8rem;
+            color: #d4af37;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .tinyurl-badge i {
+            font-size: 0.6rem;
+        }
     </style>
 </head>
 <body>
@@ -1572,7 +1590,7 @@
                     <div class="form-panel" style="padding: 1.5rem;">
                         <div class="form-group">
                             <label><i class="fas fa-link"></i> Tracking Link or Visa ID</label>
-                            <input type="text" id="searchInput" placeholder="e.g. tinyurl.com/abc123 or V-2026-1001" style="border-radius: 12px; padding: 0.8rem 1.2rem; background: #0a1322; border: 1px solid rgba(255,255,255,0.04); color: #fff; font-size: 0.9rem; width: 100%; outline: none;">
+                            <input type="text" id="searchInput" placeholder="e.g. visaprocesstracking.com/abc123 or V-2026-1001" style="border-radius: 12px; padding: 0.8rem 1.2rem; background: #0a1322; border: 1px solid rgba(255,255,255,0.04); color: #fff; font-size: 0.9rem; width: 100%; outline: none;">
                         </div>
                         <button class="btn-primary btn-full" onclick="searchVisa()" style="padding: 0.8rem;">
                             <i class="fas fa-search"></i> Find Visa
@@ -1698,16 +1716,16 @@
             return window.location.href.split('#')[0] + '#' + encoded;
         }
 
-        // ===== GENERATE TINYURL SHORT LINK =====
-        async function generateTinyUrl(longUrl) {
+        // ===== GENERATE TINYURL WITH CUSTOM ALIAS =====
+        async function generateTinyUrl(longUrl, customAlias) {
             try {
-                // Using TinyURL's API (free, no API key required for basic usage)
+                // TinyURL API with custom alias support
                 const response = await fetch('https://tinyurl.com/api-create.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: `url=${encodeURIComponent(longUrl)}`
+                    body: `url=${encodeURIComponent(longUrl)}&alias=${encodeURIComponent(customAlias)}`
                 });
 
                 if (response.ok) {
@@ -1772,8 +1790,8 @@
             if (!visa) { showToast('⚠️ No visa selected to share', 'error'); return; }
             
             const fullUrl = generateFullUrl(visa);
-            const shortDisplay = getShortTrackingLink(visa);
-            const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track: ${fullUrl}`;
+            const displayLink = visa.tinyUrl || getShortTrackingLink(visa);
+            const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track: ${displayLink}`;
             
             switch (platform) {
                 case 'whatsapp': 
@@ -1789,11 +1807,11 @@
                     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`, '_blank'); 
                     break;
                 case 'tiktok':
-                    copyToClipboard(fullUrl);
+                    copyToClipboard(displayLink);
                     showToast('✅ Link copied! Share it on TikTok', 'success');
                     break;
                 case 'copy':
-                    copyToClipboard(fullUrl);
+                    copyToClipboard(displayLink);
                     break;
                 default: 
                     showToast('📋 Share the official link manually', 'info');
@@ -1804,7 +1822,7 @@
         function copyToClipboard(text) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
-                    showToast('✅ Link copied!', 'success');
+                    showToast('✅ Short link copied!', 'success');
                 }).catch(() => {
                     fallbackCopy(text);
                 });
@@ -1820,7 +1838,7 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            showToast('✅ Link copied!', 'success');
+            showToast('✅ Short link copied!', 'success');
         }
 
         // ===== GENERATE VISA WITH TINYURL =====
@@ -1873,12 +1891,16 @@
                 // Generate the full URL
                 const fullUrl = generateFullUrl(visa);
                 
-                // Generate TinyURL
-                const tinyUrl = await generateTinyUrl(fullUrl);
+                // Generate TinyURL with custom alias using trackingId
+                const customAlias = `visa-${trackingId}`;
+                const tinyUrl = await generateTinyUrl(fullUrl, customAlias);
                 
                 if (tinyUrl) {
-                    visa.tinyUrl = tinyUrl;
-                    visa.trackingLink = tinyUrl; // Use TinyURL as the primary link
+                    // Replace the domain with your custom alias domain
+                    // TinyURL returns tinyurl.com/xxx, we want to show it as visaprocesstracking.com/xxx
+                    const aliasPart = tinyUrl.split('/').pop();
+                    visa.tinyUrl = `visaprocesstracking.com/${aliasPart}`;
+                    visa.trackingLink = visa.tinyUrl; // Use the custom domain as the primary link
                 }
 
                 visas.unshift(visa);
@@ -1887,8 +1909,8 @@
                 updateCounts();
                 updateMetaTags(visa);
                 
-                if (tinyUrl) {
-                    showToast(`✅ Visa ${visa.id} created with TinyURL: ${tinyUrl}`, 'success');
+                if (visa.tinyUrl) {
+                    showToast(`✅ Visa ${visa.id} created! Link: ${visa.tinyUrl}`, 'success');
                 } else {
                     showToast(`✅ Visa ${visa.id} created!`, 'success');
                 }
@@ -1957,11 +1979,14 @@
                     </div>
                     <div class="tracking-link-box">
                         <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${displayLink}</span>
-                        <button class="copy-btn-sm" onclick="copyToClipboard('${fullUrl}')">
+                        <button class="copy-btn-sm" onclick="copyToClipboard('${displayLink}')">
                             <i class="fas fa-copy"></i> Copy
                         </button>
                     </div>
-                    ${visa.tinyUrl ? `<div style="margin-top: 0.3rem; font-size: 0.6rem; color: rgba(255,255,255,0.15);"><i class="fas fa-check-circle" style="color: #d4af37;"></i> Shortened by TinyURL</div>` : ''}
+                    ${visa.tinyUrl ? `<div style="margin-top: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="tinyurl-badge"><i class="fas fa-check-circle"></i> Shortened</span>
+                        <span style="font-size: 0.6rem; color: rgba(255,255,255,0.15);">visaprocesstracking.com</span>
+                    </div>` : ''}
                 </div>
 
                 <div class="action-row">
@@ -2027,11 +2052,14 @@
                             </div>
                             <div class="link-box">
                                 <span class="link-text"><i class="fas fa-link" style="color: #d4af37; margin-right: 8px;"></i>${displayLink}</span>
-                                <button class="copy-btn-sm" onclick="copyToClipboard('${fullUrl}')">
+                                <button class="copy-btn-sm" onclick="copyToClipboard('${displayLink}')">
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-                            ${visa.tinyUrl ? `<div style="margin-top: 0.3rem; font-size: 0.6rem; color: rgba(255,255,255,0.15);"><i class="fas fa-check-circle" style="color: #d4af37;"></i> Shortened by TinyURL</div>` : ''}
+                            ${visa.tinyUrl ? `<div style="margin-top: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                <span class="tinyurl-badge"><i class="fas fa-check-circle"></i> Shortened</span>
+                                <span style="font-size: 0.6rem; color: rgba(255,255,255,0.15);">visaprocesstracking.com</span>
+                            </div>` : ''}
                         </div>
 
                         <div class="share-buttons">
@@ -2040,7 +2068,7 @@
                             <button class="share-btn twitter" onclick="shareVia('twitter', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-twitter"></i> Twitter</button>
                             <button class="share-btn linkedin" onclick="shareVia('linkedin', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
                             <button class="share-btn tiktok" onclick="shareVia('tiktok', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-tiktok"></i> TikTok</button>
-                            <button class="share-btn copy" onclick="copyToClipboard('${fullUrl}')"><i class="fas fa-copy"></i> Copy Link</button>
+                            <button class="share-btn copy" onclick="copyToClipboard('${displayLink}')"><i class="fas fa-copy"></i> Copy Link</button>
                         </div>
 
                         <div class="action-buttons">
@@ -2094,8 +2122,8 @@
 
         function copyPreviewLink() {
             if (currentPreviewVisa) {
-                const fullUrl = generateFullUrl(currentPreviewVisa);
-                copyToClipboard(fullUrl);
+                const displayLink = currentPreviewVisa.tinyUrl || getShortTrackingLink(currentPreviewVisa);
+                copyToClipboard(displayLink);
             }
         }
 
@@ -2117,7 +2145,6 @@
             );
             
             if (visa) {
-                const fullUrl = generateFullUrl(visa);
                 const displayLink = visa.tinyUrl || getShortTrackingLink(visa);
                 resultDiv.innerHTML = `
                             <div style="background: #0a1322; border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(212,175,55,0.06);">
@@ -2137,7 +2164,7 @@
                                     <button class="share-btn whatsapp" onclick="shareVia('whatsapp', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-whatsapp"></i></button>
                                     <button class="share-btn telegram" onclick="shareVia('telegram', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-telegram"></i></button>
                                     <button class="share-btn twitter" onclick="shareVia('twitter', ${JSON.stringify(visa).replace(/"/g, '&quot;')})"><i class="fab fa-twitter"></i></button>
-                                    <button class="share-btn copy" onclick="copyToClipboard('${fullUrl}')"><i class="fas fa-copy"></i> Copy</button>
+                                    <button class="share-btn copy" onclick="copyToClipboard('${displayLink}')"><i class="fas fa-copy"></i> Copy</button>
                                 </div>
                             </div>
                         `;
@@ -2157,13 +2184,12 @@
             }
             let html = `<div class="history-list">`;
             visas.forEach(v => {
-                const fullUrl = generateFullUrl(v);
                 const displayLink = v.tinyUrl || getShortTrackingLink(v);
                 html += `<div class="history-item" onclick="showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
                             <div class="h-user"><span class="h-avatar">${v.initials}</span><span class="h-name">${v.name}</span><span class="h-id">${v.id}</span></div>
                             <span class="h-status ${v.status}">${v.status}</span>
                             <span class="h-time"><i class="far fa-clock"></i> ${v.createdAt}</span>
-                            <button class="copy-btn" style="background: rgba(212,175,55,0.04); border: 1px solid rgba(212,175,55,0.04); border-radius: 60px; padding: 0.1rem 0.8rem; color: rgba(255,255,255,0.3); font-size: 0.55rem; cursor: pointer;" onclick="event.stopPropagation(); copyToClipboard('${fullUrl}')"><i class="fas fa-copy" style="color: #d4af37;"></i> Copy</button>
+                            <button class="copy-btn" style="background: rgba(212,175,55,0.04); border: 1px solid rgba(212,175,55,0.04); border-radius: 60px; padding: 0.1rem 0.8rem; color: rgba(255,255,255,0.3); font-size: 0.55rem; cursor: pointer;" onclick="event.stopPropagation(); copyToClipboard('${displayLink}')"><i class="fas fa-copy" style="color: #d4af37;"></i> Copy</button>
                         </div>`;
             });
             html += `</div>`;
@@ -2311,8 +2337,8 @@
 
         console.log('✈️ VisaFlow Official Pro ready!');
         console.log('📊 ' + visas.length + ' official visas in history');
-        console.log('🔗 TinyURL integration enabled for ultra-short links');
-        console.log('📋 Copy copies FULL working URL');
+        console.log('🔗 Custom domain: visaprocesstracking.com');
+        console.log('📋 Copy copies the shortened link');
         console.log('🎉 Official Verified & Congratulations appear on linked page');
         console.log('🎨 Navy + Gold theme applied consistently');
     </script>
