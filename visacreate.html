@@ -1370,6 +1370,16 @@
         .tinyurl-badge i {
             font-size: 0.6rem;
         }
+
+        /* ===== COPY SUCCESS ANIMATION ===== */
+        @keyframes copyPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .copy-animate {
+            animation: copyPulse 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -1590,7 +1600,7 @@
                     <div class="form-panel" style="padding: 1.5rem;">
                         <div class="form-group">
                             <label><i class="fas fa-link"></i> Tracking Link or Visa ID</label>
-                            <input type="text" id="searchInput" placeholder="e.g. visaprocesstracking.com/abc123 or V-2026-1001" style="border-radius: 12px; padding: 0.8rem 1.2rem; background: #0a1322; border: 1px solid rgba(255,255,255,0.04); color: #fff; font-size: 0.9rem; width: 100%; outline: none;">
+                            <input type="text" id="searchInput" placeholder="e.g. visaprocesstracking.com/visa-abc123 or V-2026-1001" style="border-radius: 12px; padding: 0.8rem 1.2rem; background: #0a1322; border: 1px solid rgba(255,255,255,0.04); color: #fff; font-size: 0.9rem; width: 100%; outline: none;">
                         </div>
                         <button class="btn-primary btn-full" onclick="searchVisa()" style="padding: 0.8rem;">
                             <i class="fas fa-search"></i> Find Visa
@@ -1694,9 +1704,14 @@
             }
         }
 
-        // ===== GET SHORT TRACKING LINK (DISPLAY ONLY) =====
+        // ===== GET SHORT TRACKING LINK =====
         function getShortTrackingLink(visa) {
             return `v.to/${visa.trackingId}`;
+        }
+
+        // ===== GET CUSTOM DOMAIN LINK =====
+        function getCustomDomainLink(visa) {
+            return `visaprocesstracking.com/visa-${visa.trackingId}`;
         }
 
         // ===== GENERATE FULL WORKING URL (WITH ENCODED DATA) =====
@@ -1719,7 +1734,7 @@
         // ===== GENERATE TINYURL WITH CUSTOM ALIAS =====
         async function generateTinyUrl(longUrl, customAlias) {
             try {
-                // TinyURL API with custom alias support
+                // Use TinyURL API with custom alias
                 const response = await fetch('https://tinyurl.com/api-create.php', {
                     method: 'POST',
                     headers: {
@@ -1789,9 +1804,9 @@
         function shareVia(platform, visa) {
             if (!visa) { showToast('⚠️ No visa selected to share', 'error'); return; }
             
+            const shortLink = getCustomDomainLink(visa);
             const fullUrl = generateFullUrl(visa);
-            const displayLink = visa.tinyUrl || getShortTrackingLink(visa);
-            const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track: ${displayLink}`;
+            const text = `✈️ OFFICIAL VISA · ${visa.id} · ${visa.name}\n📋 Type: ${visa.visaType}\n🌍 Nationality: ${visa.nationality}\n📅 Expires: ${visa.expiresAt}\n✅ Status: ${visa.status.toUpperCase()}\n\n🔗 Track: ${shortLink}`;
             
             switch (platform) {
                 case 'whatsapp': 
@@ -1807,22 +1822,27 @@
                     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`, '_blank'); 
                     break;
                 case 'tiktok':
-                    copyToClipboard(displayLink);
-                    showToast('✅ Link copied! Share it on TikTok', 'success');
+                    copyToClipboard(shortLink);
                     break;
                 case 'copy':
-                    copyToClipboard(displayLink);
+                    copyToClipboard(shortLink);
                     break;
                 default: 
                     showToast('📋 Share the official link manually', 'info');
             }
         }
 
-        // ===== COPY TO CLIPBOARD =====
+        // ===== COPY TO CLIPBOARD (SHORTENED LINK ONLY) =====
         function copyToClipboard(text) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
-                    showToast('✅ Short link copied!', 'success');
+                    showToast('✅ Short link copied: ' + text, 'success');
+                    // Add animation to the button
+                    const activeElement = document.activeElement;
+                    if (activeElement && activeElement.classList) {
+                        activeElement.classList.add('copy-animate');
+                        setTimeout(() => activeElement.classList.remove('copy-animate'), 300);
+                    }
                 }).catch(() => {
                     fallbackCopy(text);
                 });
@@ -1838,7 +1858,7 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            showToast('✅ Short link copied!', 'success');
+            showToast('✅ Short link copied: ' + text, 'success');
         }
 
         // ===== GENERATE VISA WITH TINYURL =====
@@ -1896,11 +1916,14 @@
                 const tinyUrl = await generateTinyUrl(fullUrl, customAlias);
                 
                 if (tinyUrl) {
-                    // Replace the domain with your custom alias domain
-                    // TinyURL returns tinyurl.com/xxx, we want to show it as visaprocesstracking.com/xxx
+                    // Store the custom domain link
                     const aliasPart = tinyUrl.split('/').pop();
-                    visa.tinyUrl = `visaprocesstracking.com/${aliasPart}`;
-                    visa.trackingLink = visa.tinyUrl; // Use the custom domain as the primary link
+                    visa.shortLink = `visaprocesstracking.com/${aliasPart}`;
+                    visa.trackingLink = visa.shortLink;
+                } else {
+                    // Fallback to v.to link
+                    visa.shortLink = getCustomDomainLink(visa);
+                    visa.trackingLink = visa.shortLink;
                 }
 
                 visas.unshift(visa);
@@ -1909,11 +1932,7 @@
                 updateCounts();
                 updateMetaTags(visa);
                 
-                if (visa.tinyUrl) {
-                    showToast(`✅ Visa ${visa.id} created! Link: ${visa.tinyUrl}`, 'success');
-                } else {
-                    showToast(`✅ Visa ${visa.id} created!`, 'success');
-                }
+                showToast(`✅ Visa ${visa.id} created! Link: ${visa.shortLink}`, 'success');
             } catch (error) {
                 console.error('Error generating visa:', error);
                 showToast('⚠️ Error generating visa. Please try again.', 'error');
@@ -1927,7 +1946,7 @@
         // ===== RENDER SHARED LINK VIEW =====
         function renderSharedLinkView(visa) {
             const container = document.getElementById('sharedLinkView');
-            const displayLink = visa.tinyUrl || getShortTrackingLink(visa);
+            const displayLink = visa.shortLink || getCustomDomainLink(visa);
             const fullUrl = generateFullUrl(visa);
             
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1983,10 +2002,10 @@
                             <i class="fas fa-copy"></i> Copy
                         </button>
                     </div>
-                    ${visa.tinyUrl ? `<div style="margin-top: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                    <div style="margin-top: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                         <span class="tinyurl-badge"><i class="fas fa-check-circle"></i> Shortened</span>
                         <span style="font-size: 0.6rem; color: rgba(255,255,255,0.15);">visaprocesstracking.com</span>
-                    </div>` : ''}
+                    </div>
                 </div>
 
                 <div class="action-row">
@@ -2005,8 +2024,7 @@
             placeholder.style.display = 'none';
             content.style.display = 'block';
 
-            const displayLink = visa.tinyUrl || getShortTrackingLink(visa);
-            const fullUrl = generateFullUrl(visa);
+            const displayLink = visa.shortLink || getCustomDomainLink(visa);
 
             content.innerHTML = `
                         <div class="official-seal"><i class="fas fa-certificate"></i> OFFICIAL · VERIFIED</div>
@@ -2056,10 +2074,10 @@
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-                            ${visa.tinyUrl ? `<div style="margin-top: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <div style="margin-top: 0.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 <span class="tinyurl-badge"><i class="fas fa-check-circle"></i> Shortened</span>
                                 <span style="font-size: 0.6rem; color: rgba(255,255,255,0.15);">visaprocesstracking.com</span>
-                            </div>` : ''}
+                            </div>
                         </div>
 
                         <div class="share-buttons">
@@ -2078,7 +2096,7 @@
                     `;
 
             panel.querySelector('h3').innerHTML = `<i class="fas fa-check-circle" style="color: #d4af37;"></i> Official Visa Generated`;
-            panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been officially created. ${visa.tinyUrl ? 'Share link: ' + visa.tinyUrl : ''}`;
+            panel.querySelector('.panel-desc').textContent = `Visa ${visa.id} has been officially created. Share link: ${displayLink}`;
         }
 
         // ===== SHOW LINK PREVIEW OVERLAY =====
@@ -2098,7 +2116,7 @@
                 { label: 'Arrival Date', value: visa.arrivalDate || 'N/A' },
                 { label: 'Purpose', value: visa.purpose || 'Business' },
                 { label: 'Duration', value: `${visa.duration} days` },
-                { label: 'Tracking Link', value: visa.tinyUrl || getShortTrackingLink(visa) },
+                { label: 'Tracking Link', value: visa.shortLink || getCustomDomainLink(visa) },
                 { label: 'Issued Date', value: visa.createdAt },
                 { label: 'Expiry Date', value: visa.expiresAt },
                 { label: 'Status', value: visa.status.toUpperCase() }
@@ -2122,7 +2140,7 @@
 
         function copyPreviewLink() {
             if (currentPreviewVisa) {
-                const displayLink = currentPreviewVisa.tinyUrl || getShortTrackingLink(currentPreviewVisa);
+                const displayLink = currentPreviewVisa.shortLink || getCustomDomainLink(currentPreviewVisa);
                 copyToClipboard(displayLink);
             }
         }
@@ -2138,14 +2156,14 @@
             
             const visa = visas.find(v => 
                 v.trackingId === query || 
-                (v.tinyUrl && v.tinyUrl.toLowerCase().includes(query)) ||
+                (v.shortLink && v.shortLink.toLowerCase().includes(query)) ||
                 v.trackingLink.toLowerCase().includes(query) || 
                 v.id.toLowerCase() === query || 
                 v.id.toLowerCase().includes(query)
             );
             
             if (visa) {
-                const displayLink = visa.tinyUrl || getShortTrackingLink(visa);
+                const displayLink = visa.shortLink || getCustomDomainLink(visa);
                 resultDiv.innerHTML = `
                             <div style="background: #0a1322; border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(212,175,55,0.06);">
                                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
@@ -2184,7 +2202,7 @@
             }
             let html = `<div class="history-list">`;
             visas.forEach(v => {
-                const displayLink = v.tinyUrl || getShortTrackingLink(v);
+                const displayLink = v.shortLink || getCustomDomainLink(v);
                 html += `<div class="history-item" onclick="showLinkPreview(${JSON.stringify(v).replace(/"/g, '&quot;')})">
                             <div class="h-user"><span class="h-avatar">${v.initials}</span><span class="h-name">${v.name}</span><span class="h-id">${v.id}</span></div>
                             <span class="h-status ${v.status}">${v.status}</span>
@@ -2294,6 +2312,7 @@
                 expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
                 icon: 'fa-briefcase', passportNumber: 'MX987654', passportExpiry: '12/2028',
                 arrivalDate: '01/09/2026', purpose: 'Business',
+                shortLink: 'visaprocesstracking.com/visa-8x7',
                 congratsMessage: '🎉 Congratulations, Jessica Diaz! Your visa application has been officially approved and is now being processed.',
                 official: true
             };
@@ -2307,6 +2326,7 @@
                 expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
                 icon: 'fa-hard-hat', passportNumber: 'NG123456', passportExpiry: '06/2029',
                 arrivalDate: '15/10/2026', purpose: 'Employment',
+                shortLink: 'visaprocesstracking.com/visa-9k2',
                 congratsMessage: '🎉 Congratulations, David Okafor! Your work visa has been officially approved and is now being processed.',
                 official: true
             };
@@ -2337,8 +2357,8 @@
 
         console.log('✈️ VisaFlow Official Pro ready!');
         console.log('📊 ' + visas.length + ' official visas in history');
-        console.log('🔗 Custom domain: visaprocesstracking.com');
-        console.log('📋 Copy copies the shortened link');
+        console.log('🔗 Custom domain: visaprocesstracking.com/visa-xxx');
+        console.log('📋 Copy copies the shortened link only');
         console.log('🎉 Official Verified & Congratulations appear on linked page');
         console.log('🎨 Navy + Gold theme applied consistently');
     </script>
